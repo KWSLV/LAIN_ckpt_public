@@ -1,0 +1,332 @@
+--------------------------------------------------
+Config: Use Semantic Adapter: False
+Config: Use Text Adapter: False | dim=64 | lr=0.0005
+Config: Use ObjCond Adapter: True | rank=4 | lr=0.0002
+Config: Use SceneGate: False | version=v5 | type=pair
+Config: Adapter Dimension: 32
+--------------------------------------------------
+[INFO] HICO image root (train2015): /root/Lain/hico_20160224_det/images/train2015
+datasets/zs_unseen_object_train2015_idx.pkl is loaded
+[INFO] HICO image root (test2015): /root/Lain/hico_20160224_det/images/test2015
+[INFO]: num_classes 117
+Load weights for the object detector from /root/Lain/checkpoints/detr-r50-hicodet.pth
+[INFO] missing_keys: []
+[INFO] unexpected_keys: []
+Initializing class-specific contexts
+Initial context: "X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X"
+Number of context words (tokens): 36
+[INFO] Object-conditioned text adapter initialized: dim=512, rank=4
+===>>> Rank 0: initialise model weights from /root/autodl-tmp/Lain/UO_a4all_seed66/checkpoints/ckpt_35055_09.pt
+[INFO] ObjectConditionedAdapter checkpoint tensors skipped; using fresh initialization.
+[WARN] Missing checkpoint keys (6):
+  obj_cond_adapter.lora_down.weight
+  obj_cond_adapter.lora_up.weight
+  obj_cond_adapter.condition_net.0.weight
+  obj_cond_adapter.condition_net.0.bias
+  obj_cond_adapter.condition_net.2.weight
+  obj_cond_adapter.condition_net.2.bias
+[WARN] Unexpected checkpoint keys (14):
+  scene_gate.norm_ho.weight
+  scene_gate.norm_ho.bias
+  scene_gate.norm_cls.weight
+  scene_gate.norm_cls.bias
+  scene_gate.gate_mlp.0.weight
+  scene_gate.gate_mlp.0.bias
+  scene_gate.gate_mlp.3.weight
+  scene_gate.gate_mlp.3.bias
+  clip_head.text_encoder.text_adapter.norm.weight
+  clip_head.text_encoder.text_adapter.norm.bias
+  clip_head.text_encoder.text_adapter.down.weight
+  clip_head.text_encoder.text_adapter.lowrank.A.weight
+  clip_head.text_encoder.text_adapter.lowrank.B.weight
+  clip_head.text_encoder.text_adapter.up.weight
+
+==============================
+TRAINABLE PARAMETERS:
+ -> obj_cond_adapter.lora_down.weight (torch.Size([4, 512]))
+ -> obj_cond_adapter.lora_up.weight (torch.Size([512, 4]))
+ -> obj_cond_adapter.condition_net.0.weight (torch.Size([8, 512]))
+ -> obj_cond_adapter.condition_net.0.bias (torch.Size([8]))
+ -> obj_cond_adapter.condition_net.2.weight (torch.Size([4, 8]))
+ -> obj_cond_adapter.condition_net.2.bias (torch.Size([4]))
+Total Params: 170,814,691
+Trainable Params: 8,236 (0.00%)
+==============================
+
+==> Iteration 500 | Interaction Loss: 1.1063
+Epoch [1/10], Iter. [0500/3895], Loss: 1.0848, Time/iter[Data/Train/Total]: [0.007s/1.017s/1.024s], Window[Data/Train]: [3.34s/507.54s], Remain: 0:57:55.822480
+==> Iteration 1000 | Interaction Loss: 1.6570
+Epoch [1/10], Iter. [1000/3895], Loss: 1.0590, Time/iter[Data/Train/Total]: [0.004s/0.958s/0.962s], Window[Data/Train]: [2.00s/478.94s], Remain: 0:46:24.621445
+==> Iteration 1500 | Interaction Loss: 0.8522
+Epoch [1/10], Iter. [1500/3895], Loss: 1.0496, Time/iter[Data/Train/Total]: [0.004s/0.966s/0.970s], Window[Data/Train]: [2.02s/483.00s], Remain: 0:38:43.268229
+==> Iteration 2000 | Interaction Loss: 1.1148
+Epoch [1/10], Iter. [2000/3895], Loss: 1.0708, Time/iter[Data/Train/Total]: [0.004s/0.954s/0.958s], Window[Data/Train]: [2.06s/476.88s], Remain: 0:30:15.160196
+==> Iteration 2500 | Interaction Loss: 1.1560
+Epoch [1/10], Iter. [2500/3895], Loss: 1.0487, Time/iter[Data/Train/Total]: [0.004s/0.967s/0.971s], Window[Data/Train]: [2.04s/483.60s], Remain: 0:22:34.939639
+==> Iteration 3000 | Interaction Loss: 1.2391
+Epoch [1/10], Iter. [3000/3895], Loss: 1.0566, Time/iter[Data/Train/Total]: [0.004s/0.944s/0.949s], Window[Data/Train]: [2.05s/472.22s], Remain: 0:14:08.940417
+==> Iteration 3500 | Interaction Loss: 0.8705
+Epoch [1/10], Iter. [3500/3895], Loss: 1.0639, Time/iter[Data/Train/Total]: [0.004s/0.905s/0.909s], Window[Data/Train]: [2.00s/452.37s], Remain: 0:05:58.946830
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:35<00:00,  1.36it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.58
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [11:00<00:00,  1.81it/s]
+[SceneGate] ON={'full': 34.02266552376284, 'unseen': 37.58034540691245, 'seen': 33.311129547132914} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.726561491563196, 'unseen': 37.15778961668853, 'seen': 33.04031586653813}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.29610403219964354, 'unseen': 0.4225557902239174, 'seen': 0.2708136805947845}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.02, rare: 33.09, none-rare: 34.30,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.02 unseen: 37.58 seen: 33.31
+[Checkpoint] New best unseen mAP=37.5803 at epoch 1: /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/best_unseen.pt
+==> Iteration 4000 | Interaction Loss: 0.8927
+Epoch [2/10], Iter. [0105/3895], Loss: 1.0477, Time/iter[Data/Train/Total]: [0.006s/0.963s/0.969s], Window[Data/Train]: [2.80s/481.65s], Remain: 1:01:12.091283
+==> Iteration 4500 | Interaction Loss: 1.2630
+Epoch [2/10], Iter. [0605/3895], Loss: 1.0360, Time/iter[Data/Train/Total]: [0.004s/1.048s/1.053s], Window[Data/Train]: [2.23s/524.19s], Remain: 0:57:43.857397
+==> Iteration 5000 | Interaction Loss: 1.1427
+Epoch [2/10], Iter. [1105/3895], Loss: 1.0637, Time/iter[Data/Train/Total]: [0.004s/1.047s/1.051s], Window[Data/Train]: [2.19s/523.36s], Remain: 0:48:52.564798
+==> Iteration 5500 | Interaction Loss: 0.9823
+Epoch [2/10], Iter. [1605/3895], Loss: 1.0733, Time/iter[Data/Train/Total]: [0.004s/1.017s/1.021s], Window[Data/Train]: [2.20s/508.30s], Remain: 0:38:58.087171
+==> Iteration 6000 | Interaction Loss: 0.6839
+Epoch [2/10], Iter. [2105/3895], Loss: 1.0522, Time/iter[Data/Train/Total]: [0.004s/1.014s/1.018s], Window[Data/Train]: [2.25s/506.92s], Remain: 0:30:22.828656
+==> Iteration 6500 | Interaction Loss: 0.9141
+Epoch [2/10], Iter. [2605/3895], Loss: 1.0411, Time/iter[Data/Train/Total]: [0.004s/1.023s/1.027s], Window[Data/Train]: [2.24s/511.50s], Remain: 0:22:05.450346
+==> Iteration 7000 | Interaction Loss: 0.6998
+Epoch [2/10], Iter. [3105/3895], Loss: 1.0897, Time/iter[Data/Train/Total]: [0.005s/1.012s/1.017s], Window[Data/Train]: [2.25s/506.10s], Remain: 0:13:23.201007
+==> Iteration 7500 | Interaction Loss: 0.8627
+Epoch [2/10], Iter. [3605/3895], Loss: 1.0444, Time/iter[Data/Train/Total]: [0.004s/1.054s/1.059s], Window[Data/Train]: [2.23s/527.04s], Remain: 0:05:06.978577
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:48<00:00,  1.26it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.43
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [11:34<00:00,  1.72it/s]
+[SceneGate] ON={'full': 34.04317551483985, 'unseen': 37.42526729986389, 'seen': 33.366757157835046} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.7286372991816, 'unseen': 37.15396602682855, 'seen': 33.04357155365221}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.3145382156582528, 'unseen': 0.27130127303534124, 'seen': 0.32318560418283937}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.04, rare: 33.23, none-rare: 34.29,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.04 unseen: 37.43 seen: 33.37
+==> Iteration 8000 | Interaction Loss: 0.8005
+Epoch [3/10], Iter. [0210/3895], Loss: 1.0563, Time/iter[Data/Train/Total]: [0.006s/1.071s/1.077s], Window[Data/Train]: [3.05s/535.53s], Remain: 1:06:09.330435
+==> Iteration 8500 | Interaction Loss: 1.2436
+Epoch [3/10], Iter. [0710/3895], Loss: 1.0597, Time/iter[Data/Train/Total]: [0.004s/0.920s/0.924s], Window[Data/Train]: [1.98s/459.84s], Remain: 0:49:01.767176
+==> Iteration 9000 | Interaction Loss: 0.8935
+Epoch [3/10], Iter. [1210/3895], Loss: 1.0586, Time/iter[Data/Train/Total]: [0.004s/0.910s/0.914s], Window[Data/Train]: [2.06s/454.90s], Remain: 0:40:53.905879
+==> Iteration 9500 | Interaction Loss: 1.0564
+Epoch [3/10], Iter. [1710/3895], Loss: 1.0454, Time/iter[Data/Train/Total]: [0.004s/0.911s/0.915s], Window[Data/Train]: [2.06s/455.54s], Remain: 0:33:19.730957
+==> Iteration 10000 | Interaction Loss: 1.1082
+Epoch [3/10], Iter. [2210/3895], Loss: 1.0549, Time/iter[Data/Train/Total]: [0.004s/0.894s/0.898s], Window[Data/Train]: [1.96s/446.88s], Remain: 0:25:12.586649
+==> Iteration 10500 | Interaction Loss: 0.8939
+Epoch [3/10], Iter. [2710/3895], Loss: 1.0510, Time/iter[Data/Train/Total]: [0.004s/0.889s/0.893s], Window[Data/Train]: [2.02s/444.55s], Remain: 0:17:38.368215
+==> Iteration 11000 | Interaction Loss: 0.7381
+Epoch [3/10], Iter. [3210/3895], Loss: 1.0427, Time/iter[Data/Train/Total]: [0.004s/0.908s/0.912s], Window[Data/Train]: [2.00s/454.11s], Remain: 0:10:24.866023
+==> Iteration 11500 | Interaction Loss: 1.0338
+Epoch [3/10], Iter. [3710/3895], Loss: 1.0485, Time/iter[Data/Train/Total]: [0.004s/0.896s/0.900s], Window[Data/Train]: [1.99s/447.99s], Remain: 0:02:46.494883
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:27<00:00,  1.38it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.31
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:14<00:00,  1.94it/s]
+[SceneGate] ON={'full': 34.071499630651466, 'unseen': 37.307847080073074, 'seen': 33.42423014076715} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.734831477866514, 'unseen': 37.163536962639355, 'seen': 33.04909038091194}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.3366681527849522, 'unseen': 0.1443101174337187, 'seen': 0.37513975985520887}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.07, rare: 33.30, none-rare: 34.30,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.07 unseen: 37.31 seen: 33.42
+==> Iteration 12000 | Interaction Loss: 1.4499
+Epoch [4/10], Iter. [0315/3895], Loss: 1.0604, Time/iter[Data/Train/Total]: [0.006s/0.956s/0.962s], Window[Data/Train]: [3.03s/478.02s], Remain: 0:57:24.325886
+==> Iteration 12500 | Interaction Loss: 1.0330
+Epoch [4/10], Iter. [0815/3895], Loss: 1.0377, Time/iter[Data/Train/Total]: [0.004s/0.954s/0.958s], Window[Data/Train]: [2.06s/477.16s], Remain: 0:49:12.018464
+==> Iteration 13000 | Interaction Loss: 1.0238
+Epoch [4/10], Iter. [1315/3895], Loss: 1.0652, Time/iter[Data/Train/Total]: [0.004s/0.936s/0.940s], Window[Data/Train]: [2.09s/467.98s], Remain: 0:40:25.549586
+==> Iteration 13500 | Interaction Loss: 0.7282
+Epoch [4/10], Iter. [1815/3895], Loss: 1.0559, Time/iter[Data/Train/Total]: [0.004s/0.908s/0.912s], Window[Data/Train]: [2.02s/454.02s], Remain: 0:31:37.116779
+==> Iteration 14000 | Interaction Loss: 1.3086
+Epoch [4/10], Iter. [2315/3895], Loss: 1.0526, Time/iter[Data/Train/Total]: [0.004s/0.926s/0.930s], Window[Data/Train]: [2.20s/462.77s], Remain: 0:24:29.285902
+==> Iteration 14500 | Interaction Loss: 0.7480
+Epoch [4/10], Iter. [2815/3895], Loss: 1.0542, Time/iter[Data/Train/Total]: [0.004s/0.931s/0.935s], Window[Data/Train]: [2.06s/465.62s], Remain: 0:16:50.187581
+==> Iteration 15000 | Interaction Loss: 0.9878
+Epoch [4/10], Iter. [3315/3895], Loss: 1.0453, Time/iter[Data/Train/Total]: [0.004s/0.930s/0.934s], Window[Data/Train]: [2.17s/464.88s], Remain: 0:09:01.772698
+==> Iteration 15500 | Interaction Loss: 0.8165
+Epoch [4/10], Iter. [3815/3895], Loss: 1.0567, Time/iter[Data/Train/Total]: [0.004s/0.927s/0.931s], Window[Data/Train]: [2.05s/463.36s], Remain: 0:01:14.464505
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:33<00:00,  1.37it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.45
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:17<00:00,  1.93it/s]
+[SceneGate] ON={'full': 34.15071859076325, 'unseen': 37.448855956986996, 'seen': 33.4910911175185} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.72106934330476, 'unseen': 37.163680643100925, 'seen': 33.032547083345534}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.4296492474584852, 'unseen': 0.28517531388607154, 'seen': 0.4585440341729665}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.15, rare: 33.38, none-rare: 34.38,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.15 unseen: 37.45 seen: 33.49
+==> Iteration 16000 | Interaction Loss: 0.8604
+Epoch [5/10], Iter. [0420/3895], Loss: 1.0588, Time/iter[Data/Train/Total]: [0.005s/0.971s/0.976s], Window[Data/Train]: [2.65s/485.59s], Remain: 0:56:33.255046
+==> Iteration 16500 | Interaction Loss: 1.1942
+Epoch [5/10], Iter. [0920/3895], Loss: 1.0370, Time/iter[Data/Train/Total]: [0.004s/0.939s/0.943s], Window[Data/Train]: [1.98s/469.62s], Remain: 0:46:46.027809
+==> Iteration 17000 | Interaction Loss: 1.3317
+Epoch [5/10], Iter. [1420/3895], Loss: 1.0509, Time/iter[Data/Train/Total]: [0.004s/0.939s/0.943s], Window[Data/Train]: [2.02s/469.25s], Remain: 0:38:52.824405
+==> Iteration 17500 | Interaction Loss: 1.1491
+Epoch [5/10], Iter. [1920/3895], Loss: 1.0658, Time/iter[Data/Train/Total]: [0.004s/0.944s/0.948s], Window[Data/Train]: [2.04s/471.87s], Remain: 0:31:11.942465
+==> Iteration 18000 | Interaction Loss: 0.4600
+Epoch [5/10], Iter. [2420/3895], Loss: 1.0376, Time/iter[Data/Train/Total]: [0.004s/0.954s/0.958s], Window[Data/Train]: [2.01s/476.98s], Remain: 0:23:32.999519
+==> Iteration 18500 | Interaction Loss: 0.6824
+Epoch [5/10], Iter. [2920/3895], Loss: 1.0300, Time/iter[Data/Train/Total]: [0.004s/0.949s/0.953s], Window[Data/Train]: [2.00s/474.40s], Remain: 0:15:28.978729
+==> Iteration 19000 | Interaction Loss: 0.9589
+Epoch [5/10], Iter. [3420/3895], Loss: 1.0477, Time/iter[Data/Train/Total]: [0.004s/0.932s/0.936s], Window[Data/Train]: [1.98s/466.10s], Remain: 0:07:24.669896
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:49<00:00,  1.34it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.58
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:34<00:00,  1.88it/s]
+[SceneGate] ON={'full': 34.166424686128764, 'unseen': 37.57686880638627, 'seen': 33.484335862077266} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.72681687023737, 'unseen': 37.16279266973078, 'seen': 33.03962171033869}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.4396078158913923, 'unseen': 0.4140761366554955, 'seen': 0.4447141517385731}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.17, rare: 33.43, none-rare: 34.39,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.17 unseen: 37.58 seen: 33.48
+==> Iteration 19500 | Interaction Loss: 1.7848
+Epoch [6/10], Iter. [0025/3895], Loss: 1.0552, Time/iter[Data/Train/Total]: [0.006s/0.953s/0.959s], Window[Data/Train]: [2.77s/476.58s], Remain: 1:01:50.157048
+==> Iteration 20000 | Interaction Loss: 0.9194
+Epoch [6/10], Iter. [0525/3895], Loss: 1.0422, Time/iter[Data/Train/Total]: [0.004s/1.009s/1.013s], Window[Data/Train]: [1.98s/504.41s], Remain: 0:56:53.057904
+==> Iteration 20500 | Interaction Loss: 1.0655
+Epoch [6/10], Iter. [1025/3895], Loss: 1.0484, Time/iter[Data/Train/Total]: [0.004s/0.949s/0.953s], Window[Data/Train]: [2.04s/474.56s], Remain: 0:45:35.693841
+==> Iteration 21000 | Interaction Loss: 1.3120
+Epoch [6/10], Iter. [1525/3895], Loss: 1.0667, Time/iter[Data/Train/Total]: [0.004s/0.949s/0.953s], Window[Data/Train]: [2.00s/474.45s], Remain: 0:37:38.377755
+==> Iteration 21500 | Interaction Loss: 1.2073
+Epoch [6/10], Iter. [2025/3895], Loss: 1.0463, Time/iter[Data/Train/Total]: [0.004s/0.937s/0.941s], Window[Data/Train]: [2.04s/468.38s], Remain: 0:29:19.337636
+==> Iteration 22000 | Interaction Loss: 1.0961
+Epoch [6/10], Iter. [2525/3895], Loss: 1.0566, Time/iter[Data/Train/Total]: [0.004s/0.951s/0.955s], Window[Data/Train]: [1.98s/475.48s], Remain: 0:21:48.248342
+==> Iteration 22500 | Interaction Loss: 1.2858
+Epoch [6/10], Iter. [3025/3895], Loss: 1.0463, Time/iter[Data/Train/Total]: [0.004s/0.958s/0.962s], Window[Data/Train]: [2.01s/478.91s], Remain: 0:13:56.808004
+==> Iteration 23000 | Interaction Loss: 1.4593
+Epoch [6/10], Iter. [3525/3895], Loss: 1.0450, Time/iter[Data/Train/Total]: [0.004s/0.928s/0.932s], Window[Data/Train]: [2.00s/464.25s], Remain: 0:05:45.024637
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:48<00:00,  1.34it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.60
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:37<00:00,  1.87it/s]
+[SceneGate] ON={'full': 34.17169657712237, 'unseen': 37.5992442937928, 'seen': 33.48618703378827} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.727752132545376, 'unseen': 37.1788949813731, 'seen': 33.03752356277983}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.4439444445769922, 'unseen': 0.4203493124197024, 'seen': 0.4486634710084374}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.17, rare: 33.45, none-rare: 34.39,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.17 unseen: 37.60 seen: 33.49
+[Checkpoint] New best unseen mAP=37.5992 at epoch 6: /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/best_unseen.pt
+==> Iteration 23500 | Interaction Loss: 0.9847
+Epoch [7/10], Iter. [0130/3895], Loss: 1.0409, Time/iter[Data/Train/Total]: [0.006s/0.958s/0.964s], Window[Data/Train]: [2.93s/479.21s], Remain: 1:00:30.504612
+==> Iteration 24000 | Interaction Loss: 1.3491
+Epoch [7/10], Iter. [0630/3895], Loss: 1.0426, Time/iter[Data/Train/Total]: [0.004s/0.931s/0.935s], Window[Data/Train]: [1.97s/465.49s], Remain: 0:50:52.515060
+==> Iteration 24500 | Interaction Loss: 0.7734
+Epoch [7/10], Iter. [1130/3895], Loss: 1.0499, Time/iter[Data/Train/Total]: [0.004s/0.906s/0.910s], Window[Data/Train]: [1.99s/452.96s], Remain: 0:41:55.887216
+==> Iteration 25000 | Interaction Loss: 0.8357
+Epoch [7/10], Iter. [1630/3895], Loss: 1.0449, Time/iter[Data/Train/Total]: [0.004s/0.901s/0.906s], Window[Data/Train]: [2.05s/450.71s], Remain: 0:34:10.967630
+==> Iteration 25500 | Interaction Loss: 1.0464
+Epoch [7/10], Iter. [2130/3895], Loss: 1.0539, Time/iter[Data/Train/Total]: [0.004s/0.906s/0.910s], Window[Data/Train]: [2.07s/452.91s], Remain: 0:26:46.088210
+==> Iteration 26000 | Interaction Loss: 1.1931
+Epoch [7/10], Iter. [2630/3895], Loss: 1.0572, Time/iter[Data/Train/Total]: [0.004s/0.917s/0.921s], Window[Data/Train]: [2.04s/458.48s], Remain: 0:19:25.126122
+==> Iteration 26500 | Interaction Loss: 1.4834
+Epoch [7/10], Iter. [3130/3895], Loss: 1.0473, Time/iter[Data/Train/Total]: [0.004s/0.915s/0.919s], Window[Data/Train]: [2.02s/457.55s], Remain: 0:11:43.133857
+==> Iteration 27000 | Interaction Loss: 1.1234
+Epoch [7/10], Iter. [3630/3895], Loss: 1.0380, Time/iter[Data/Train/Total]: [0.004s/0.938s/0.942s], Window[Data/Train]: [2.05s/468.75s], Remain: 0:04:09.525264
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:31<00:00,  1.37it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.64
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:19<00:00,  1.93it/s]
+[SceneGate] ON={'full': 34.19743837694028, 'unseen': 37.63929438259429, 'seen': 33.509067175809484} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.723973472028746, 'unseen': 37.1816863092228, 'seen': 33.03243090458994}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.4734649049115376, 'unseen': 0.4576080733714889, 'seen': 0.4766362712195473}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.20, rare: 33.55, none-rare: 34.39,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.20 unseen: 37.64 seen: 33.51
+[Checkpoint] New best unseen mAP=37.6393 at epoch 7: /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/best_unseen.pt
+==> Iteration 27500 | Interaction Loss: 0.7123
+Epoch [8/10], Iter. [0235/3895], Loss: 1.0473, Time/iter[Data/Train/Total]: [0.006s/0.945s/0.951s], Window[Data/Train]: [2.77s/472.52s], Remain: 0:57:59.112076
+==> Iteration 28000 | Interaction Loss: 1.2052
+Epoch [8/10], Iter. [0735/3895], Loss: 1.0578, Time/iter[Data/Train/Total]: [0.004s/0.939s/0.943s], Window[Data/Train]: [2.00s/469.38s], Remain: 0:49:39.155047
+==> Iteration 28500 | Interaction Loss: 1.2862
+Epoch [8/10], Iter. [1235/3895], Loss: 1.0701, Time/iter[Data/Train/Total]: [0.004s/0.912s/0.916s], Window[Data/Train]: [2.03s/455.79s], Remain: 0:40:35.575498
+==> Iteration 29000 | Interaction Loss: 1.2173
+Epoch [8/10], Iter. [1735/3895], Loss: 1.0175, Time/iter[Data/Train/Total]: [0.004s/0.918s/0.922s], Window[Data/Train]: [2.09s/459.01s], Remain: 0:33:11.988943
+==> Iteration 29500 | Interaction Loss: 1.3082
+Epoch [8/10], Iter. [2235/3895], Loss: 1.0415, Time/iter[Data/Train/Total]: [0.004s/0.915s/0.920s], Window[Data/Train]: [2.03s/457.74s], Remain: 0:25:26.420728
+==> Iteration 30000 | Interaction Loss: 1.0542
+Epoch [8/10], Iter. [2735/3895], Loss: 1.0448, Time/iter[Data/Train/Total]: [0.004s/0.912s/0.916s], Window[Data/Train]: [2.00s/456.11s], Remain: 0:17:42.817983
+==> Iteration 30500 | Interaction Loss: 1.3199
+Epoch [8/10], Iter. [3235/3895], Loss: 1.0428, Time/iter[Data/Train/Total]: [0.004s/0.913s/0.917s], Window[Data/Train]: [2.10s/456.48s], Remain: 0:10:05.323061
+==> Iteration 31000 | Interaction Loss: 1.5897
+Epoch [8/10], Iter. [3735/3895], Loss: 1.0396, Time/iter[Data/Train/Total]: [0.004s/0.921s/0.925s], Window[Data/Train]: [1.99s/460.57s], Remain: 0:02:28.021904
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:32<00:00,  1.37it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.63
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:16<00:00,  1.94it/s]
+[SceneGate] ON={'full': 34.19436161587709, 'unseen': 37.6284882495773, 'seen': 33.50753628913706} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.720787092818725, 'unseen': 37.16654147693429, 'seen': 33.03163621599561}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.47357452305836745, 'unseen': 0.4619467726430102, 'seen': 0.475900073141446}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.19, rare: 33.56, none-rare: 34.38,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.19 unseen: 37.63 seen: 33.51
+==> Iteration 31500 | Interaction Loss: 1.1741
+Epoch [9/10], Iter. [0340/3895], Loss: 1.0429, Time/iter[Data/Train/Total]: [0.006s/0.962s/0.968s], Window[Data/Train]: [2.86s/480.99s], Remain: 0:57:20.218911
+==> Iteration 32000 | Interaction Loss: 0.9471
+Epoch [9/10], Iter. [0840/3895], Loss: 1.0715, Time/iter[Data/Train/Total]: [0.004s/0.921s/0.925s], Window[Data/Train]: [1.99s/460.62s], Remain: 0:47:06.581937
+==> Iteration 32500 | Interaction Loss: 1.7129
+Epoch [9/10], Iter. [1340/3895], Loss: 1.0561, Time/iter[Data/Train/Total]: [0.004s/0.923s/0.927s], Window[Data/Train]: [1.94s/461.41s], Remain: 0:39:27.735459
+==> Iteration 33000 | Interaction Loss: 1.0085
+Epoch [9/10], Iter. [1840/3895], Loss: 1.0487, Time/iter[Data/Train/Total]: [0.004s/0.920s/0.924s], Window[Data/Train]: [1.95s/460.17s], Remain: 0:31:39.332883
+==> Iteration 33500 | Interaction Loss: 1.0309
+Epoch [9/10], Iter. [2340/3895], Loss: 1.0378, Time/iter[Data/Train/Total]: [0.004s/0.904s/0.908s], Window[Data/Train]: [2.03s/452.19s], Remain: 0:23:32.620036
+==> Iteration 34000 | Interaction Loss: 0.9488
+Epoch [9/10], Iter. [2840/3895], Loss: 1.0562, Time/iter[Data/Train/Total]: [0.004s/0.911s/0.915s], Window[Data/Train]: [1.99s/455.55s], Remain: 0:16:05.410163
+==> Iteration 34500 | Interaction Loss: 0.7402
+Epoch [9/10], Iter. [3340/3895], Loss: 1.0428, Time/iter[Data/Train/Total]: [0.004s/0.905s/0.909s], Window[Data/Train]: [1.94s/452.55s], Remain: 0:08:24.489939
+==> Iteration 35000 | Interaction Loss: 0.9964
+Epoch [9/10], Iter. [3840/3895], Loss: 1.0235, Time/iter[Data/Train/Total]: [0.004s/0.915s/0.919s], Window[Data/Train]: [1.96s/457.58s], Remain: 0:00:50.548753
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:29<00:00,  1.37it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.59
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:20<00:00,  1.93it/s]
+[SceneGate] ON={'full': 34.19452985037346, 'unseen': 37.59012060246208, 'seen': 33.515411699955735} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.72559646989382, 'unseen': 37.16974884494067, 'seen': 33.036765994884455}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.4689333804796405, 'unseen': 0.42037175752140854, 'seen': 0.4786457050712798}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.19, rare: 33.53, none-rare: 34.39,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.19 unseen: 37.59 seen: 33.52
+==> Iteration 35500 | Interaction Loss: 1.0867
+Epoch [10/10], Iter. [0445/3895], Loss: 1.0409, Time/iter[Data/Train/Total]: [0.005s/0.947s/0.952s], Window[Data/Train]: [2.31s/473.72s], Remain: 0:54:44.564845
+==> Iteration 36000 | Interaction Loss: 1.4163
+Epoch [10/10], Iter. [0945/3895], Loss: 1.0498, Time/iter[Data/Train/Total]: [0.004s/0.923s/0.927s], Window[Data/Train]: [1.99s/461.30s], Remain: 0:45:33.444872
+==> Iteration 36500 | Interaction Loss: 1.4248
+Epoch [10/10], Iter. [1445/3895], Loss: 1.0349, Time/iter[Data/Train/Total]: [0.004s/0.923s/0.927s], Window[Data/Train]: [1.98s/461.50s], Remain: 0:37:51.057735
+==> Iteration 37000 | Interaction Loss: 0.9403
+Epoch [10/10], Iter. [1945/3895], Loss: 1.0326, Time/iter[Data/Train/Total]: [0.004s/0.903s/0.907s], Window[Data/Train]: [2.00s/451.42s], Remain: 0:29:28.318579
+==> Iteration 37500 | Interaction Loss: 0.5408
+Epoch [10/10], Iter. [2445/3895], Loss: 1.0625, Time/iter[Data/Train/Total]: [0.004s/0.909s/0.912s], Window[Data/Train]: [1.91s/454.26s], Remain: 0:22:02.915611
+==> Iteration 38000 | Interaction Loss: 0.7040
+Epoch [10/10], Iter. [2945/3895], Loss: 1.0422, Time/iter[Data/Train/Total]: [0.004s/0.917s/0.921s], Window[Data/Train]: [1.94s/458.34s], Remain: 0:14:34.515956
+==> Iteration 38500 | Interaction Loss: 1.0283
+Epoch [10/10], Iter. [3445/3895], Loss: 1.0360, Time/iter[Data/Train/Total]: [0.004s/0.911s/0.915s], Window[Data/Train]: [1.92s/455.39s], Remain: 0:06:51.576971
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:29<00:00,  1.37it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 37.62
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:20<00:00,  1.92it/s]
+[SceneGate] ON={'full': 34.215226787275824, 'unseen': 37.61921327790366, 'seen': 33.53442948915026} OFF={} GAP={}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 33.71425557498618, 'unseen': 37.1643174016629, 'seen': 33.02424320965084}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.5009712122896417, 'unseen': 0.4548958762407622, 'seen': 0.5101862794994219}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 34.22, rare: 33.56, none-rare: 34.41,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 34.22 unseen: 37.62 seen: 33.53

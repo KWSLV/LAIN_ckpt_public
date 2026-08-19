@@ -1,0 +1,4 @@
+[INFO] DETR weights: /root/Lain/checkpoints/detr-r50-hicodet.pth
+[INFO] CLIP weights: /root/Lain/checkpoints/ViT-B-16.pt
+[INFO] HICO images: /root/Lain/hico_20160224_det
+[Gate-OFF Batch] Waiting for CUDA device 0...

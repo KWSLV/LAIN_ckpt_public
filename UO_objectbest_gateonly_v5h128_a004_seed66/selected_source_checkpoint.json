@@ -1,0 +1,6 @@
+{
+  "source_checkpoint": "/root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/ckpt_27265_07.pt",
+  "source_epoch": 7,
+  "source_unseen_mAP": 37.639294382594,
+  "selected_at": "2026-08-19 06:47:30"
+}

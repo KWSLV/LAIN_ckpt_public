@@ -1,0 +1,1 @@
+/root/autodl-tmp/Lain/UO_a4_ep9_objreset_objectonly_r4_seed66/checkpoints/ckpt_27265_07.pt

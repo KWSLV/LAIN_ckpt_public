@@ -1,0 +1,49 @@
+--------------------------------------------------
+Config: Use Semantic Adapter: False
+Config: Use Text Adapter: True | dim=64 | lr=0.0002
+Config: Use ObjCond Adapter: True | rank=4 | lr=0.0002
+Config: Use SceneGate: True | version=v5 | type=pair
+Config: Adapter Dimension: 32
+--------------------------------------------------
+[INFO] HICO image root (train2015): /root/Lain/hico_20160224_det/images/train2015
+datasets/zs_unseen_object_train2015_idx.pkl is loaded
+[INFO] HICO image root (test2015): /root/Lain/hico_20160224_det/images/test2015
+[INFO]: num_classes 117
+Load weights for the object detector from /root/Lain/checkpoints/detr-r50-hicodet.pth
+[INFO] missing_keys: []
+[INFO] unexpected_keys: []
+Initializing class-specific contexts
+Initial context: "X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X"
+Number of context words (tokens): 36
+[INFO] Text adapter initialized: dim=512, bottleneck=64, rank=4
+[INFO] Object-conditioned text adapter initialized: dim=512, rank=4
+[INFO] SceneGate initialized: version=v5, type=pair
+===>>> Rank 0: initialise model weights from /root/autodl-tmp/Lain/UO_objectbest_gateonly_v5h128_a004_seed66/checkpoints/ckpt_03895_01.pt
+[INFO] Text Adapter checkpoint tensors skipped; using fresh initialization.
+[WARN] Missing checkpoint keys (6):
+  clip_head.text_encoder.text_adapter.norm.weight
+  clip_head.text_encoder.text_adapter.norm.bias
+  clip_head.text_encoder.text_adapter.down.weight
+  clip_head.text_encoder.text_adapter.lowrank.A.weight
+  clip_head.text_encoder.text_adapter.lowrank.B.weight
+  clip_head.text_encoder.text_adapter.up.weight
+
+==============================
+TRAINABLE PARAMETERS:
+ -> clip_head.text_encoder.text_adapter.norm.weight (torch.Size([512]))
+ -> clip_head.text_encoder.text_adapter.norm.bias (torch.Size([512]))
+ -> clip_head.text_encoder.text_adapter.down.weight (torch.Size([64, 512]))
+ -> clip_head.text_encoder.text_adapter.lowrank.A.weight (torch.Size([4, 64]))
+ -> clip_head.text_encoder.text_adapter.lowrank.B.weight (torch.Size([64, 4]))
+ -> clip_head.text_encoder.text_adapter.up.weight (torch.Size([512, 64]))
+Total Params: 171,015,140
+Trainable Params: 67,072 (0.04%)
+==============================
+
+[SceneGate Schedule] Epoch 1: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 500 | Interaction Loss: 1.1721
+Epoch [1/8], Iter. [0500/3895], Loss: 1.0466, Time/iter[Data/Train/Total]: [0.006s/0.934s/0.940s], Window[Data/Train]: [2.89s/465.94s], Remain: 0:53:09.702779
+==> Iteration 1000 | Interaction Loss: 1.2282
+Epoch [1/8], Iter. [1000/3895], Loss: 1.0475, Time/iter[Data/Train/Total]: [0.004s/0.903s/0.907s], Window[Data/Train]: [1.82s/451.55s], Remain: 0:43:45.032859
+==> Iteration 1500 | Interaction Loss: 0.8585
+Epoch [1/8], Iter. [1500/3895], Loss: 1.0396, Time/iter[Data/Train/Total]: [0.004s/0.892s/0.895s], Window[Data/Train]: [1.83s/445.90s], Remain: 0:35:44.644759

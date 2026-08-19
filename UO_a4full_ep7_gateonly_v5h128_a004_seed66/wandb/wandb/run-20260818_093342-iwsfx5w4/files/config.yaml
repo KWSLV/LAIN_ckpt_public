@@ -1,0 +1,255 @@
+_wandb:
+    value:
+        cli_version: 0.28.1
+        e:
+            cij5r09mppsi0s9cvu41few02edt5bs7:
+                args:
+                    - --pretrained
+                    - /root/Lain/checkpoints/detr-r50-hicodet.pth
+                    - --clip_dir_vit
+                    - /root/Lain/checkpoints/ViT-B-16.pt
+                    - --init_from
+                    - /root/autodl-tmp/Lain/UO_a4all_seed66/checkpoints/ckpt_27265_07.pt
+                    - --reset_scene_gate_on_load
+                    - --train_scene_gate_only
+                    - --output-dir
+                    - /root/autodl-tmp/Lain/UO_a4full_ep7_gateonly_v5h128_a004_seed66/checkpoints
+                    - --hico-image-root
+                    - /root/Lain/hico_20160224_det
+                    - --dataset
+                    - hicodet
+                    - --partitions
+                    - train2015
+                    - test2015
+                    - --zs
+                    - --zs_type
+                    - unseen_object
+                    - --num_classes
+                    - "117"
+                    - --epochs
+                    - "10"
+                    - --batch-size
+                    - "8"
+                    - --test-batch-size
+                    - "8"
+                    - --num-workers
+                    - "8"
+                    - --prefetch-factor
+                    - "4"
+                    - --seed
+                    - "66"
+                    - --weight-decay
+                    - "1e-4"
+                    - --lr-drop
+                    - "6"
+                    - --clip-max-norm
+                    - "0.1"
+                    - --lr-head
+                    - "5e-4"
+                    - --lr-vit
+                    - "2e-4"
+                    - --lr-obj-cond-adapter
+                    - "2e-4"
+                    - --lr-scene-gate
+                    - "3e-4"
+                    - --alpha
+                    - "0.5"
+                    - --gamma
+                    - "0.2"
+                    - --hyper_lambda
+                    - "2.8"
+                    - --box-score-thresh
+                    - "0.2"
+                    - --fg-iou-thresh
+                    - "0.5"
+                    - --min-instances
+                    - "3"
+                    - --max-instances
+                    - "15"
+                    - --use_hotoken
+                    - --use_prompt
+                    - --use_exp
+                    - --CSC
+                    - --N_CTX
+                    - "36"
+                    - --use_insadapter
+                    - --adapt_dim
+                    - "32"
+                    - --use_prior
+                    - --adapter_alpha
+                    - "1.0"
+                    - --adapter_num_layers
+                    - "1"
+                    - --adapter_pos
+                    - all
+                    - --use_obj_cond_adapter
+                    - --obj_cond_rank
+                    - "4"
+                    - --use_scene_gate
+                    - --scene_gate_type
+                    - pair
+                    - --scene_gate_version
+                    - v5
+                    - --scene_gate_hidden_dim
+                    - "128"
+                    - --scene_gate_dropout
+                    - "0.1"
+                    - --scene_gate_alpha
+                    - "0.04"
+                    - --scene_gate_activation
+                    - standardized_tanh
+                    - --scene_gate_init_std
+                    - "1e-3"
+                    - --scene_gate_start_epoch
+                    - "1"
+                    - --scene-gate-post-l2-norm
+                    - --scene-gate-diagnostics
+                    - --scene-gate-compare-off
+                    - --adapter-contribution-diagnostics
+                    - --amp
+                    - --fast-cuda
+                    - --keep-last-checkpoints
+                    - "0"
+                    - --keep-best-unseen-checkpoint
+                    - --print-interval
+                    - "500"
+                codePath: main.py
+                codePathLocal: main.py
+                cpu_count: 64
+                cpu_count_logical: 128
+                cudaVersion: "13.2"
+                disk:
+                    /:
+                        total: "32212254720"
+                        used: "24235823104"
+                email: saaatkj@163.com
+                executable: /root/miniconda3/bin/python
+                gpu: NVIDIA GeForce RTX 4090
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 16384
+                      memoryTotal: "25757220864"
+                      name: NVIDIA GeForce RTX 4090
+                      uuid: GPU-177b5324-64ed-1605-2123-625242e9fce6
+                host: autodl-container-83e841b5cc-c915c20a
+                memory:
+                    total: "1081809502208"
+                os: Linux-5.15.0-78-generic-x86_64-with-glibc2.35
+                program: /root/Lain/LAIN-main/main.py
+                python: CPython 3.12.3
+                root: /root/autodl-tmp/Lain/UO_a4full_ep7_gateonly_v5h128_a004_seed66/wandb
+                startedAt: "2026-08-18T01:33:42.110479Z"
+                writerId: cij5r09mppsi0s9cvu41few02edt5bs7
+        m:
+            - "1": module_ablation/object_off_unseen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_contribution/epoch
+              "6":
+                - 3
+              "7": []
+            - "1": module_ablation/object_off_full
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_ablation/full_unseen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_ablation/gate_off_unseen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_contribution/gate_seen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_contribution/object_seen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_contribution/object_full
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_ablation/object_off_seen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_ablation/gate_off_full
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_contribution/gate_unseen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_ablation/full_seen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_ablation/gate_off_seen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_ablation/full_full
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_contribution/gate_full
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": module_contribution/object_unseen
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+        python_version: 3.12.3
+        t:
+            "1":
+                - 1
+                - 41
+                - 51
+            "2":
+                - 1
+                - 41
+                - 51
+            "3":
+                - 7
+                - 13
+            "4": 3.12.3
+            "5": 0.28.1
+            "12": 0.28.1
+            "13": linux-x86_64

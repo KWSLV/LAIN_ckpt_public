@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "evaluation": "scene_gate_off_only",
+  "checkpoint": "/root/autodl-tmp/Lain/UO_a4all_seed66/checkpoints/ckpt_42845_11.pt",
+  "checkpoint_epoch": 11,
+  "checkpoint_iteration": 42845,
+  "scene_gate_enabled_in_checkpoint": true,
+  "scene_gate_enabled_during_evaluation": false,
+  "metrics": {
+    "full": 34.1852303769311,
+    "unseen": 37.19909467311696,
+    "seen": 33.58245751769394
+  },
+  "evaluated_at": "2026-08-13T12:38:18.577700+00:00"
+}

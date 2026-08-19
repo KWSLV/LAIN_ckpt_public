@@ -1,0 +1,350 @@
+--------------------------------------------------
+Config: Use Semantic Adapter: False
+Config: Use Text Adapter: False | dim=64 | lr=0.0005
+Config: Use ObjCond Adapter: True | rank=4 | lr=0.0002
+Config: Use SceneGate: True | version=v5_lowrank | type=pair
+Config: Adapter Dimension: 32
+--------------------------------------------------
+[INFO] HICO image root (train2015): /root/Lain/hico_20160224_det/images/train2015
+datasets/zs_unseen_object_train2015_idx.pkl is loaded
+[INFO] HICO image root (test2015): /root/Lain/hico_20160224_det/images/test2015
+[INFO]: num_classes 117
+Load weights for the object detector from /root/Lain/checkpoints/detr-r50-hicodet.pth
+[INFO] missing_keys: []
+[INFO] unexpected_keys: []
+Initializing class-specific contexts
+Initial context: "X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X"
+Number of context words (tokens): 36
+[INFO] Object-conditioned text adapter initialized: dim=512, rank=4
+[INFO] SceneGate initialized: version=v5_lowrank, type=pair
+===>>> Rank 0: initialise model weights from /root/autodl-tmp/Lain/UO_a4all_v5lowrank_seed66/checkpoints/ckpt_23370_06.pt
+[INFO] SceneGate checkpoint tensors skipped; using fresh gate initialization.
+[WARN] Missing checkpoint keys (8):
+  scene_gate.norm_ho.weight
+  scene_gate.norm_ho.bias
+  scene_gate.norm_cls.weight
+  scene_gate.norm_cls.bias
+  scene_gate.gate_mlp.0.weight
+  scene_gate.gate_mlp.0.bias
+  scene_gate.gate_mlp.3.weight
+  scene_gate.gate_mlp.3.bias
+[WARN] Unexpected checkpoint keys (6):
+  clip_head.text_encoder.text_adapter.norm.weight
+  clip_head.text_encoder.text_adapter.norm.bias
+  clip_head.text_encoder.text_adapter.down.weight
+  clip_head.text_encoder.text_adapter.lowrank.A.weight
+  clip_head.text_encoder.text_adapter.lowrank.B.weight
+  clip_head.text_encoder.text_adapter.up.weight
+
+==============================
+TRAINABLE PARAMETERS:
+ -> scene_gate.norm_ho.weight (torch.Size([512]))
+ -> scene_gate.norm_ho.bias (torch.Size([512]))
+ -> scene_gate.norm_cls.weight (torch.Size([512]))
+ -> scene_gate.norm_cls.bias (torch.Size([512]))
+ -> scene_gate.gate_mlp.0.weight (torch.Size([16, 1024]))
+ -> scene_gate.gate_mlp.0.bias (torch.Size([16]))
+ -> scene_gate.gate_mlp.3.weight (torch.Size([1, 16]))
+ -> scene_gate.gate_mlp.3.bias (torch.Size([1]))
+Total Params: 170,833,156
+Trainable Params: 18,465 (0.01%)
+==============================
+
+[SceneGate Schedule] Epoch 1: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 500 | Interaction Loss: 0.8739
+Epoch [1/10], Iter. [0500/3895], Loss: 1.1246, Time/iter[Data/Train/Total]: [0.008s/0.941s/0.949s], Window[Data/Train]: [3.85s/469.75s], Remain: 0:53:42.155343
+==> Iteration 1000 | Interaction Loss: 1.3107
+Epoch [1/10], Iter. [1000/3895], Loss: 1.1015, Time/iter[Data/Train/Total]: [0.004s/0.888s/0.892s], Window[Data/Train]: [1.94s/443.82s], Remain: 0:43:00.954924
+==> Iteration 1500 | Interaction Loss: 0.9723
+Epoch [1/10], Iter. [1500/3895], Loss: 1.0981, Time/iter[Data/Train/Total]: [0.004s/0.894s/0.898s], Window[Data/Train]: [1.97s/447.12s], Remain: 0:35:51.114929
+==> Iteration 2000 | Interaction Loss: 1.0937
+Epoch [1/10], Iter. [2000/3895], Loss: 1.1052, Time/iter[Data/Train/Total]: [0.004s/0.898s/0.902s], Window[Data/Train]: [1.98s/449.11s], Remain: 0:28:29.653280
+==> Iteration 2500 | Interaction Loss: 1.3355
+Epoch [1/10], Iter. [2500/3895], Loss: 1.0900, Time/iter[Data/Train/Total]: [0.004s/0.919s/0.923s], Window[Data/Train]: [1.91s/459.73s], Remain: 0:21:27.949763
+==> Iteration 3000 | Interaction Loss: 1.3044
+Epoch [1/10], Iter. [3000/3895], Loss: 1.1109, Time/iter[Data/Train/Total]: [0.004s/0.910s/0.914s], Window[Data/Train]: [1.95s/454.96s], Remain: 0:13:37.875569
+==> Iteration 3500 | Interaction Loss: 0.8969
+Epoch [1/10], Iter. [3500/3895], Loss: 1.1022, Time/iter[Data/Train/Total]: [0.004s/0.910s/0.914s], Window[Data/Train]: [1.91s/455.01s], Remain: 0:06:00.971124
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:52<00:00,  1.34it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 36.43
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:35<00:00,  1.88it/s]
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:25<00:00,  1.91it/s]
+[SceneGate] ON={'full': 33.098576178481395, 'unseen': 36.432634458151995, 'seen': 32.43176452254728} OFF={'full': 33.09610721267249, 'unseen': 36.408644549226594, 'seen': 32.43359974536166} GAP={'full': 0.0024689658089016575, 'unseen': 0.023989908925400982, 'seen': -0.0018352228143783123}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 32.74088844071916, 'unseen': 36.24130701314587, 'seen': 32.040804726233816}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.35768773776223384, 'unseen': 0.19132744500612375, 'seen': 0.3909597963134672}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.10, rare: 31.62, none-rare: 33.54,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 33.10 unseen: 36.43 seen: 32.43
+[Checkpoint] New best unseen mAP=36.4326 at epoch 1: /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/best_unseen.pt
+[SceneGate Schedule] Epoch 2: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 4000 | Interaction Loss: 0.9904
+Epoch [2/10], Iter. [0105/3895], Loss: 1.0858, Time/iter[Data/Train/Total]: [0.005s/0.910s/0.915s], Window[Data/Train]: [2.38s/455.09s], Remain: 0:57:47.592582
+==> Iteration 4500 | Interaction Loss: 1.8377
+Epoch [2/10], Iter. [0605/3895], Loss: 1.0902, Time/iter[Data/Train/Total]: [0.004s/0.940s/0.944s], Window[Data/Train]: [2.00s/469.82s], Remain: 0:51:44.546544
+==> Iteration 5000 | Interaction Loss: 0.9260
+Epoch [2/10], Iter. [1105/3895], Loss: 1.1014, Time/iter[Data/Train/Total]: [0.004s/0.905s/0.909s], Window[Data/Train]: [1.94s/452.37s], Remain: 0:42:15.047707
+==> Iteration 5500 | Interaction Loss: 0.8305
+Epoch [2/10], Iter. [1605/3895], Loss: 1.1096, Time/iter[Data/Train/Total]: [0.004s/0.909s/0.913s], Window[Data/Train]: [1.97s/454.71s], Remain: 0:34:51.555132
+==> Iteration 6000 | Interaction Loss: 0.6684
+Epoch [2/10], Iter. [2105/3895], Loss: 1.1105, Time/iter[Data/Train/Total]: [0.004s/0.889s/0.892s], Window[Data/Train]: [1.94s/444.31s], Remain: 0:26:37.543799
+==> Iteration 6500 | Interaction Loss: 1.3473
+Epoch [2/10], Iter. [2605/3895], Loss: 1.0987, Time/iter[Data/Train/Total]: [0.004s/0.896s/0.900s], Window[Data/Train]: [1.94s/447.85s], Remain: 0:19:20.470009
+==> Iteration 7000 | Interaction Loss: 0.9082
+Epoch [2/10], Iter. [3105/3895], Loss: 1.1190, Time/iter[Data/Train/Total]: [0.004s/0.900s/0.904s], Window[Data/Train]: [1.91s/449.93s], Remain: 0:11:53.905859
+==> Iteration 7500 | Interaction Loss: 0.8152
+Epoch [2/10], Iter. [3605/3895], Loss: 1.1095, Time/iter[Data/Train/Total]: [0.004s/0.884s/0.888s], Window[Data/Train]: [1.92s/442.05s], Remain: 0:04:17.502646
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:56<00:00,  1.33it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 36.42
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:35<00:00,  1.88it/s]
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:29<00:00,  1.90it/s]
+[SceneGate] ON={'full': 33.11170283157467, 'unseen': 36.423289590190564, 'seen': 32.449385479851486} OFF={'full': 33.1044123396319, 'unseen': 36.40018701638328, 'seen': 32.44525740428163} GAP={'full': 0.00729049194276854, 'unseen': 0.023102573807285864, 'seen': 0.004128075569859391}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 32.769973197918645, 'unseen': 36.25586215186517, 'seen': 32.072795407129334}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.3417296336560227, 'unseen': 0.1674274383253902, 'seen': 0.37659007272215206}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.11, rare: 31.66, none-rare: 33.55,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 33.11 unseen: 36.42 seen: 32.45
+[SceneGate Schedule] Epoch 3: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 8000 | Interaction Loss: 0.9636
+Epoch [3/10], Iter. [0210/3895], Loss: 1.1082, Time/iter[Data/Train/Total]: [0.006s/0.920s/0.926s], Window[Data/Train]: [2.87s/460.20s], Remain: 0:56:52.836064
+==> Iteration 8500 | Interaction Loss: 0.7438
+Epoch [3/10], Iter. [0710/3895], Loss: 1.1001, Time/iter[Data/Train/Total]: [0.004s/0.936s/0.939s], Window[Data/Train]: [1.94s/467.78s], Remain: 0:49:52.117924
+==> Iteration 9000 | Interaction Loss: 0.9867
+Epoch [3/10], Iter. [1210/3895], Loss: 1.0942, Time/iter[Data/Train/Total]: [0.004s/0.920s/0.924s], Window[Data/Train]: [1.98s/460.22s], Remain: 0:41:22.013516
+==> Iteration 9500 | Interaction Loss: 1.2419
+Epoch [3/10], Iter. [1710/3895], Loss: 1.0982, Time/iter[Data/Train/Total]: [0.004s/0.908s/0.911s], Window[Data/Train]: [1.91s/453.76s], Remain: 0:33:11.277256
+==> Iteration 10000 | Interaction Loss: 1.6811
+Epoch [3/10], Iter. [2210/3895], Loss: 1.1271, Time/iter[Data/Train/Total]: [0.004s/0.905s/0.909s], Window[Data/Train]: [1.90s/452.60s], Remain: 0:25:31.656992
+==> Iteration 10500 | Interaction Loss: 1.1761
+Epoch [3/10], Iter. [2710/3895], Loss: 1.1144, Time/iter[Data/Train/Total]: [0.004s/0.907s/0.910s], Window[Data/Train]: [1.95s/453.28s], Remain: 0:17:58.912754
+==> Iteration 11000 | Interaction Loss: 0.9661
+Epoch [3/10], Iter. [3210/3895], Loss: 1.0926, Time/iter[Data/Train/Total]: [0.004s/0.907s/0.910s], Window[Data/Train]: [1.91s/453.33s], Remain: 0:10:23.675984
+==> Iteration 11500 | Interaction Loss: 1.3771
+Epoch [3/10], Iter. [3710/3895], Loss: 1.0894, Time/iter[Data/Train/Total]: [0.004s/0.909s/0.913s], Window[Data/Train]: [1.91s/454.41s], Remain: 0:02:48.838530
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:49<00:00,  1.34it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 36.39
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:36<00:00,  1.87it/s]
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:28<00:00,  1.90it/s]
+[SceneGate] ON={'full': 33.099078367699, 'unseen': 36.39418592319141, 'seen': 32.44005685660052} OFF={'full': 33.0986081385143, 'unseen': 36.38843099012567, 'seen': 32.44064356819203} GAP={'full': 0.00047022918469963315, 'unseen': 0.005754933065738044, 'seen': -0.00058671159150947}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 32.774453152689134, 'unseen': 36.279281769213384, 'seen': 32.073487429384286}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.32462521500986696, 'unseen': 0.11490415397802423, 'seen': 0.3665694272162341}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.10, rare: 31.63, none-rare: 33.54,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 33.10 unseen: 36.39 seen: 32.44
+[SceneGate Schedule] Epoch 4: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 12000 | Interaction Loss: 1.0111
+Epoch [4/10], Iter. [0315/3895], Loss: 1.1120, Time/iter[Data/Train/Total]: [0.005s/0.931s/0.935s], Window[Data/Train]: [2.29s/465.39s], Remain: 0:55:48.547503
+==> Iteration 12500 | Interaction Loss: 1.1719
+Epoch [4/10], Iter. [0815/3895], Loss: 1.0834, Time/iter[Data/Train/Total]: [0.004s/0.925s/0.928s], Window[Data/Train]: [1.94s/462.28s], Remain: 0:47:39.645136
+==> Iteration 13000 | Interaction Loss: 1.0629
+Epoch [4/10], Iter. [1315/3895], Loss: 1.1048, Time/iter[Data/Train/Total]: [0.004s/0.898s/0.902s], Window[Data/Train]: [1.94s/448.84s], Remain: 0:38:46.059743
+==> Iteration 13500 | Interaction Loss: 0.9694
+Epoch [4/10], Iter. [1815/3895], Loss: 1.1062, Time/iter[Data/Train/Total]: [0.004s/0.902s/0.906s], Window[Data/Train]: [1.92s/450.89s], Remain: 0:31:23.692933
+==> Iteration 14000 | Interaction Loss: 1.0971
+Epoch [4/10], Iter. [2315/3895], Loss: 1.0937, Time/iter[Data/Train/Total]: [0.004s/0.900s/0.904s], Window[Data/Train]: [1.93s/450.13s], Remain: 0:23:48.527018
+==> Iteration 14500 | Interaction Loss: 0.8092
+Epoch [4/10], Iter. [2815/3895], Loss: 1.0930, Time/iter[Data/Train/Total]: [0.004s/0.899s/0.903s], Window[Data/Train]: [1.92s/449.56s], Remain: 0:16:15.186381
+==> Iteration 15000 | Interaction Loss: 0.9322
+Epoch [4/10], Iter. [3315/3895], Loss: 1.1051, Time/iter[Data/Train/Total]: [0.004s/0.898s/0.902s], Window[Data/Train]: [1.95s/449.14s], Remain: 0:08:43.265906
+==> Iteration 15500 | Interaction Loss: 0.9887
+Epoch [4/10], Iter. [3815/3895], Loss: 1.1167, Time/iter[Data/Train/Total]: [0.004s/0.903s/0.907s], Window[Data/Train]: [1.95s/451.41s], Remain: 0:01:12.537094
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:50<00:00,  1.34it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 36.40
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:36<00:00,  1.88it/s]
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:29<00:00,  1.90it/s]
+[SceneGate] ON={'full': 33.10768545197167, 'unseen': 36.39669730331616, 'seen': 32.44988308170277} OFF={'full': 33.10527210325159, 'unseen': 36.43219289655906, 'seen': 32.4398879445901} GAP={'full': 0.002413348720075703, 'unseen': -0.035495593242899304, 'seen': 0.009995137112674968}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 32.78391752104787, 'unseen': 36.25644761867825, 'seen': 32.089411501521795}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.3237679309238004, 'unseen': 0.140249684637908, 'seen': 0.36047158018097747}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.11, rare: 31.61, none-rare: 33.56,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 33.11 unseen: 36.40 seen: 32.45
+[SceneGate Schedule] Epoch 5: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 16000 | Interaction Loss: 1.2096
+Epoch [5/10], Iter. [0420/3895], Loss: 1.1042, Time/iter[Data/Train/Total]: [0.005s/0.952s/0.958s], Window[Data/Train]: [2.68s/476.11s], Remain: 0:55:27.640691
+==> Iteration 16500 | Interaction Loss: 1.0886
+Epoch [5/10], Iter. [0920/3895], Loss: 1.1085, Time/iter[Data/Train/Total]: [0.004s/0.903s/0.907s], Window[Data/Train]: [1.94s/451.67s], Remain: 0:44:59.001651
+==> Iteration 17000 | Interaction Loss: 1.7626
+Epoch [5/10], Iter. [1420/3895], Loss: 1.1070, Time/iter[Data/Train/Total]: [0.004s/0.908s/0.912s], Window[Data/Train]: [1.90s/453.99s], Remain: 0:37:36.629426
+==> Iteration 17500 | Interaction Loss: 1.1330
+Epoch [5/10], Iter. [1920/3895], Loss: 1.1043, Time/iter[Data/Train/Total]: [0.004s/0.897s/0.901s], Window[Data/Train]: [1.93s/448.70s], Remain: 0:29:39.999332
+==> Iteration 18000 | Interaction Loss: 1.4703
+Epoch [5/10], Iter. [2420/3895], Loss: 1.0896, Time/iter[Data/Train/Total]: [0.004s/0.907s/0.911s], Window[Data/Train]: [1.94s/453.70s], Remain: 0:22:24.120727
+==> Iteration 18500 | Interaction Loss: 1.1141
+Epoch [5/10], Iter. [2920/3895], Loss: 1.1049, Time/iter[Data/Train/Total]: [0.004s/0.916s/0.920s], Window[Data/Train]: [1.95s/457.95s], Remain: 0:14:56.805680
+==> Iteration 19000 | Interaction Loss: 1.0014
+Epoch [5/10], Iter. [3420/3895], Loss: 1.1018, Time/iter[Data/Train/Total]: [0.004s/0.897s/0.901s], Window[Data/Train]: [1.91s/448.47s], Remain: 0:07:07.862951
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:49<00:00,  1.34it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 36.41
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:32<00:00,  1.89it/s]
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:27<00:00,  1.90it/s]
+[SceneGate] ON={'full': 33.0934179019468, 'unseen': 36.408931987175784, 'seen': 32.430315084901} OFF={'full': 33.0977879376554, 'unseen': 36.41173343317156, 'seen': 32.43499883855216} GAP={'full': -0.004370035708596731, 'unseen': -0.0028014459957788063, 'seen': -0.004683753651164579}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 32.75711929023316, 'unseen': 36.198187052664295, 'seen': 32.06890573774694}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.3362986117136373, 'unseen': 0.21074493451148868, 'seen': 0.3614093471540585}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.09, rare: 31.68, none-rare: 33.52,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 33.09 unseen: 36.41 seen: 32.43
+[SceneGate Schedule] Epoch 6: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 19500 | Interaction Loss: 0.8822
+Epoch [6/10], Iter. [0025/3895], Loss: 1.0905, Time/iter[Data/Train/Total]: [0.005s/0.906s/0.911s], Window[Data/Train]: [2.34s/453.20s], Remain: 0:58:45.899951
+==> Iteration 20000 | Interaction Loss: 1.0496
+Epoch [6/10], Iter. [0525/3895], Loss: 1.1234, Time/iter[Data/Train/Total]: [0.004s/0.952s/0.956s], Window[Data/Train]: [1.95s/475.80s], Remain: 0:53:40.055214
+==> Iteration 20500 | Interaction Loss: 0.8830
+Epoch [6/10], Iter. [1025/3895], Loss: 1.0975, Time/iter[Data/Train/Total]: [0.004s/0.903s/0.907s], Window[Data/Train]: [1.99s/451.32s], Remain: 0:43:22.008481
+==> Iteration 21000 | Interaction Loss: 1.2487
+Epoch [6/10], Iter. [1525/3895], Loss: 1.1305, Time/iter[Data/Train/Total]: [0.004s/0.909s/0.913s], Window[Data/Train]: [2.00s/454.64s], Remain: 0:36:04.480688
+==> Iteration 21500 | Interaction Loss: 1.0477
+Epoch [6/10], Iter. [2025/3895], Loss: 1.1009, Time/iter[Data/Train/Total]: [0.004s/0.909s/0.913s], Window[Data/Train]: [2.03s/454.63s], Remain: 0:28:27.885377
+==> Iteration 22000 | Interaction Loss: 1.1737
+Epoch [6/10], Iter. [2525/3895], Loss: 1.0978, Time/iter[Data/Train/Total]: [0.004s/0.906s/0.910s], Window[Data/Train]: [2.00s/453.23s], Remain: 0:20:47.324226
+==> Iteration 22500 | Interaction Loss: 1.2975
+Epoch [6/10], Iter. [3025/3895], Loss: 1.0879, Time/iter[Data/Train/Total]: [0.004s/0.921s/0.925s], Window[Data/Train]: [2.01s/460.70s], Remain: 0:13:25.124703
+==> Iteration 23000 | Interaction Loss: 1.6421
+Epoch [6/10], Iter. [3525/3895], Loss: 1.1003, Time/iter[Data/Train/Total]: [0.004s/0.927s/0.931s], Window[Data/Train]: [2.04s/463.59s], Remain: 0:05:44.566600
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:55<00:00,  1.33it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 36.44
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:31<00:00,  1.89it/s]
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:23<00:00,  1.91it/s]
+[SceneGate] ON={'full': 33.105007158035136, 'unseen': 36.435682031599676, 'seen': 32.438872183322225} OFF={'full': 33.117755169721676, 'unseen': 36.3985507414388, 'seen': 32.461596055378244} GAP={'full': -0.01274801168653994, 'unseen': 0.037131290160878905, 'seen': -0.022723872056019445}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 32.79485711262046, 'unseen': 36.250755171841504, 'seen': 32.10367750077625}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.31015004541467306, 'unseen': 0.18492685975817125, 'seen': 0.33519468254597484}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.11, rare: 31.62, none-rare: 33.55,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 33.11 unseen: 36.44 seen: 32.44
+[Checkpoint] New best unseen mAP=36.4357 at epoch 6: /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/best_unseen.pt
+[SceneGate Schedule] Epoch 7: enabled (start epoch=1, lr=3.00e-04)
+==> Iteration 23500 | Interaction Loss: 0.8193
+Epoch [7/10], Iter. [0130/3895], Loss: 1.0769, Time/iter[Data/Train/Total]: [0.005s/0.937s/0.942s], Window[Data/Train]: [2.41s/468.75s], Remain: 0:59:07.813235
+==> Iteration 24000 | Interaction Loss: 1.2841
+Epoch [7/10], Iter. [0630/3895], Loss: 1.1151, Time/iter[Data/Train/Total]: [0.004s/0.932s/0.936s], Window[Data/Train]: [1.92s/465.84s], Remain: 0:50:54.426799
+==> Iteration 24500 | Interaction Loss: 0.9232
+Epoch [7/10], Iter. [1130/3895], Loss: 1.1070, Time/iter[Data/Train/Total]: [0.004s/0.921s/0.925s], Window[Data/Train]: [2.02s/460.39s], Remain: 0:42:37.156273
+==> Iteration 25000 | Interaction Loss: 0.9685
+Epoch [7/10], Iter. [1630/3895], Loss: 1.0924, Time/iter[Data/Train/Total]: [0.004s/0.910s/0.914s], Window[Data/Train]: [1.95s/454.87s], Remain: 0:34:29.382896
+==> Iteration 25500 | Interaction Loss: 0.8587
+Epoch [7/10], Iter. [2130/3895], Loss: 1.1132, Time/iter[Data/Train/Total]: [0.004s/0.913s/0.917s], Window[Data/Train]: [2.02s/456.53s], Remain: 0:26:58.678844
+==> Iteration 26000 | Interaction Loss: 1.3047
+Epoch [7/10], Iter. [2630/3895], Loss: 1.1273, Time/iter[Data/Train/Total]: [0.004s/0.909s/0.913s], Window[Data/Train]: [2.03s/454.61s], Remain: 0:19:15.306626
+==> Iteration 26500 | Interaction Loss: 1.5796
+Epoch [7/10], Iter. [3130/3895], Loss: 1.0933, Time/iter[Data/Train/Total]: [0.004s/0.901s/0.905s], Window[Data/Train]: [2.01s/450.25s], Remain: 0:11:31.958442
+==> Iteration 27000 | Interaction Loss: 1.1469
+Epoch [7/10], Iter. [3630/3895], Loss: 1.0956, Time/iter[Data/Train/Total]: [0.004s/0.898s/0.902s], Window[Data/Train]: [2.02s/448.81s], Remain: 0:03:58.935839
+Evaluating raw model output: 100%|██████████| 1194/1194 [14:47<00:00,  1.34it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 36.42
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:32<00:00,  1.89it/s]
+Evaluating raw model output: 100%|██████████| 1194/1194 [10:27<00:00,  1.90it/s]
+[SceneGate] ON={'full': 33.095243834575605, 'unseen': 36.41578065745709, 'seen': 32.4311364699993} OFF={'full': 33.10016488684154, 'unseen': 36.40945220393408, 'seen': 32.43830742342305} GAP={'full': -0.004921052265935089, 'unseen': 0.006328453523011035, 'seen': -0.00717095342374563}
+[Adapter Contribution] OFF={'object_conditioned_adapter': {'full': 32.76384408144806, 'unseen': 36.21833047138193, 'seen': 32.07294680346129}} CONTRIBUTION={'object_conditioned_adapter': {'full': 0.3313997531275419, 'unseen': 0.19745018607515874, 'seen': 0.35818966653801}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/UO_a4lr_ep6_gateonly_g1_a002_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.10, rare: 31.62, none-rare: 33.54,
+>>> zero-shot setting(unseen_object!!)
+full mAP: 33.10 unseen: 36.42 seen: 32.43
+[SceneGate Schedule] Epoch 8: enabled (start epoch=1, lr=3.00e-04)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/root/Lain/LAIN-main/main.py", line 719, in <module>
+[rank0]:     main(local_rank, args)
+[rank0]:   File "/root/Lain/LAIN-main/main.py", line 652, in main
+[rank0]:     engine(epochs_to_run)
+[rank0]:   File "/root/Lain/LAIN-main/pocket/pocket/core/distributed.py", line 141, in __call__
+[rank0]:     self._on_each_iteration()
+[rank0]:   File "/root/Lain/LAIN-main/engine.py", line 476, in _on_each_iteration
+[rank0]:     loss_dict = self._state.net(
+[rank0]:                 ^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1648, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1474, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/Lain/LAIN-main/models/LAIN.py", line 647, in forward
+[rank0]:     features, pos = self.detector.backbone(images_orig)
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/Lain/LAIN-main/detr/models/backbone.py", line 101, in forward
+[rank0]:     xs = self[0](tensor_list)
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/Lain/LAIN-main/detr/models/backbone.py", line 73, in forward
+[rank0]:     xs = self.body(tensor_list.tensors)
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torchvision/models/_utils.py", line 69, in forward
+[rank0]:     x = module(x)
+[rank0]:         ^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/container.py", line 244, in forward
+[rank0]:     input = module(input)
+[rank0]:             ^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torchvision/models/resnet.py", line 150, in forward
+[rank0]:     out = self.conv2(out)
+[rank0]:           ^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 548, in forward
+[rank0]:     return self._conv_forward(input, self.weight, self.bias)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 543, in _conv_forward
+[rank0]:     return F.conv2d(
+[rank0]:            ^^^^^^^^^
+[rank0]: KeyboardInterrupt

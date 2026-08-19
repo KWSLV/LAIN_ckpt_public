@@ -1,0 +1,4 @@
+[INFO] DETR weights: /root/Lain/checkpoints/detr-r50-hicodet.pth
+[INFO] CLIP weights: /root/Lain/checkpoints/ViT-B-16.pt
+[INFO] HICO images: /root/Lain/hico_20160224_det
+[ERROR] Missing A4all epoch-9 checkpoint: /root/autodl-tmp/Lain/UO_a4all_seed66/checkpoints/ckpt_35055_09.pt
