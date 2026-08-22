@@ -1,0 +1,762 @@
+[
+  {
+    "epoch": 1,
+    "on": {
+      "full": 28.46999728940847,
+      "unseen": 31.408982945907805,
+      "seen": 27.882200158108606
+    },
+    "off": {
+      "full": 28.46999728940847,
+      "unseen": 31.408982945907805,
+      "seen": 27.882200158108606
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-20T19:19:06.892097+00:00",
+      "logical_epoch": 1,
+      "attempt": 1,
+      "retry_count": 0,
+      "attempt_index": 1,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 28.46999728940847,
+      "unseen_mAP": 31.408982945907805,
+      "seen_mAP": 27.882200158108606,
+      "historical_best_before": "",
+      "decline_from_best": 0.0,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 0.0005,
+      "lr_vit_used": 0.0002,
+      "lr_object_used": 0.0002,
+      "lr_head_next": 0.0005,
+      "lr_vit_next": 0.0002,
+      "lr_object_next": 0.0002,
+      "rollback_count": 0,
+      "rollback_count_total": 0,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 3895,
+      "object_forward_active": false
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 28.46999728940847,
+          "unseen": 31.408982945907805,
+          "seen": 27.882200158108606
+        },
+        "object_conditioned_adapter": {
+          "full": 28.46999728940847,
+          "unseen": 31.408982945907805,
+          "seen": 27.882200158108606
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        },
+        "object_conditioned_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 2,
+    "on": {
+      "full": 30.755967600580398,
+      "unseen": 33.07295833806079,
+      "seen": 30.292569453084322
+    },
+    "off": {
+      "full": 30.755967600580398,
+      "unseen": 33.07295833806079,
+      "seen": 30.292569453084322
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-20T21:24:26.453735+00:00",
+      "logical_epoch": 2,
+      "attempt": 1,
+      "retry_count": 0,
+      "attempt_index": 2,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 30.755967600580398,
+      "unseen_mAP": 33.07295833806079,
+      "seen_mAP": 30.292569453084322,
+      "historical_best_before": 31.408982945907805,
+      "decline_from_best": -1.663975392152988,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 0.0005,
+      "lr_vit_used": 0.0002,
+      "lr_object_used": 0.0002,
+      "lr_head_next": 0.0005,
+      "lr_vit_next": 0.0002,
+      "lr_object_next": 0.0002,
+      "rollback_count": 0,
+      "rollback_count_total": 0,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 7790,
+      "object_forward_active": false
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 30.755967600580398,
+          "unseen": 33.07295833806079,
+          "seen": 30.292569453084322
+        },
+        "object_conditioned_adapter": {
+          "full": 30.755967600580398,
+          "unseen": 33.07295833806079,
+          "seen": 30.292569453084322
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        },
+        "object_conditioned_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 3,
+    "on": {
+      "full": 31.762701424034777,
+      "unseen": 34.26331334672714,
+      "seen": 31.262579039496302
+    },
+    "off": {
+      "full": 31.762701424034777,
+      "unseen": 34.26331334672714,
+      "seen": 31.262579039496302
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-20T23:31:12.503086+00:00",
+      "logical_epoch": 3,
+      "attempt": 1,
+      "retry_count": 0,
+      "attempt_index": 3,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 31.762701424034777,
+      "unseen_mAP": 34.26331334672714,
+      "seen_mAP": 31.262579039496302,
+      "historical_best_before": 33.07295833806079,
+      "decline_from_best": -1.1903550086663444,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 0.0005,
+      "lr_vit_used": 0.0002,
+      "lr_object_used": 0.0002,
+      "lr_head_next": 0.0005,
+      "lr_vit_next": 0.0002,
+      "lr_object_next": 0.0002,
+      "rollback_count": 0,
+      "rollback_count_total": 0,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 11685,
+      "object_forward_active": false
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 31.762701424034777,
+          "unseen": 34.26331334672714,
+          "seen": 31.262579039496302
+        },
+        "object_conditioned_adapter": {
+          "full": 31.762701424034777,
+          "unseen": 34.26331334672714,
+          "seen": 31.262579039496302
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        },
+        "object_conditioned_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 4,
+    "on": {
+      "full": 32.467123960809424,
+      "unseen": 36.24124728838561,
+      "seen": 31.712299295294187
+    },
+    "off": {
+      "full": 32.467123960809424,
+      "unseen": 36.24124728838561,
+      "seen": 31.712299295294187
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-21T01:37:59.846217+00:00",
+      "logical_epoch": 4,
+      "attempt": 1,
+      "retry_count": 0,
+      "attempt_index": 4,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 32.467123960809424,
+      "unseen_mAP": 36.24124728838561,
+      "seen_mAP": 31.712299295294187,
+      "historical_best_before": 34.26331334672714,
+      "decline_from_best": -1.9779339416584705,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 0.0005,
+      "lr_vit_used": 0.0002,
+      "lr_object_used": 0.0002,
+      "lr_head_next": 0.0005,
+      "lr_vit_next": 0.0002,
+      "lr_object_next": 0.0002,
+      "rollback_count": 0,
+      "rollback_count_total": 0,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 15580,
+      "object_forward_active": false
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 32.467123960809424,
+          "unseen": 36.24124728838561,
+          "seen": 31.712299295294187
+        },
+        "object_conditioned_adapter": {
+          "full": 32.467123960809424,
+          "unseen": 36.24124728838561,
+          "seen": 31.712299295294187
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        },
+        "object_conditioned_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 5,
+    "on": {
+      "full": 32.92997169705004,
+      "unseen": 36.41509698966879,
+      "seen": 32.2329466385263
+    },
+    "off": {
+      "full": 32.92997169705004,
+      "unseen": 36.41509698966879,
+      "seen": 32.2329466385263
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-21T05:55:07.097866+00:00",
+      "logical_epoch": 5,
+      "attempt": 2,
+      "retry_count": 1,
+      "attempt_index": 6,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 32.92997169705004,
+      "unseen_mAP": 36.41509698966879,
+      "seen_mAP": 32.2329466385263,
+      "historical_best_before": 36.24124728838561,
+      "decline_from_best": -0.17384970128318145,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 0.00025,
+      "lr_vit_used": 0.0001,
+      "lr_object_used": 0.0001,
+      "lr_head_next": 0.00025,
+      "lr_vit_next": 0.0001,
+      "lr_object_next": 0.0001,
+      "rollback_count": 1,
+      "rollback_count_total": 1,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 23370,
+      "object_forward_active": false
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 32.92997169705004,
+          "unseen": 36.41509698966879,
+          "seen": 32.2329466385263
+        },
+        "object_conditioned_adapter": {
+          "full": 32.92997169705004,
+          "unseen": 36.41509698966879,
+          "seen": 32.2329466385263
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        },
+        "object_conditioned_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 6,
+    "on": {
+      "full": 33.17514127105528,
+      "unseen": 36.356422259552275,
+      "seen": 32.538885073355885
+    },
+    "off": {
+      "full": 33.17514127105528,
+      "unseen": 36.356422259552275,
+      "seen": 32.538885073355885
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-21T18:04:02.410603+00:00",
+      "logical_epoch": 6,
+      "attempt": 1,
+      "retry_count": 0,
+      "attempt_index": 7,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 33.17514127105528,
+      "unseen_mAP": 36.356422259552275,
+      "seen_mAP": 32.538885073355885,
+      "historical_best_before": 36.41509698966879,
+      "decline_from_best": 0.058674730116514695,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 0.00025,
+      "lr_vit_used": 0.0001,
+      "lr_object_used": 0.0002,
+      "lr_head_next": 0.00025,
+      "lr_vit_next": 0.0001,
+      "lr_object_next": 0.0002,
+      "rollback_count": 0,
+      "rollback_count_total": 1,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 27265,
+      "object_forward_active": true
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.16442226373502,
+          "unseen": 36.347610950071505,
+          "seen": 32.52778452646771
+        },
+        "text_adapter": {
+          "full": 33.17514127105528,
+          "unseen": 36.356422259552275,
+          "seen": 32.538885073355885
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.010719007320261653,
+          "unseen": 0.00881130948076958,
+          "seen": 0.011100546888172858
+        },
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 7,
+    "on": {
+      "full": 33.30298700509703,
+      "unseen": 36.629509247683785,
+      "seen": 32.63768255657967
+    },
+    "off": {
+      "full": 33.30298700509703,
+      "unseen": 36.629509247683785,
+      "seen": 32.63768255657967
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-21T20:20:26.909124+00:00",
+      "logical_epoch": 7,
+      "attempt": 1,
+      "retry_count": 0,
+      "attempt_index": 8,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 33.30298700509703,
+      "unseen_mAP": 36.629509247683785,
+      "seen_mAP": 32.63768255657967,
+      "historical_best_before": 36.41509698966879,
+      "decline_from_best": -0.21441225801499542,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 0.00025,
+      "lr_vit_used": 0.0001,
+      "lr_object_used": 0.0002,
+      "lr_head_next": 0.00025,
+      "lr_vit_next": 0.0001,
+      "lr_object_next": 0.0002,
+      "rollback_count": 0,
+      "rollback_count_total": 1,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 31160,
+      "object_forward_active": true
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.300750231321445,
+          "unseen": 36.62302035614641,
+          "seen": 32.636296206356455
+        },
+        "text_adapter": {
+          "full": 33.30298700509703,
+          "unseen": 36.629509247683785,
+          "seen": 32.63768255657967
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.002236773775585732,
+          "unseen": 0.006488891537372865,
+          "seen": 0.0013863502232140945
+        },
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 8,
+    "on": {
+      "full": 33.66918853259899,
+      "unseen": 36.491936727912396,
+      "seen": 33.10463889353631
+    },
+    "off": {
+      "full": 33.66918853259899,
+      "unseen": 36.491936727912396,
+      "seen": 33.10463889353631
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-22T04:57:02.975977+00:00",
+      "logical_epoch": 8,
+      "attempt": 4,
+      "retry_count": 3,
+      "attempt_index": 12,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 33.66918853259899,
+      "unseen_mAP": 36.491936727912396,
+      "seen_mAP": 33.10463889353631,
+      "historical_best_before": 36.629509247683785,
+      "decline_from_best": 0.13757251977138907,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 3.125e-05,
+      "lr_vit_used": 1.25e-05,
+      "lr_object_used": 2.5e-05,
+      "lr_head_next": 3.125e-05,
+      "lr_vit_next": 1.25e-05,
+      "lr_object_next": 2.5e-05,
+      "rollback_count": 3,
+      "rollback_count_total": 4,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 46740,
+      "object_forward_active": true
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.671047064803965,
+          "unseen": 36.492358914088236,
+          "seen": 33.10678469494711
+        },
+        "text_adapter": {
+          "full": 33.66918853259899,
+          "unseen": 36.491936727912396,
+          "seen": 33.10463889353631
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": -0.0018585322049773367,
+          "unseen": -0.0004221861758395562,
+          "seen": -0.0021458014107977874
+        },
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 9,
+    "on": {
+      "full": 33.57059987237761,
+      "unseen": 36.48332627351192,
+      "seen": 32.98805459215074
+    },
+    "off": {
+      "full": 33.57059987237761,
+      "unseen": 36.48332627351192,
+      "seen": 32.98805459215074
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-22T09:22:55.039724+00:00",
+      "logical_epoch": 9,
+      "attempt": 2,
+      "retry_count": 1,
+      "attempt_index": 14,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 33.57059987237761,
+      "unseen_mAP": 36.48332627351192,
+      "seen_mAP": 32.98805459215074,
+      "historical_best_before": 36.629509247683785,
+      "decline_from_best": 0.14618297417186454,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 1.5625e-05,
+      "lr_vit_used": 6.25e-06,
+      "lr_object_used": 1.25e-05,
+      "lr_head_next": 1.5625e-05,
+      "lr_vit_next": 6.25e-06,
+      "lr_object_next": 1.25e-05,
+      "rollback_count": 1,
+      "rollback_count_total": 5,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 54530,
+      "object_forward_active": true
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.570852668433275,
+          "unseen": 36.48473809644491,
+          "seen": 32.98807558283095
+        },
+        "text_adapter": {
+          "full": 33.57059987237761,
+          "unseen": 36.48332627351192,
+          "seen": 32.98805459215074
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": -0.0002527960556619746,
+          "unseen": -0.001411822932986695,
+          "seen": -2.0990680212662483e-05
+        },
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "on": {
+      "full": 33.76701000234036,
+      "unseen": 36.59858021464975,
+      "seen": 33.2006959598785
+    },
+    "off": {
+      "full": 33.76701000234036,
+      "unseen": 36.59858021464975,
+      "seen": 33.2006959598785
+    },
+    "diagnostics": {},
+    "staged_training_metrics": {
+      "timestamp_utc": "2026-08-22T11:45:06.502662+00:00",
+      "logical_epoch": 10,
+      "attempt": 1,
+      "retry_count": 0,
+      "attempt_index": 15,
+      "accepted": true,
+      "status": "accepted",
+      "full_mAP": 33.76701000234036,
+      "unseen_mAP": 36.59858021464975,
+      "seen_mAP": 33.2006959598785,
+      "historical_best_before": 36.629509247683785,
+      "decline_from_best": 0.030929033034034603,
+      "allowed_decline": 0.15,
+      "threshold_reached_before": false,
+      "threshold_reached_after": false,
+      "one_time_lr_drop_applied": false,
+      "lr_head_used": 1.5625e-05,
+      "lr_vit_used": 6.25e-06,
+      "lr_object_used": 1.25e-05,
+      "lr_head_next": 1.5625e-05,
+      "lr_vit_next": 6.25e-06,
+      "lr_object_next": 1.25e-05,
+      "rollback_count": 0,
+      "rollback_count_total": 5,
+      "rollback_reason": "",
+      "rollback_target_checkpoint": "",
+      "iteration_end": 58425,
+      "object_forward_active": true
+    },
+    "gap": {
+      "full": 0.0,
+      "unseen": 0.0,
+      "seen": 0.0
+    },
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.75318376412733,
+          "unseen": 36.61530600322262,
+          "seen": 33.18075931630826
+        },
+        "text_adapter": {
+          "full": 33.76701000234036,
+          "unseen": 36.59858021464975,
+          "seen": 33.2006959598785
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.01382623821303497,
+          "unseen": -0.016725788572870215,
+          "seen": 0.019936643570240165
+        },
+        "text_adapter": {
+          "full": 0.0,
+          "unseen": 0.0,
+          "seen": 0.0
+        }
+      }
+    }
+  }
+]
