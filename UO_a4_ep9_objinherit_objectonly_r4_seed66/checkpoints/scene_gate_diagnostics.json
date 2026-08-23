@@ -1,0 +1,282 @@
+[
+  {
+    "epoch": 1,
+    "on": {
+      "full": 34.11050258999839,
+      "unseen": 37.564318302711925,
+      "seen": 33.41973944745569
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.732258690179755,
+          "unseen": 37.167309365285895,
+          "seen": 33.04524855515853
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.37824389981863504,
+          "unseen": 0.3970089374260297,
+          "seen": 0.37449089229716037
+        }
+      }
+    }
+  },
+  {
+    "epoch": 2,
+    "on": {
+      "full": 34.103394789989224,
+      "unseen": 37.51760324323029,
+      "seen": 33.42055309934101
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.73262633049268,
+          "unseen": 37.176043147089814,
+          "seen": 33.04394296717326
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.3707684594965457,
+          "unseen": 0.34156009614047633,
+          "seen": 0.3766101321677482
+        }
+      }
+    }
+  },
+  {
+    "epoch": 3,
+    "on": {
+      "full": 34.110834045394704,
+      "unseen": 37.43979104171858,
+      "seen": 33.445042646129934
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.73593301855601,
+          "unseen": 37.157437600149166,
+          "seen": 33.05163210223738
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.37490102683869253,
+          "unseen": 0.28235344156941267,
+          "seen": 0.39341054389255703
+        }
+      }
+    }
+  },
+  {
+    "epoch": 4,
+    "on": {
+      "full": 34.18497920776526,
+      "unseen": 37.494378531570504,
+      "seen": 33.52309934300422
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.72648007273791,
+          "unseen": 37.155752479770754,
+          "seen": 33.04062559133134
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.4584991350273526,
+          "unseen": 0.3386260517997499,
+          "seen": 0.4824737516728774
+        }
+      }
+    }
+  },
+  {
+    "epoch": 5,
+    "on": {
+      "full": 34.196999409236334,
+      "unseen": 37.581516013333236,
+      "seen": 33.52009608841695
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.72918057545631,
+          "unseen": 37.16220832777488,
+          "seen": 33.042575024992594
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.4678188337800222,
+          "unseen": 0.4193076855583584,
+          "seen": 0.47752106342435496
+        }
+      }
+    }
+  },
+  {
+    "epoch": 6,
+    "on": {
+      "full": 34.17941872599474,
+      "unseen": 37.330093099954,
+      "seen": 33.54928385120289
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.72910291462382,
+          "unseen": 37.155945430393984,
+          "seen": 33.043734411469785
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.45031581137092047,
+          "unseen": 0.17414766956001415,
+          "seen": 0.5055494397331017
+        }
+      }
+    }
+  },
+  {
+    "epoch": 7,
+    "on": {
+      "full": 34.20424662779103,
+      "unseen": 37.35967268403853,
+      "seen": 33.57316141654153
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.73483163233187,
+          "unseen": 37.15328898085328,
+          "seen": 33.05114016262758
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.4694149954591609,
+          "unseen": 0.2063837031852458,
+          "seen": 0.5220212539139482
+        }
+      }
+    }
+  },
+  {
+    "epoch": 8,
+    "on": {
+      "full": 34.1883509168617,
+      "unseen": 37.42680373462865,
+      "seen": 33.540660353308304
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.736774216646836,
+          "unseen": 37.171375556661886,
+          "seen": 33.04985394864383
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.45157670021486496,
+          "unseen": 0.2554281779667633,
+          "seen": 0.49080640466447534
+        }
+      }
+    }
+  },
+  {
+    "epoch": 9,
+    "on": {
+      "full": 34.18357863175143,
+      "unseen": 37.429294090350766,
+      "seen": 33.534435540031566
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.72563360631566,
+          "unseen": 37.16847025824597,
+          "seen": 33.037066275929604
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.45794502543576954,
+          "unseen": 0.26082383210479776,
+          "seen": 0.49736926410196247
+        }
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "on": {
+      "full": 34.19854670091166,
+      "unseen": 37.443541644450214,
+      "seen": 33.549547712203946
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "object_conditioned_adapter": {
+          "full": 33.73532583908005,
+          "unseen": 37.17850714400768,
+          "seen": 33.04668957809453
+        }
+      },
+      "contribution": {
+        "object_conditioned_adapter": {
+          "full": 0.4632208618316156,
+          "unseen": 0.26503450044253185,
+          "seen": 0.5028581341094167
+        }
+      }
+    }
+  }
+]
