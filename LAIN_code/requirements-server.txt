@@ -1,0 +1,12 @@
+numpy
+scipy
+matplotlib
+tqdm
+Pillow
+regex
+ftfy
+packaging
+wandb
+gdown
+opencv-python-headless
+pycocotools
