@@ -282,6 +282,15 @@ def get_args():
                         help='V5 activation; standardized_tanh controls both common bias and logit scale.')
     parser.add_argument('--scene_gate_init_std', type=float, default=0.0,
                         help='Std of the normal initialization for the final V5 gate weight; 0 keeps zero initialization.')
+    parser.add_argument(
+        '--scene-gate-disable-centering',
+        action='store_true',
+        help=(
+            'Controlled v5_legacy ablation: use tanh(raw) directly instead '
+            'of subtracting its image-wise pair mean. The default preserves '
+            'the original Scenegateresult-master pair-relative formula.'
+        ),
+    )
     parser.add_argument('--scene-gate-post-l2-norm', action='store_true',
                         help='L2-normalize the fused HO/CLS feature after SceneGate to prevent feature-norm shortcuts.')
     parser.add_argument('--scene_gate_start_epoch', type=int, default=1,
@@ -299,6 +308,18 @@ def get_args():
                         help='Also evaluate the same checkpoint with SceneGate disabled')
     parser.add_argument('--adapter-contribution-diagnostics', action='store_true',
                         help='Evaluate enabled adapters in bypass mode and save full-minus-off mAP contributions')
+    parser.add_argument(
+        '--contribution-epochs',
+        nargs='*',
+        default=[],
+        type=int,
+        metavar='EPOCH',
+        help=(
+            'Run extra Gate-OFF and Adapter-OFF contribution passes only at '
+            'these 1-based epochs. An empty list preserves the historical '
+            'behavior of evaluating contributions after every epoch.'
+        ),
+    )
     parser.add_argument('--skip-object-adapter-contribution', action='store_true',
                         help='Do not run the Object-Conditioned Adapter OFF contribution pass')
     parser.add_argument('--joint-best-rollback-policy', action='store_true',

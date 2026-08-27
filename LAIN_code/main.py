@@ -170,6 +170,14 @@ def main(rank, args):
         args.scene_gate_diagnostics = True
     if getattr(args, 'scene_gate_diagnostics', False) and not getattr(args, 'use_scene_gate', False):
         raise ValueError('--scene-gate-diagnostics requires --use_scene_gate.')
+    if getattr(args, 'scene_gate_disable_centering', False):
+        if not getattr(args, 'use_scene_gate', False):
+            raise ValueError('--scene-gate-disable-centering requires --use_scene_gate.')
+        if getattr(args, 'scene_gate_version', '') != 'v5_legacy':
+            raise ValueError(
+                '--scene-gate-disable-centering is a controlled v5_legacy '
+                'ablation and requires --scene_gate_version v5_legacy.'
+            )
     if getattr(args, 'eval_scene_gate_off_only', False):
         if not args.eval:
             raise ValueError('--eval-scene-gate-off-only requires --eval.')
@@ -190,6 +198,12 @@ def main(rank, args):
             '--adapter-contribution-diagnostics requires --use_text_adapter '
             'or --use_obj_cond_adapter.'
         )
+    contribution_epochs = list(getattr(args, 'contribution_epochs', []))
+    if any(epoch < 1 or epoch > args.epochs for epoch in contribution_epochs):
+        raise ValueError('--contribution-epochs values must be within 1..epochs.')
+    if len(contribution_epochs) != len(set(contribution_epochs)):
+        raise ValueError('--contribution-epochs must not contain duplicates.')
+    args.contribution_epochs = sorted(contribution_epochs)
     if getattr(args, 'unseen_lr_threshold_schedule', False):
         if not args.zs:
             raise ValueError('--unseen-lr-threshold-schedule requires zero-shot evaluation.')

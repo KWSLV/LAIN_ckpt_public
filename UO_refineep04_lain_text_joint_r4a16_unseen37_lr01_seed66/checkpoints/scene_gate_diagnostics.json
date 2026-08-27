@@ -1,0 +1,562 @@
+[
+  {
+    "epoch": 1,
+    "on": {
+      "full": 31.48030113694103,
+      "unseen": 34.7987304159086,
+      "seen": 30.81661528114752
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 31.480265086932064,
+          "unseen": 34.79811301791382,
+          "seen": 30.81669550073571
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 3.605000896556021e-05,
+          "unseen": 0.0006173979947803332,
+          "seen": -8.021958819171005e-05
+        }
+      }
+    }
+  },
+  {
+    "epoch": 2,
+    "on": {
+      "full": 32.37752467644984,
+      "unseen": 36.0816977443431,
+      "seen": 31.636690062871185
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 32.390457717112895,
+          "unseen": 36.12266874138143,
+          "seen": 31.644015512259195
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.012933040663057227,
+          "unseen": -0.04097099703832896,
+          "seen": -0.007325449388009275
+        }
+      }
+    }
+  },
+  {
+    "epoch": 3,
+    "on": {
+      "full": 32.8025152251238,
+      "unseen": 35.12380372335721,
+      "seen": 32.33825752547712
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 32.802842550119074,
+          "unseen": 35.123880877786775,
+          "seen": 32.33863488458553
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.00032732499527554637,
+          "unseen": -7.715442956168772e-05,
+          "seen": -0.00037735910841263376
+        }
+      }
+    }
+  },
+  {
+    "epoch": 4,
+    "on": {
+      "full": 33.26558713879409,
+      "unseen": 35.86792899602952,
+      "seen": 32.74511876734701
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 33.28031905278876,
+          "unseen": 35.867859592589525,
+          "seen": 32.762810944828615
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.014731913994673107,
+          "unseen": 6.940343999417564e-05,
+          "seen": -0.017692177481606564
+        }
+      }
+    }
+  },
+  {
+    "epoch": 5,
+    "on": {
+      "full": 33.22509944803544,
+      "unseen": 36.3159614553977,
+      "seen": 32.60692704656299
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 33.231193269048646,
+          "unseen": 36.32721739231036,
+          "seen": 32.61198844439631
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.006093821013209322,
+          "unseen": -0.011255936912661468,
+          "seen": -0.005061397833323156
+        }
+      }
+    }
+  },
+  {
+    "epoch": 6,
+    "on": {
+      "full": 33.51574431808601,
+      "unseen": 37.11196305909567,
+      "seen": 32.796500569884074
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 33.51562155985446,
+          "unseen": 37.11166145920771,
+          "seen": 32.7964135799838
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.00012275823154794807,
+          "unseen": 0.00030159988796185644,
+          "seen": 8.6989900275114e-05
+        }
+      }
+    }
+  },
+  {
+    "epoch": 7,
+    "on": {
+      "full": 34.15132414551596,
+      "unseen": 37.08149912153,
+      "seen": 33.565289150313134
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.15115931541529,
+          "unseen": 37.08169584743263,
+          "seen": 33.56505200901182
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.00016483010066536963,
+          "unseen": -0.00019672590262587164,
+          "seen": 0.0002371413013122492
+        }
+      }
+    }
+  },
+  {
+    "epoch": 8,
+    "on": {
+      "full": 34.11535223006196,
+      "unseen": 36.50253354613186,
+      "seen": 33.637915966847984
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.11635363268596,
+          "unseen": 36.506099056730946,
+          "seen": 33.63840454787696
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.0010014026239986151,
+          "unseen": -0.003565510599088384,
+          "seen": -0.000488581028974977
+        }
+      }
+    }
+  },
+  {
+    "epoch": 9,
+    "on": {
+      "full": 34.42002473111564,
+      "unseen": 36.72941200820617,
+      "seen": 33.958147275697534
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.42053921271408,
+          "unseen": 36.72937418561672,
+          "seen": 33.95877221813357
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.0005144815984436946,
+          "unseen": 3.782258944795558e-05,
+          "seen": -0.0006249424360333933
+        }
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "on": {
+      "full": 34.47510116895828,
+      "unseen": 36.94333844718647,
+      "seen": 33.98145371331265
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.475890396159386,
+          "unseen": 36.9448683552824,
+          "seen": 33.98209480433479
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.0007892272011034152,
+          "unseen": -0.001529908095932342,
+          "seen": -0.0006410910221390509
+        }
+      }
+    }
+  },
+  {
+    "epoch": 11,
+    "on": {
+      "full": 34.60820323099952,
+      "unseen": 37.19675575618459,
+      "seen": 34.090492725962505
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.609495783908635,
+          "unseen": 37.199115626915585,
+          "seen": 34.09157181530723
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.0012925529091134536,
+          "unseen": -0.0023598707309986366,
+          "seen": -0.0010790893447278904
+        }
+      }
+    }
+  },
+  {
+    "epoch": 12,
+    "on": {
+      "full": 34.38456876720912,
+      "unseen": 36.982237331580414,
+      "seen": 33.86503505433486
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.38435320544478,
+          "unseen": 36.976282453651365,
+          "seen": 33.86596735580347
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.00021556176433534802,
+          "unseen": 0.0059548779290494736,
+          "seen": -0.0009323014686088982
+        }
+      }
+    }
+  },
+  {
+    "epoch": 13,
+    "on": {
+      "full": 34.57601047749542,
+      "unseen": 37.19751391596667,
+      "seen": 34.05170978980118
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.57601803095446,
+          "unseen": 37.19585929536755,
+          "seen": 34.05204977807184
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -7.5534590351367115e-06,
+          "unseen": 0.0016546205991190277,
+          "seen": -0.00033998827066028525
+        }
+      }
+    }
+  },
+  {
+    "epoch": 14,
+    "on": {
+      "full": 34.468730917348026,
+      "unseen": 37.23713541585022,
+      "seen": 33.91505001764758
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.4632419976484,
+          "unseen": 37.24276105339273,
+          "seen": 33.90733818649954
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.005488919699622841,
+          "unseen": -0.005625637542507889,
+          "seen": 0.007711831148043302
+        }
+      }
+    }
+  },
+  {
+    "epoch": 15,
+    "on": {
+      "full": 34.73672202859388,
+      "unseen": 37.18780908381876,
+      "seen": 34.24650461754891
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.73596060355108,
+          "unseen": 37.18882736165021,
+          "seen": 34.245387251931255
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0007614250428034097,
+          "unseen": -0.0010182778314486995,
+          "seen": 0.0011173656176524105
+        }
+      }
+    }
+  },
+  {
+    "epoch": 16,
+    "on": {
+      "full": 34.593468986580675,
+      "unseen": 37.154446948319254,
+      "seen": 34.081273394232944
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.59061302930353,
+          "unseen": 37.15180785260327,
+          "seen": 34.07837406464359
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0028559572771413855,
+          "unseen": 0.0026390957159847517,
+          "seen": 0.002899329589354238
+        }
+      }
+    }
+  },
+  {
+    "epoch": 17,
+    "on": {
+      "full": 34.5548717185122,
+      "unseen": 37.036323674760254,
+      "seen": 34.058581327262594
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.551798844603724,
+          "unseen": 37.02523047766163,
+          "seen": 34.05711251799213
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0030728739084793233,
+          "unseen": 0.01109319709862433,
+          "seen": 0.0014688092704631117
+        }
+      }
+    }
+  },
+  {
+    "epoch": 18,
+    "on": {
+      "full": 34.62094368310623,
+      "unseen": 36.9395428338088,
+      "seen": 34.15722385296572
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.62044260759337,
+          "unseen": 36.932857041548914,
+          "seen": 34.15795972080225
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.0005010755128651567,
+          "unseen": 0.00668579225988708,
+          "seen": -0.0007358678365321225
+        }
+      }
+    }
+  },
+  {
+    "epoch": 19,
+    "on": {
+      "full": 34.428737132283956,
+      "unseen": 37.017787294955475,
+      "seen": 33.91092709974964
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.4265283455569,
+          "unseen": 37.027457380370215,
+          "seen": 33.90634253859423
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.002208786727052825,
+          "unseen": -0.009670085414740015,
+          "seen": 0.004584561155411393
+        }
+      }
+    }
+  },
+  {
+    "epoch": 20,
+    "on": {
+      "full": 34.165133557221786,
+      "unseen": 36.69755791383779,
+      "seen": 33.6586486858986
+    },
+    "off": {},
+    "diagnostics": {},
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 34.158936920290046,
+          "unseen": 36.70192554334692,
+          "seen": 33.65033919567867
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.006196636931740329,
+          "unseen": -0.004367629509125948,
+          "seen": 0.008309490219929216
+        }
+      }
+    }
+  }
+]

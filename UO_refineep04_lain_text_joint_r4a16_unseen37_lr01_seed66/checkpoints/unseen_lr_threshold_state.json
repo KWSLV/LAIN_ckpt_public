@@ -1,0 +1,23 @@
+{
+  "epoch": 20,
+  "current_unseen": 36.69755791383779,
+  "threshold": 37.0,
+  "factor": 0.1,
+  "triggered_now": false,
+  "triggered": true,
+  "initial_lrs": {
+    "vit": 0.001,
+    "text_adapter": 0.0005,
+    "head": 0.001
+  },
+  "lrs_before": {
+    "vit": 0.0001,
+    "text_adapter": 5e-05,
+    "head": 0.0001
+  },
+  "lrs_after": {
+    "vit": 0.0001,
+    "text_adapter": 5e-05,
+    "head": 0.0001
+  }
+}

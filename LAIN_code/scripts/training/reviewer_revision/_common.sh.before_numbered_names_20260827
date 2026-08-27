@@ -1,0 +1,253 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Shared launcher for the 15 reviewer-requested experiments. Do not run this
+# file directly; use one of the numbered wrappers in this directory.
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+cd "$ROOT"
+
+: "${EXPERIMENT_ID:?EXPERIMENT_ID is required}"
+: "${EXPERIMENT_NAME:?EXPERIMENT_NAME is required}"
+: "${EXPERIMENT_DESCRIPTION:?EXPERIMENT_DESCRIPTION is required}"
+: "${ZS_TYPE:?ZS_TYPE is required}"
+
+SEED="${SEED:-66}"
+EPOCHS="${EPOCHS:-20}"
+BATCH_SIZE="${BATCH_SIZE:-8}"
+TEST_BATCH_SIZE="${TEST_BATCH_SIZE:-8}"
+NUM_WORKERS="${NUM_WORKERS:-8}"
+PREFETCH_FACTOR="${PREFETCH_FACTOR:-4}"
+PRINT_INTERVAL="${PRINT_INTERVAL:-500}"
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
+DRY_RUN="${DRY_RUN:-0}"
+
+N_CTX="${N_CTX:-36}"
+USE_CSC="${USE_CSC:-1}"
+ADAPTER_POS="${ADAPTER_POS:-all}"
+
+USE_TEXT_ADAPTER="${USE_TEXT_ADAPTER:-0}"
+TEXT_ADAPTER_DIM="${TEXT_ADAPTER_DIM:-64}"
+LORA_RANK="${LORA_RANK:-4}"
+LORA_ALPHA="${LORA_ALPHA:-16}"
+ADAPTER_RESIDUAL_SCALE="${ADAPTER_RESIDUAL_SCALE:-0.05}"
+ADAPTER_DROPOUT="${ADAPTER_DROPOUT:-0.1}"
+
+USE_SCENE_GATE="${USE_SCENE_GATE:-0}"
+SCENE_GATE_VERSION="${SCENE_GATE_VERSION:-v5_legacy}"
+SCENE_GATE_HIDDEN_DIM="${SCENE_GATE_HIDDEN_DIM:-128}"
+SCENE_GATE_RANK="${SCENE_GATE_RANK:-16}"
+SCENE_GATE_DROPOUT="${SCENE_GATE_DROPOUT:-0.1}"
+SCENE_GATE_ALPHA="${SCENE_GATE_ALPHA:-0.1}"
+SCENE_GATE_START_EPOCH="${SCENE_GATE_START_EPOCH:-1}"
+SCENE_GATE_DISABLE_CENTERING="${SCENE_GATE_DISABLE_CENTERING:-0}"
+
+LR_HEAD="${LR_HEAD:-1e-3}"
+LR_VIT="${LR_VIT:-1e-3}"
+LR_TEXT_ADAPTER="${LR_TEXT_ADAPTER:-5e-4}"
+LR_SCENE_GATE="${LR_SCENE_GATE:-1e-3}"
+WEIGHT_DECAY="${WEIGHT_DECAY:-1e-4}"
+LR_DROP="${LR_DROP:-10}"
+CLIP_MAX_NORM="${CLIP_MAX_NORM:-0.1}"
+
+DATA_ROOT="${DATA_ROOT:-./hicodet}"
+RUN_ROOT="${RUN_ROOT:-/root/autodl-tmp/Lain/reviewer_revision/${EXPERIMENT_ID}_${EXPERIMENT_NAME}_seed${SEED}}"
+OUTPUT_DIR="${OUTPUT_DIR:-$RUN_ROOT/checkpoints}"
+WANDB_DIR="${WANDB_DIR:-$RUN_ROOT/wandb}"
+RESUME="${RESUME:-}"
+
+require_bool() {
+  local name="$1"
+  local value="$2"
+  if [[ "$value" != "0" && "$value" != "1" ]]; then
+    echo "[ERROR] $name must be 0 or 1, got: $value" >&2
+    exit 2
+  fi
+}
+
+require_bool DRY_RUN "$DRY_RUN"
+require_bool USE_CSC "$USE_CSC"
+require_bool USE_TEXT_ADAPTER "$USE_TEXT_ADAPTER"
+require_bool USE_SCENE_GATE "$USE_SCENE_GATE"
+require_bool SCENE_GATE_DISABLE_CENTERING "$SCENE_GATE_DISABLE_CENTERING"
+
+if [[ ! "$EXPERIMENT_ID" =~ ^(0[1-9]|1[0-5])$ ]]; then
+  echo "[ERROR] EXPERIMENT_ID must be 01..15, got: $EXPERIMENT_ID" >&2
+  exit 2
+fi
+case "$ZS_TYPE" in
+  unseen_object|rare_first|non_rare_first|unseen_verb) ;;
+  *)
+    echo "[ERROR] Unsupported ZS_TYPE: $ZS_TYPE" >&2
+    exit 2
+    ;;
+esac
+if [[ "$USE_SCENE_GATE" == "0" && "$SCENE_GATE_DISABLE_CENTERING" == "1" ]]; then
+  echo "[ERROR] Centering ablation requires USE_SCENE_GATE=1." >&2
+  exit 2
+fi
+if [[ "$SCENE_GATE_DISABLE_CENTERING" == "1" && "$SCENE_GATE_VERSION" != "v5_legacy" ]]; then
+  echo "[ERROR] Centering ablation is defined only for v5_legacy." >&2
+  exit 2
+fi
+if [[ "$USE_SCENE_GATE" == "1" ]]; then
+  case "$SCENE_GATE_VERSION" in
+    v5_legacy|v5_lowrank) ;;
+    *)
+      echo "[ERROR] Reviewer scripts permit only v5_legacy or v5_lowrank, got: $SCENE_GATE_VERSION" >&2
+      exit 2
+      ;;
+  esac
+fi
+if [[ "$SCENE_GATE_START_EPOCH" -lt 1 || "$SCENE_GATE_START_EPOCH" -gt "$EPOCHS" ]]; then
+  echo "[ERROR] SCENE_GATE_START_EPOCH must be in 1..EPOCHS." >&2
+  exit 2
+fi
+
+if [[ "$DRY_RUN" == "0" ]]; then
+  export PATH="/root/miniconda3/bin:$PATH"
+  source scripts/server_assets.sh
+  prepare_lain_server_assets
+
+  mkdir -p "$OUTPUT_DIR" "$WANDB_DIR" "$RUN_ROOT/logs"
+  if [[ -n "$RESUME" && ! -f "$RESUME" ]]; then
+    echo "[ERROR] Resume checkpoint not found: $RESUME" >&2
+    exit 1
+  fi
+  if [[ -z "$RESUME" ]] && compgen -G "$OUTPUT_DIR/ckpt_*.pt" >/dev/null; then
+    echo "[ERROR] Refusing to overwrite an existing run: $OUTPUT_DIR" >&2
+    echo "[ERROR] Set RESUME or choose another RUN_ROOT." >&2
+    exit 1
+  fi
+
+  exec 9>"/tmp/lain_cuda_${CUDA_VISIBLE_DEVICES}.lock"
+  if ! flock -n 9; then
+    echo "[ERROR] Another managed LAIN job is using CUDA device $CUDA_VISIBLE_DEVICES." >&2
+    exit 1
+  fi
+else
+  DETR_PRETRAINED="${DETR_PRETRAINED:-/root/Lain/checkpoints/detr-r50-hicodet.pth}"
+  CLIP_PRETRAINED="${CLIP_PRETRAINED:-/root/Lain/checkpoints/ViT-B-16.pt}"
+  HICO_IMAGE_ROOT="${HICO_IMAGE_ROOT:-/root/Lain/hico_20160224_det}"
+fi
+
+MAIN_ARGS=(
+  main.py
+  --pretrained "$DETR_PRETRAINED"
+  --clip_dir_vit "$CLIP_PRETRAINED"
+  --output-dir "$OUTPUT_DIR"
+  --data-root "$DATA_ROOT"
+  --hico-image-root "$HICO_IMAGE_ROOT"
+  --dataset hicodet
+  --partitions train2015 test2015
+  --zs
+  --zs_type "$ZS_TYPE"
+  --num_classes 117
+  --epochs "$EPOCHS"
+  --batch-size "$BATCH_SIZE"
+  --test-batch-size "$TEST_BATCH_SIZE"
+  --num-workers "$NUM_WORKERS"
+  --prefetch-factor "$PREFETCH_FACTOR"
+  --seed "$SEED"
+  --weight-decay "$WEIGHT_DECAY"
+  --lr-drop "$LR_DROP"
+  --clip-max-norm "$CLIP_MAX_NORM"
+  --lr-head "$LR_HEAD"
+  --lr-vit "$LR_VIT"
+  --lr-text-adapter "$LR_TEXT_ADAPTER"
+  --lr-scene-gate "$LR_SCENE_GATE"
+  --alpha 0.5
+  --gamma 0.2
+  --hyper_lambda 2.8
+  --box-score-thresh 0.2
+  --fg-iou-thresh 0.5
+  --min-instances 3
+  --max-instances 15
+  --use_hotoken
+  --use_prompt
+  --use_exp
+  --N_CTX "$N_CTX"
+  --use_insadapter
+  --adapt_dim 32
+  --use_prior
+  --adapter_alpha 1.0
+  --adapter_num_layers 1
+  --adapter_pos "$ADAPTER_POS"
+  --amp
+  --fast-cuda
+  --keep-last-checkpoints 1
+  --contribution-epochs 5 10 20
+  --print-interval "$PRINT_INTERVAL"
+)
+
+if [[ "$USE_CSC" == "1" ]]; then
+  MAIN_ARGS+=(--CSC)
+fi
+if [[ "$USE_TEXT_ADAPTER" == "1" ]]; then
+  MAIN_ARGS+=(
+    --use_text_adapter
+    --text_adapter_dim "$TEXT_ADAPTER_DIM"
+    --lora_rank "$LORA_RANK"
+    --lora_alpha "$LORA_ALPHA"
+    --adapter_residual_scale "$ADAPTER_RESIDUAL_SCALE"
+    --adapter_dropout "$ADAPTER_DROPOUT"
+    --adapter-contribution-diagnostics
+  )
+fi
+if [[ "$USE_SCENE_GATE" == "1" ]]; then
+  MAIN_ARGS+=(
+    --use_scene_gate
+    --scene_gate_type pair
+    --scene_gate_version "$SCENE_GATE_VERSION"
+    --scene_gate_hidden_dim "$SCENE_GATE_HIDDEN_DIM"
+    --scene_gate_rank "$SCENE_GATE_RANK"
+    --scene_gate_dropout "$SCENE_GATE_DROPOUT"
+    --scene_gate_alpha "$SCENE_GATE_ALPHA"
+    --scene_gate_start_epoch "$SCENE_GATE_START_EPOCH"
+    --scene-gate-diagnostics
+    --scene-gate-compare-off
+  )
+  if [[ "$SCENE_GATE_VERSION" == "v5_lowrank" ]]; then
+    # Preserve the Scenegateresult-master V5 formula while making the MLP
+    # bottleneck rank-controlled: tanh -> pair centering -> alpha residual.
+    MAIN_ARGS+=(--scene_gate_activation tanh --scene_gate_init_std 0)
+  fi
+  if [[ "$SCENE_GATE_DISABLE_CENTERING" == "1" ]]; then
+    MAIN_ARGS+=(--scene-gate-disable-centering)
+  fi
+fi
+if [[ -n "$RESUME" ]]; then
+  MAIN_ARGS+=(--resume "$RESUME")
+fi
+
+PORT="${PORT:-$((RANDOM % 5000 + 15000))}"
+RDZV_ID="${RDZV_ID:-$((RANDOM % 5000 + 15000))}"
+TORCHRUN_ARGS=(
+  torchrun
+  --rdzv_id "$RDZV_ID"
+  --rdzv_backend c10d
+  --nproc_per_node 1
+  --rdzv_endpoint "127.0.0.1:$PORT"
+  "${MAIN_ARGS[@]}"
+)
+
+echo "[$EXPERIMENT_ID] $EXPERIMENT_DESCRIPTION"
+echo "[$EXPERIMENT_ID] split=$ZS_TYPE seed=$SEED epochs=$EPOCHS batch=$BATCH_SIZE"
+echo "[$EXPERIMENT_ID] text=$USE_TEXT_ADAPTER rank=$LORA_RANK gate=$USE_SCENE_GATE version=$SCENE_GATE_VERSION"
+if [[ "$USE_SCENE_GATE" == "1" ]]; then
+  echo "[$EXPERIMENT_ID] gate_lr=$LR_SCENE_GATE alpha=$SCENE_GATE_ALPHA start=$SCENE_GATE_START_EPOCH centering_disabled=$SCENE_GATE_DISABLE_CENTERING"
+fi
+echo "[$EXPERIMENT_ID] output=$OUTPUT_DIR"
+
+if [[ "$DRY_RUN" == "1" ]]; then
+  printf '[%s] DRY_RUN command: WANDB_DIR=%q CUDA_VISIBLE_DEVICES=%q ' \
+    "$EXPERIMENT_ID" "$WANDB_DIR" "$CUDA_VISIBLE_DEVICES"
+  printf '%q ' "${TORCHRUN_ARGS[@]}"
+  printf '\n'
+  exit 0
+fi
+
+LOG_FILE="$RUN_ROOT/logs/train.log"
+WANDB_DIR="$WANDB_DIR" WANDB__SERVICE_WAIT=300 \
+CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" \
+  "${TORCHRUN_ARGS[@]}" 2>&1 | tee -a "$LOG_FILE"

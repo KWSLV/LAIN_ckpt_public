@@ -1,0 +1,66 @@
+# Reviewer revision training scripts
+
+The numbered wrappers `01` through `15` implement the minimum additional
+training list. They all call `_common.sh`; the wrappers contain only the
+variables that distinguish one experiment from another.
+
+## SceneGate implementation
+
+- Experiments 01-05 and 09 select `scene_gate_version=v5_legacy`. This is the
+  original pair-relative V5 formula copied from
+  `G:/vision/lain0712/Scenegateresult-master`.
+- Experiments 07-08 select `v5_lowrank` with `activation=tanh` and
+  `init_std=0`. The original `v5_legacy` ignores `scene_gate_rank`, so using it
+  for a rank-32/rank-64 comparison would not change the model. The low-rank
+  path preserves the V5 tanh, pair-centering, alpha residual and detach logic.
+- Experiment 09 is the strict centering-off control. The default paper path is
+  unchanged; only this wrapper passes `--scene-gate-disable-centering`.
+
+## Fixed protocol
+
+- HICO-DET, 20 epochs, batch size 8, seed 66.
+- 8 workers, prefetch factor 4, AMP and fast CUDA enabled.
+- AdamW settings exposed by `main.py`: weight decay `1e-4`, LR drop epoch 10,
+  gradient clip `0.1`.
+- DETR and CLIP weights are discovered by `scripts/server_assets.sh`.
+- Only the newest checkpoint is retained. The formal table should use the
+  predeclared epoch-20 checkpoint rather than selecting the best test epoch.
+- Extra module contribution passes (Gate OFF and Text Adapter OFF) run only
+  after epochs 5, 10 and 20. Normal full-model evaluation still runs after
+  every epoch.
+
+## Numbered run names
+
+Each wrapper uses its two-digit `EXPERIMENT_ID` as the common prefix for all
+three identifiers. For example, experiment 02 uses:
+
+- script: `02_uo_joint_gate_lr_3e4.sh`
+- run directory: `02_uo_joint_gate_lr3e4_seed66`
+- W&B run name: `02_uo_joint_gate_lr3e4_seed66`
+
+## Safe inspection
+
+Print a command without checking server assets or starting training:
+
+```bash
+DRY_RUN=1 bash scripts/training/reviewer_revision/01_uo_joint_gate_lr_1e4.sh
+```
+
+Start an experiment:
+
+```bash
+bash scripts/training/reviewer_revision/01_uo_joint_gate_lr_1e4.sh
+```
+
+Override runtime-only settings without changing the experimental semantics:
+
+```bash
+NUM_WORKERS=12 PREFETCH_FACTOR=4 CUDA_VISIBLE_DEVICES=0 \
+  bash scripts/training/reviewer_revision/01_uo_joint_gate_lr_1e4.sh
+```
+
+Every experiment writes to a separate directory below:
+
+```text
+/root/autodl-tmp/Lain/reviewer_revision/
+```

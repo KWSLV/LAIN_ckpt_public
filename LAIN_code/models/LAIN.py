@@ -209,6 +209,9 @@ class LAIN(nn.Module):
                 hidden_dim=getattr(args, "scene_gate_hidden_dim", 128),
                 dropout=self.scene_gate_dropout,
                 alpha=getattr(args, "scene_gate_alpha", 0.1),
+                center_pairs=not getattr(
+                    args, "scene_gate_disable_centering", False
+                ),
             )
         elif version in {"v5", "v5_lowrank"}:
             if gate_type != "pair":

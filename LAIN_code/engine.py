@@ -930,6 +930,9 @@ class CustomisedDLE(DistributedLearningEngine):
             "on": self._ap_summary(ap_on),
             "off": self._ap_summary(ap_off) if ap_off is not None else {},
             "diagnostics": diagnostics,
+            "contribution_evaluated": bool(
+                ap_off is not None or adapter_ablations
+            ),
         }
         if joint_training_policy:
             row['joint_training_policy'] = joint_training_policy
@@ -1337,6 +1340,11 @@ class CustomisedDLE(DistributedLearningEngine):
             )
         print(f"[SceneGate] diagnostics saved to {json_path} and {csv_path}")
 
+    def _should_evaluate_contributions(self):
+        """Return whether this 1-based epoch should run extra OFF passes."""
+        epochs = list(getattr(self.args, 'contribution_epochs', []))
+        return not epochs or int(self._state.epoch) in set(epochs)
+
     def _evaluate_adapter_ablations(self, dataloader):
         """Measure conditional Text/Object Adapter mAP contributions.
 
@@ -1528,6 +1536,7 @@ class CustomisedDLE(DistributedLearningEngine):
         ap = self.test_hico(self.test_loader, self.args)
         scene_gate_diagnostics = self._last_scene_gate_diagnostics
         ap_gate_off = None
+        evaluate_contributions = self._should_evaluate_contributions()
 
         real_net = self._state.net.module if hasattr(self._state.net, 'module') else self._state.net
         staged_training_metrics = None
@@ -1549,7 +1558,8 @@ class CustomisedDLE(DistributedLearningEngine):
             ap_gate_off = ap
 
         if (
-            getattr(self.args, 'scene_gate_compare_off', False)
+            evaluate_contributions
+            and getattr(self.args, 'scene_gate_compare_off', False)
             and getattr(real_net, 'use_scene_gate', False)
         ):
             real_net.tp = None
@@ -1560,7 +1570,11 @@ class CustomisedDLE(DistributedLearningEngine):
                 real_net.use_scene_gate = True
                 real_net.tp = None
 
-        adapter_ablations = self._evaluate_adapter_ablations(self.test_loader)
+        adapter_ablations = (
+            self._evaluate_adapter_ablations(self.test_loader)
+            if evaluate_contributions
+            else {}
+        )
         if getattr(self.args, 'lain_object_staged_retry_policy', False):
             adapter_ablations['text_adapter'] = ap
             if not getattr(real_net, 'use_obj_cond_adapter', False):

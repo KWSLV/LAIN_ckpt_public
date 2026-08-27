@@ -16,12 +16,14 @@ class SceneGatePairV5Legacy(nn.Module):
         hidden_dim=128,
         dropout=0.1,
         alpha=0.1,
+        center_pairs=True,
         detach_gate_input=True,
         detach_scene_residual=True,
     ):
         super().__init__()
         self.dim = dim
         self.alpha = alpha
+        self.center_pairs = bool(center_pairs)
         self.detach_gate_input = detach_gate_input
         self.detach_scene_residual = detach_scene_residual
         self.norm_ho = nn.LayerNorm(dim)
@@ -101,7 +103,7 @@ class SceneGatePairV5Legacy(nn.Module):
         )
         raw = self.gate_mlp(gate_input)
         u = torch.tanh(raw)
-        u_rel = u - u.mean(dim=1, keepdim=True)
+        u_rel = u - u.mean(dim=1, keepdim=True) if self.center_pairs else u
         gate = self.alpha * u_rel
         if override_gate is not None:
             gate = override_gate.to(device=gate.device, dtype=gate.dtype)
@@ -139,6 +141,7 @@ def build_scene_gate_v5_legacy(
     hidden_dim=128,
     dropout=0.1,
     alpha=0.1,
+    center_pairs=True,
 ):
     if gate_type == "pair":
         return SceneGatePairV5Legacy(
@@ -146,6 +149,7 @@ def build_scene_gate_v5_legacy(
             hidden_dim=hidden_dim,
             dropout=dropout,
             alpha=alpha,
+            center_pairs=center_pairs,
         )
     raise ValueError(
         f"Legacy SceneGate V5 only supports pair gate_type, got: {gate_type}"
