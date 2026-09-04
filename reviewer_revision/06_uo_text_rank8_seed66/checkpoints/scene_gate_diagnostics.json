@@ -1,0 +1,89 @@
+[
+  {
+    "epoch": 5,
+    "on": {
+      "full": 32.037356114474115,
+      "unseen": 35.388840437387344,
+      "seen": 31.36705924989146
+    },
+    "off": {},
+    "diagnostics": {},
+    "contribution_evaluated": true,
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 32.06102198294846,
+          "unseen": 35.26294968519435,
+          "seen": 31.420636442499283
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": -0.02366586847434604,
+          "unseen": 0.12589075219299417,
+          "seen": -0.0535771926078219
+        }
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "on": {
+      "full": 32.84378687498268,
+      "unseen": 35.2667180489517,
+      "seen": 32.35920064018888
+    },
+    "off": {},
+    "diagnostics": {},
+    "contribution_evaluated": true,
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 32.659274429949015,
+          "unseen": 35.00625630593019,
+          "seen": 32.18987805475278
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.18451244503366837,
+          "unseen": 0.2604617430215157,
+          "seen": 0.1693225854360989
+        }
+      }
+    }
+  },
+  {
+    "epoch": 20,
+    "on": {
+      "full": 33.56579353169838,
+      "unseen": 36.05949287764353,
+      "seen": 33.067053662509366
+    },
+    "off": {},
+    "diagnostics": {},
+    "contribution_evaluated": true,
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 33.54483585868513,
+          "unseen": 36.064854210258886,
+          "seen": 33.04083218837039
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.02095767301324969,
+          "unseen": -0.005361332615358094,
+          "seen": 0.02622147413897835
+        }
+      }
+    }
+  }
+]

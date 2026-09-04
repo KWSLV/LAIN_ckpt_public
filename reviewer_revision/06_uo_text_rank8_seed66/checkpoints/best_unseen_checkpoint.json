@@ -1,0 +1,10 @@
+{
+  "selection_metric": "unseen_mAP",
+  "selection_partition": "test2015",
+  "unseen_mAP": 36.43545259582547,
+  "epoch": 15,
+  "iteration": 58425,
+  "source_checkpoint": "ckpt_58425_15.pt",
+  "checkpoint": "best_unseen.pt",
+  "warning": "Selected on the test partition; use for analysis only, not as an unbiased final paper result."
+}

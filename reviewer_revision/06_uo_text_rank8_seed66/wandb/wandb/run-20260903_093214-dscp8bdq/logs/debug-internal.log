@@ -1,0 +1,14 @@
+{"time":"2026-09-03T09:32:14.422092911+08:00","level":"INFO","msg":"stream: starting","core version":"0.24.2"}
+{"time":"2026-09-03T09:32:15.022611904+08:00","level":"INFO","msg":"stream: created new stream","id":"dscp8bdq"}
+{"time":"2026-09-03T09:32:15.0228289+08:00","level":"INFO","msg":"handler: started","stream_id":"dscp8bdq"}
+{"time":"2026-09-03T09:32:15.023140956+08:00","level":"INFO","msg":"stream: started","id":"dscp8bdq"}
+{"time":"2026-09-03T09:32:15.0231834+08:00","level":"INFO","msg":"writer: started","stream_id":"dscp8bdq"}
+{"time":"2026-09-03T09:32:15.023258278+08:00","level":"INFO","msg":"sender: started","stream_id":"dscp8bdq"}
+{"time":"2026-09-03T09:32:21.316946094+08:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":170}
+{"time":"2026-09-03T09:32:21.332241419+08:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":46}
+{"time":"2026-09-04T09:04:31.0175012+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/saaatkj-null/LAIN/dscp8bdq/file_stream\": read tcp 10.0.221.36:58886->34.8.250.101:443: read: connection reset by peer"}
+{"time":"2026-09-04T09:55:02.452229316+08:00","level":"INFO","msg":"stream: closing","id":"dscp8bdq"}
+{"time":"2026-09-04T09:55:03.935658402+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-09-04T09:55:04.444628121+08:00","level":"INFO","msg":"handler: closed","stream_id":"dscp8bdq"}
+{"time":"2026-09-04T09:55:04.444798305+08:00","level":"INFO","msg":"sender: closed","stream_id":"dscp8bdq"}
+{"time":"2026-09-04T09:55:04.444845736+08:00","level":"INFO","msg":"stream: closed","id":"dscp8bdq"}
