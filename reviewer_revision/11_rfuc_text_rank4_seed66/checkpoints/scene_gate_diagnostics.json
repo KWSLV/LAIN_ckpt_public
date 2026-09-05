@@ -1,0 +1,60 @@
+[
+  {
+    "epoch": 5,
+    "on": {
+      "full": 32.7414742327226,
+      "unseen": 30.46590974322555,
+      "seen": 33.31036535509686
+    },
+    "off": {},
+    "diagnostics": {},
+    "contribution_evaluated": true,
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 32.40987260053138,
+          "unseen": 29.532330723720683,
+          "seen": 33.12925806973405
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.33160163219122296,
+          "unseen": 0.9335790195048652,
+          "seen": 0.1811072853628133
+        }
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "on": {
+      "full": 33.70353110077124,
+      "unseen": 31.429896212281477,
+      "seen": 34.27193982289367
+    },
+    "off": {},
+    "diagnostics": {},
+    "contribution_evaluated": true,
+    "gap": {},
+    "adapter_ablation": {
+      "definition": "full_model_on_minus_single_adapter_off",
+      "off": {
+        "text_adapter": {
+          "full": 33.6192554333058,
+          "unseen": 31.38828165933665,
+          "seen": 34.176998876798095
+        }
+      },
+      "contribution": {
+        "text_adapter": {
+          "full": 0.08427566746543391,
+          "unseen": 0.04161455294482863,
+          "seen": 0.09494094609557635
+        }
+      }
+    }
+  }
+]

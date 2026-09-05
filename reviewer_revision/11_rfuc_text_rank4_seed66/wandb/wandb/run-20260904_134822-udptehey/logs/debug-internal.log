@@ -1,0 +1,15 @@
+{"time":"2026-09-04T13:48:22.551607856+08:00","level":"INFO","msg":"stream: starting","core version":"0.24.2"}
+{"time":"2026-09-04T13:48:23.143726779+08:00","level":"INFO","msg":"stream: created new stream","id":"udptehey"}
+{"time":"2026-09-04T13:48:23.143900631+08:00","level":"INFO","msg":"handler: started","stream_id":"udptehey"}
+{"time":"2026-09-04T13:48:23.14421419+08:00","level":"INFO","msg":"stream: started","id":"udptehey"}
+{"time":"2026-09-04T13:48:23.144273618+08:00","level":"INFO","msg":"writer: started","stream_id":"udptehey"}
+{"time":"2026-09-04T13:48:23.144312847+08:00","level":"INFO","msg":"sender: started","stream_id":"udptehey"}
+{"time":"2026-09-04T13:48:30.004015235+08:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":279}
+{"time":"2026-09-04T13:48:30.019918613+08:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":127}
+{"time":"2026-09-04T13:48:30.032757735+08:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":523}
+{"time":"2026-09-04T13:48:30.059093432+08:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":284}
+{"time":"2026-09-04T13:48:30.457579105+08:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":1081}
+{"time":"2026-09-04T13:48:30.501223734+08:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":480}
+{"time":"2026-09-04T14:37:54.237568707+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/saaatkj-null/LAIN/udptehey/file_stream\": read tcp 10.0.221.36:47808->34.8.250.101:443: read: connection reset by peer"}
+{"time":"2026-09-04T18:28:54.190085755+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/saaatkj-null/LAIN/udptehey/file_stream\": read tcp 10.0.221.36:44520->34.8.250.101:443: read: connection reset by peer"}
+{"time":"2026-09-05T06:59:24.181861666+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/saaatkj-null/LAIN/udptehey/file_stream\": read tcp 10.0.221.36:51176->34.8.250.101:443: read: connection reset by peer"}

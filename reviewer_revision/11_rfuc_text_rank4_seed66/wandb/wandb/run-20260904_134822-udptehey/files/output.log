@@ -1,0 +1,1106 @@
+--------------------------------------------------
+Config: Use Semantic Adapter: False
+Config: Use Text Adapter: True | dim=64 | lr=0.0005
+Config: Use ObjCond Adapter: False | rank=4 | lr=0.0005
+Config: Use SceneGate: False | version=v5 | type=pair
+Config: Adapter Dimension: 32
+--------------------------------------------------
+[INFO] HICO image root (train2015): /root/workspace/hico_20160224_det/images/train2015
+datasets/zs_rare_first_train2015_idx.pkl is loaded
+[INFO] HICO image root (test2015): /root/workspace/hico_20160224_det/images/test2015
+[INFO]: num_classes 117
+Load weights for the object detector from /root/workspace/assets/detr-r50-hicodet.pth
+[INFO] missing_keys: []
+[INFO] unexpected_keys: []
+Initializing class-specific contexts
+Initial context: "X X X X X X X X X X X X X X X X X X X X X X X X"
+Number of context words (tokens): 24
+[INFO] Text adapter initialized: dim=512, bottleneck=64, rank=4
+=> Rank 0: start from a randomly initialised model
+
+==============================
+TRAINABLE PARAMETERS:
+ -> logit_scale_text (torch.Size([]))
+ -> clip_head.prompt_learner.ctx (torch.Size([117, 24, 512]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.0.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.1.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.2.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.3.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.4.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.5.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.6.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.7.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.8.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.9.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.10.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.scale (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.scale2 (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj2.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.up_proj.weight (torch.Size([768, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.up_proj.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.up_proj2.weight (torch.Size([768, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.up_proj2.bias (torch.Size([768]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj3.weight (torch.Size([32, 768]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj6.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj6.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers2.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_weight (torch.Size([96, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.multihead_attn.in_proj_bias (torch.Size([96]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.weight (torch.Size([32, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.multihead_attn.out_proj.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.linear1.weight (torch.Size([64, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.linear1.bias (torch.Size([64]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.linear2.weight (torch.Size([32, 64]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.linear2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.norm2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.norm2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.norm3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.mhsa_layers3.0.norm3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.ln.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.ln.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.ln2.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.ln2.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.ln3.weight (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.ln3.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.prompt.weight (torch.Size([10, 32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj4.weight (torch.Size([32, 32, 3, 3]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj4.bias (torch.Size([32]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj5.weight (torch.Size([32, 32, 5, 5]))
+ -> clip_head.image_encoder.transformer.resblocks.11.adaptermlp.down_proj5.bias (torch.Size([32]))
+ -> clip_head.text_encoder.text_adapter.norm.weight (torch.Size([512]))
+ -> clip_head.text_encoder.text_adapter.norm.bias (torch.Size([512]))
+ -> clip_head.text_encoder.text_adapter.down.weight (torch.Size([64, 512]))
+ -> clip_head.text_encoder.text_adapter.lowrank.A.weight (torch.Size([4, 64]))
+ -> clip_head.text_encoder.text_adapter.lowrank.B.weight (torch.Size([64, 4]))
+ -> clip_head.text_encoder.text_adapter.up.weight (torch.Size([512, 64]))
+ -> priors_downproj.layers.0.weight (torch.Size([128, 517]))
+ -> priors_downproj.layers.0.bias (torch.Size([128]))
+ -> priors_downproj.layers.1.weight (torch.Size([128, 128]))
+ -> priors_downproj.layers.1.bias (torch.Size([128]))
+ -> priors_downproj.layers.2.weight (torch.Size([32, 128]))
+ -> priors_downproj.layers.2.bias (torch.Size([32]))
+ -> query_proj.layers.0.weight (torch.Size([128, 512]))
+ -> query_proj.layers.0.bias (torch.Size([128]))
+ -> query_proj.layers.1.weight (torch.Size([768, 128]))
+ -> query_proj.layers.1.bias (torch.Size([768]))
+Total Params: 170,154,679
+Trainable Params: 4,308,897 (2.53%)
+==============================
+
+==> Iteration 500 | Interaction Loss: 2.0873
+Epoch [1/20], Iter. [0500/4691], Loss: 1.9160, Time/iter[Data/Train/Total]: [0.006s/1.947s/1.953s], Window[Data/Train]: [2.98s/971.55s], Remain: 2:16:24.849669
+==> Iteration 1000 | Interaction Loss: 1.1997
+Epoch [1/20], Iter. [1000/4691], Loss: 1.5122, Time/iter[Data/Train/Total]: [0.002s/1.858s/1.860s], Window[Data/Train]: [1.08s/928.80s], Remain: 1:54:24.405365
+==> Iteration 1500 | Interaction Loss: 1.4818
+Epoch [1/20], Iter. [1500/4691], Loss: 1.4361, Time/iter[Data/Train/Total]: [0.002s/1.898s/1.900s], Window[Data/Train]: [1.14s/949.01s], Remain: 1:41:03.859813
+==> Iteration 2000 | Interaction Loss: 1.6063
+Epoch [1/20], Iter. [2000/4691], Loss: 1.4014, Time/iter[Data/Train/Total]: [0.002s/1.874s/1.876s], Window[Data/Train]: [1.08s/937.15s], Remain: 1:24:09.557678
+==> Iteration 2500 | Interaction Loss: 1.5419
+Epoch [1/20], Iter. [2500/4691], Loss: 1.3970, Time/iter[Data/Train/Total]: [0.002s/1.895s/1.897s], Window[Data/Train]: [1.09s/947.48s], Remain: 1:09:16.651165
+==> Iteration 3000 | Interaction Loss: 1.1733
+Epoch [1/20], Iter. [3000/4691], Loss: 1.3556, Time/iter[Data/Train/Total]: [0.002s/1.888s/1.890s], Window[Data/Train]: [1.05s/944.15s], Remain: 0:53:16.662005
+==> Iteration 3500 | Interaction Loss: 1.4312
+Epoch [1/20], Iter. [3500/4691], Loss: 1.3151, Time/iter[Data/Train/Total]: [0.002s/1.872s/1.874s], Window[Data/Train]: [1.09s/936.14s], Remain: 0:37:12.491802
+==> Iteration 4000 | Interaction Loss: 1.1966
+Epoch [1/20], Iter. [4000/4691], Loss: 1.3039, Time/iter[Data/Train/Total]: [0.002s/1.876s/1.879s], Window[Data/Train]: [1.10s/938.18s], Remain: 0:21:38.083253
+==> Iteration 4500 | Interaction Loss: 1.2505
+Epoch [1/20], Iter. [4500/4691], Loss: 1.3116, Time/iter[Data/Train/Total]: [0.002s/1.873s/1.875s], Window[Data/Train]: [1.06s/936.55s], Remain: 0:05:58.167250
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:38<00:00,  1.27it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 25.91
+============================================================
+The mAP is 28.66, rare: 25.65, none-rare: 29.56,
+>>> zero-shot setting(rare_first!!)
+full mAP: 28.66 unseen: 25.91 seen: 29.35
+[Checkpoint] New best unseen mAP=25.9052 at epoch 1: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+==> Iteration 5000 | Interaction Loss: 0.8720
+Epoch [2/20], Iter. [0309/4691], Loss: 1.2693, Time/iter[Data/Train/Total]: [0.003s/1.920s/1.924s], Window[Data/Train]: [1.61s/960.18s], Remain: 2:20:29.129252
+==> Iteration 5500 | Interaction Loss: 0.9739
+Epoch [2/20], Iter. [0809/4691], Loss: 1.2920, Time/iter[Data/Train/Total]: [0.002s/1.866s/1.868s], Window[Data/Train]: [1.10s/932.76s], Remain: 2:00:50.537856
+==> Iteration 6000 | Interaction Loss: 1.2749
+Epoch [2/20], Iter. [1309/4691], Loss: 1.2679, Time/iter[Data/Train/Total]: [0.002s/1.846s/1.849s], Window[Data/Train]: [1.05s/923.22s], Remain: 1:44:11.730683
+==> Iteration 6500 | Interaction Loss: 0.8243
+Epoch [2/20], Iter. [1809/4691], Loss: 1.2603, Time/iter[Data/Train/Total]: [0.002s/1.849s/1.851s], Window[Data/Train]: [1.06s/924.35s], Remain: 1:28:54.021240
+==> Iteration 7000 | Interaction Loss: 1.1283
+Epoch [2/20], Iter. [2309/4691], Loss: 1.2548, Time/iter[Data/Train/Total]: [0.002s/1.829s/1.831s], Window[Data/Train]: [1.04s/914.43s], Remain: 1:12:41.298314
+==> Iteration 7500 | Interaction Loss: 1.5259
+Epoch [2/20], Iter. [2809/4691], Loss: 1.2669, Time/iter[Data/Train/Total]: [0.002s/1.816s/1.819s], Window[Data/Train]: [1.08s/908.24s], Remain: 0:57:02.661958
+==> Iteration 8000 | Interaction Loss: 0.9858
+Epoch [2/20], Iter. [3309/4691], Loss: 1.2311, Time/iter[Data/Train/Total]: [0.002s/1.841s/1.843s], Window[Data/Train]: [1.07s/920.67s], Remain: 0:42:27.686901
+==> Iteration 8500 | Interaction Loss: 1.2059
+Epoch [2/20], Iter. [3809/4691], Loss: 1.2271, Time/iter[Data/Train/Total]: [0.002s/1.833s/1.835s], Window[Data/Train]: [1.03s/916.51s], Remain: 0:26:58.542489
+==> Iteration 9000 | Interaction Loss: 1.0396
+Epoch [2/20], Iter. [4309/4691], Loss: 1.2471, Time/iter[Data/Train/Total]: [0.002s/1.843s/1.845s], Window[Data/Train]: [1.07s/921.37s], Remain: 0:11:44.744807
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:26<00:00,  1.29it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 28.77
+============================================================
+The mAP is 30.85, rare: 28.00, none-rare: 31.70,
+>>> zero-shot setting(rare_first!!)
+full mAP: 30.85 unseen: 28.77 seen: 31.37
+[Checkpoint] New best unseen mAP=28.7664 at epoch 2: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_04691_01.pt
+==> Iteration 9500 | Interaction Loss: 1.3825
+Epoch [3/20], Iter. [0118/4691], Loss: 1.2227, Time/iter[Data/Train/Total]: [0.003s/1.831s/1.834s], Window[Data/Train]: [1.52s/915.50s], Remain: 2:19:47.038267
+==> Iteration 10000 | Interaction Loss: 0.9979
+Epoch [3/20], Iter. [0618/4691], Loss: 1.2297, Time/iter[Data/Train/Total]: [0.002s/1.863s/1.865s], Window[Data/Train]: [1.07s/931.36s], Remain: 2:06:35.538342
+==> Iteration 10500 | Interaction Loss: 1.5061
+Epoch [3/20], Iter. [1118/4691], Loss: 1.2197, Time/iter[Data/Train/Total]: [0.002s/1.804s/1.806s], Window[Data/Train]: [1.04s/902.20s], Remain: 1:47:34.504766
+==> Iteration 11000 | Interaction Loss: 0.9161
+Epoch [3/20], Iter. [1618/4691], Loss: 1.2437, Time/iter[Data/Train/Total]: [0.002s/1.821s/1.823s], Window[Data/Train]: [1.06s/910.56s], Remain: 1:33:22.787188
+==> Iteration 11500 | Interaction Loss: 1.1333
+Epoch [3/20], Iter. [2118/4691], Loss: 1.2156, Time/iter[Data/Train/Total]: [0.002s/1.831s/1.833s], Window[Data/Train]: [1.08s/915.42s], Remain: 1:18:36.347072
+==> Iteration 12000 | Interaction Loss: 0.9114
+Epoch [3/20], Iter. [2618/4691], Loss: 1.1976, Time/iter[Data/Train/Total]: [0.002s/1.839s/1.841s], Window[Data/Train]: [1.07s/919.33s], Remain: 1:03:35.941455
+==> Iteration 12500 | Interaction Loss: 0.6388
+Epoch [3/20], Iter. [3118/4691], Loss: 1.1986, Time/iter[Data/Train/Total]: [0.002s/1.818s/1.820s], Window[Data/Train]: [1.06s/908.85s], Remain: 0:47:42.593928
+==> Iteration 13000 | Interaction Loss: 1.4952
+Epoch [3/20], Iter. [3618/4691], Loss: 1.1940, Time/iter[Data/Train/Total]: [0.002s/1.821s/1.824s], Window[Data/Train]: [1.07s/910.72s], Remain: 0:32:36.696672
+==> Iteration 13500 | Interaction Loss: 1.4253
+Epoch [3/20], Iter. [4118/4691], Loss: 1.1991, Time/iter[Data/Train/Total]: [0.002s/1.825s/1.827s], Window[Data/Train]: [1.05s/912.37s], Remain: 0:17:26.778984
+==> Iteration 14000 | Interaction Loss: 1.1506
+Epoch [3/20], Iter. [4618/4691], Loss: 1.1958, Time/iter[Data/Train/Total]: [0.002s/1.832s/1.834s], Window[Data/Train]: [1.05s/916.20s], Remain: 0:02:13.917761
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:33<00:00,  1.28it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 29.33
+============================================================
+The mAP is 31.82, rare: 29.15, none-rare: 32.62,
+>>> zero-shot setting(rare_first!!)
+full mAP: 31.82 unseen: 29.33 seen: 32.44
+[Checkpoint] New best unseen mAP=29.3302 at epoch 3: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_09382_02.pt
+==> Iteration 14500 | Interaction Loss: 0.8964
+Epoch [4/20], Iter. [0427/4691], Loss: 1.1734, Time/iter[Data/Train/Total]: [0.003s/1.884s/1.888s], Window[Data/Train]: [1.59s/942.24s], Remain: 2:14:08.971824
+==> Iteration 15000 | Interaction Loss: 0.9786
+Epoch [4/20], Iter. [0927/4691], Loss: 1.1693, Time/iter[Data/Train/Total]: [0.002s/1.846s/1.848s], Window[Data/Train]: [1.07s/922.95s], Remain: 1:55:55.994242
+==> Iteration 15500 | Interaction Loss: 1.5823
+Epoch [4/20], Iter. [1427/4691], Loss: 1.2084, Time/iter[Data/Train/Total]: [0.002s/1.855s/1.857s], Window[Data/Train]: [1.09s/927.32s], Remain: 1:41:00.704684
+==> Iteration 16000 | Interaction Loss: 0.9466
+Epoch [4/20], Iter. [1927/4691], Loss: 1.1882, Time/iter[Data/Train/Total]: [0.002s/1.835s/1.837s], Window[Data/Train]: [1.05s/917.40s], Remain: 1:24:37.212576
+==> Iteration 16500 | Interaction Loss: 1.1347
+Epoch [4/20], Iter. [2427/4691], Loss: 1.1904, Time/iter[Data/Train/Total]: [0.002s/1.845s/1.847s], Window[Data/Train]: [1.08s/922.67s], Remain: 1:09:42.731641
+==> Iteration 17000 | Interaction Loss: 1.2528
+Epoch [4/20], Iter. [2927/4691], Loss: 1.1955, Time/iter[Data/Train/Total]: [0.002s/1.822s/1.824s], Window[Data/Train]: [1.05s/911.15s], Remain: 0:53:38.254858
+==> Iteration 17500 | Interaction Loss: 1.7520
+Epoch [4/20], Iter. [3427/4691], Loss: 1.1933, Time/iter[Data/Train/Total]: [0.002s/1.819s/1.821s], Window[Data/Train]: [1.08s/909.63s], Remain: 0:38:22.274247
+==> Iteration 18000 | Interaction Loss: 1.1882
+Epoch [4/20], Iter. [3927/4691], Loss: 1.1885, Time/iter[Data/Train/Total]: [0.002s/1.822s/1.824s], Window[Data/Train]: [1.08s/911.16s], Remain: 0:23:13.901048
+==> Iteration 18500 | Interaction Loss: 1.3080
+Epoch [4/20], Iter. [4427/4691], Loss: 1.1687, Time/iter[Data/Train/Total]: [0.002s/1.826s/1.828s], Window[Data/Train]: [1.09s/912.77s], Remain: 0:08:02.520259
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:30<00:00,  1.28it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 29.35
+============================================================
+The mAP is 31.90, rare: 29.13, none-rare: 32.72,
+>>> zero-shot setting(rare_first!!)
+full mAP: 31.90 unseen: 29.35 seen: 32.53
+[Checkpoint] New best unseen mAP=29.3512 at epoch 4: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_14073_03.pt
+==> Iteration 19000 | Interaction Loss: 0.8283
+Epoch [5/20], Iter. [0236/4691], Loss: 1.1831, Time/iter[Data/Train/Total]: [0.003s/1.842s/1.845s], Window[Data/Train]: [1.51s/921.24s], Remain: 2:17:01.681882
+==> Iteration 19500 | Interaction Loss: 1.3795
+Epoch [5/20], Iter. [0736/4691], Loss: 1.1736, Time/iter[Data/Train/Total]: [0.002s/1.838s/1.840s], Window[Data/Train]: [1.07s/918.78s], Remain: 2:01:16.015531
+==> Iteration 20000 | Interaction Loss: 1.4146
+Epoch [5/20], Iter. [1236/4691], Loss: 1.1627, Time/iter[Data/Train/Total]: [0.002s/1.819s/1.821s], Window[Data/Train]: [1.06s/909.47s], Remain: 1:44:51.779699
+==> Iteration 20500 | Interaction Loss: 1.2909
+Epoch [5/20], Iter. [1736/4691], Loss: 1.1731, Time/iter[Data/Train/Total]: [0.002s/1.820s/1.822s], Window[Data/Train]: [1.03s/909.89s], Remain: 1:29:43.553436
+==> Iteration 21000 | Interaction Loss: 0.8637
+Epoch [5/20], Iter. [2236/4691], Loss: 1.1612, Time/iter[Data/Train/Total]: [0.002s/1.835s/1.837s], Window[Data/Train]: [1.06s/917.44s], Remain: 1:15:09.852338
+==> Iteration 21500 | Interaction Loss: 1.1547
+Epoch [5/20], Iter. [2736/4691], Loss: 1.1761, Time/iter[Data/Train/Total]: [0.002s/1.837s/1.839s], Window[Data/Train]: [1.04s/918.37s], Remain: 0:59:54.914682
+==> Iteration 22000 | Interaction Loss: 1.0990
+Epoch [5/20], Iter. [3236/4691], Loss: 1.1530, Time/iter[Data/Train/Total]: [0.002s/1.824s/1.827s], Window[Data/Train]: [1.05s/912.23s], Remain: 0:44:17.627844
+==> Iteration 22500 | Interaction Loss: 1.4872
+Epoch [5/20], Iter. [3736/4691], Loss: 1.1739, Time/iter[Data/Train/Total]: [0.002s/1.816s/1.818s], Window[Data/Train]: [1.04s/907.86s], Remain: 0:28:55.997046
+==> Iteration 23000 | Interaction Loss: 0.6280
+Epoch [5/20], Iter. [4236/4691], Loss: 1.1822, Time/iter[Data/Train/Total]: [0.002s/1.838s/1.840s], Window[Data/Train]: [1.06s/919.11s], Remain: 0:13:57.354088
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:29<00:00,  1.28it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 30.47
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [11:27<00:00,  1.74it/s]
+[SceneGate] ON={'full': 32.7414742327226, 'unseen': 30.46590974322555, 'seen': 33.31036535509686} OFF={} GAP={}
+[Adapter Contribution] OFF={'text_adapter': {'full': 32.40987260053138, 'unseen': 29.532330723720683, 'seen': 33.12925806973405}} CONTRIBUTION={'text_adapter': {'full': 0.33160163219122296, 'unseen': 0.9335790195048652, 'seen': 0.1811072853628133}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 32.74, rare: 30.51, none-rare: 33.41,
+>>> zero-shot setting(rare_first!!)
+full mAP: 32.74 unseen: 30.47 seen: 33.31
+[Checkpoint] New best unseen mAP=30.4659 at epoch 5: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_18764_04.pt
+==> Iteration 23500 | Interaction Loss: 1.2548
+Epoch [6/20], Iter. [0045/4691], Loss: 1.1802, Time/iter[Data/Train/Total]: [0.004s/1.845s/1.849s], Window[Data/Train]: [1.77s/922.52s], Remain: 2:23:08.542923
+==> Iteration 24000 | Interaction Loss: 0.5445
+Epoch [6/20], Iter. [0545/4691], Loss: 1.1418, Time/iter[Data/Train/Total]: [0.002s/1.905s/1.907s], Window[Data/Train]: [1.09s/952.52s], Remain: 2:11:47.315111
+==> Iteration 24500 | Interaction Loss: 1.2266
+Epoch [6/20], Iter. [1045/4691], Loss: 1.1390, Time/iter[Data/Train/Total]: [0.002s/1.855s/1.857s], Window[Data/Train]: [1.09s/927.54s], Remain: 1:52:51.567369
+==> Iteration 25000 | Interaction Loss: 1.1005
+Epoch [6/20], Iter. [1545/4691], Loss: 1.1660, Time/iter[Data/Train/Total]: [0.002s/1.829s/1.831s], Window[Data/Train]: [1.04s/914.30s], Remain: 1:35:59.354644
+==> Iteration 25500 | Interaction Loss: 0.8851
+Epoch [6/20], Iter. [2045/4691], Loss: 1.1640, Time/iter[Data/Train/Total]: [0.002s/1.842s/1.844s], Window[Data/Train]: [1.05s/921.09s], Remain: 1:21:19.962566
+==> Iteration 26000 | Interaction Loss: 1.2824
+Epoch [6/20], Iter. [2545/4691], Loss: 1.1690, Time/iter[Data/Train/Total]: [0.002s/1.856s/1.858s], Window[Data/Train]: [1.07s/927.88s], Remain: 1:06:27.042610
+==> Iteration 26500 | Interaction Loss: 1.1178
+Epoch [6/20], Iter. [3045/4691], Loss: 1.1658, Time/iter[Data/Train/Total]: [0.002s/1.854s/1.856s], Window[Data/Train]: [1.07s/926.92s], Remain: 0:50:54.950316
+==> Iteration 27000 | Interaction Loss: 1.0756
+Epoch [6/20], Iter. [3545/4691], Loss: 1.1722, Time/iter[Data/Train/Total]: [0.002s/1.847s/1.849s], Window[Data/Train]: [1.04s/923.48s], Remain: 0:35:18.996378
+==> Iteration 27500 | Interaction Loss: 1.0544
+Epoch [6/20], Iter. [4045/4691], Loss: 1.1668, Time/iter[Data/Train/Total]: [0.002s/1.827s/1.829s], Window[Data/Train]: [1.07s/913.64s], Remain: 0:19:41.807094
+==> Iteration 28000 | Interaction Loss: 0.9739
+Epoch [6/20], Iter. [4545/4691], Loss: 1.1586, Time/iter[Data/Train/Total]: [0.002s/1.841s/1.843s], Window[Data/Train]: [1.03s/920.47s], Remain: 0:04:29.075927
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:36<00:00,  1.27it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 30.96
+============================================================
+The mAP is 33.15, rare: 31.05, none-rare: 33.77,
+>>> zero-shot setting(rare_first!!)
+full mAP: 33.15 unseen: 30.96 seen: 33.69
+[Checkpoint] New best unseen mAP=30.9602 at epoch 6: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+==> Iteration 28500 | Interaction Loss: 0.7697
+Epoch [7/20], Iter. [0354/4691], Loss: 1.1421, Time/iter[Data/Train/Total]: [0.003s/1.872s/1.876s], Window[Data/Train]: [1.60s/936.21s], Remain: 2:15:34.632384
+==> Iteration 29000 | Interaction Loss: 0.5357
+Epoch [7/20], Iter. [0854/4691], Loss: 1.1374, Time/iter[Data/Train/Total]: [0.002s/1.848s/1.850s], Window[Data/Train]: [1.05s/923.91s], Remain: 1:58:18.191847
+==> Iteration 29500 | Interaction Loss: 1.1111
+Epoch [7/20], Iter. [1354/4691], Loss: 1.1672, Time/iter[Data/Train/Total]: [0.002s/1.836s/1.838s], Window[Data/Train]: [1.05s/917.97s], Remain: 1:42:13.594883
+==> Iteration 30000 | Interaction Loss: 1.6291
+Epoch [7/20], Iter. [1854/4691], Loss: 1.1567, Time/iter[Data/Train/Total]: [0.002s/1.812s/1.814s], Window[Data/Train]: [1.01s/906.01s], Remain: 1:25:46.430233
+==> Iteration 30500 | Interaction Loss: 1.1932
+Epoch [7/20], Iter. [2354/4691], Loss: 1.1847, Time/iter[Data/Train/Total]: [0.002s/1.833s/1.835s], Window[Data/Train]: [1.05s/916.43s], Remain: 1:11:28.340186
+==> Iteration 31000 | Interaction Loss: 0.9266
+Epoch [7/20], Iter. [2854/4691], Loss: 1.1423, Time/iter[Data/Train/Total]: [0.002s/1.828s/1.830s], Window[Data/Train]: [1.03s/913.95s], Remain: 0:56:01.638579
+==> Iteration 31500 | Interaction Loss: 1.4168
+Epoch [7/20], Iter. [3354/4691], Loss: 1.1522, Time/iter[Data/Train/Total]: [0.002s/1.866s/1.868s], Window[Data/Train]: [1.06s/932.91s], Remain: 0:41:37.431598
+==> Iteration 32000 | Interaction Loss: 1.0188
+Epoch [7/20], Iter. [3854/4691], Loss: 1.1398, Time/iter[Data/Train/Total]: [0.002s/1.825s/1.827s], Window[Data/Train]: [1.06s/912.69s], Remain: 0:25:29.611798
+==> Iteration 32500 | Interaction Loss: 1.5800
+Epoch [7/20], Iter. [4354/4691], Loss: 1.1532, Time/iter[Data/Train/Total]: [0.002s/1.857s/1.859s], Window[Data/Train]: [1.06s/928.37s], Remain: 0:10:26.434938
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:34<00:00,  1.28it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 29.23
+============================================================
+The mAP is 32.83, rare: 28.97, none-rare: 33.99,
+>>> zero-shot setting(rare_first!!)
+full mAP: 32.83 unseen: 29.23 seen: 33.73
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_28146_06.pt
+==> Iteration 33000 | Interaction Loss: 1.2154
+Epoch [8/20], Iter. [0163/4691], Loss: 1.1205, Time/iter[Data/Train/Total]: [0.004s/1.858s/1.862s], Window[Data/Train]: [2.09s/929.16s], Remain: 2:20:33.387997
+==> Iteration 33500 | Interaction Loss: 1.1348
+Epoch [8/20], Iter. [0663/4691], Loss: 1.1407, Time/iter[Data/Train/Total]: [0.002s/1.865s/1.867s], Window[Data/Train]: [1.08s/932.44s], Remain: 2:05:20.419309
+==> Iteration 34000 | Interaction Loss: 1.5472
+Epoch [8/20], Iter. [1163/4691], Loss: 1.1284, Time/iter[Data/Train/Total]: [0.002s/1.827s/1.829s], Window[Data/Train]: [1.02s/913.26s], Remain: 1:47:31.189875
+==> Iteration 34500 | Interaction Loss: 1.3874
+Epoch [8/20], Iter. [1663/4691], Loss: 1.1280, Time/iter[Data/Train/Total]: [0.002s/1.835s/1.837s], Window[Data/Train]: [1.05s/917.44s], Remain: 1:32:42.371448
+==> Iteration 35000 | Interaction Loss: 0.8778
+Epoch [8/20], Iter. [2163/4691], Loss: 1.1532, Time/iter[Data/Train/Total]: [0.002s/1.851s/1.853s], Window[Data/Train]: [1.04s/925.52s], Remain: 1:18:04.668292
+==> Iteration 35500 | Interaction Loss: 0.9033
+Epoch [8/20], Iter. [2663/4691], Loss: 1.1307, Time/iter[Data/Train/Total]: [0.002s/1.861s/1.864s], Window[Data/Train]: [1.10s/930.68s], Remain: 1:02:59.310979
+==> Iteration 36000 | Interaction Loss: 0.8010
+Epoch [8/20], Iter. [3163/4691], Loss: 1.1321, Time/iter[Data/Train/Total]: [0.002s/1.858s/1.860s], Window[Data/Train]: [1.03s/928.80s], Remain: 0:47:21.559151
+==> Iteration 36500 | Interaction Loss: 1.3745
+Epoch [8/20], Iter. [3663/4691], Loss: 1.1325, Time/iter[Data/Train/Total]: [0.002s/1.860s/1.862s], Window[Data/Train]: [1.06s/929.95s], Remain: 0:31:54.142387
+==> Iteration 37000 | Interaction Loss: 0.6408
+Epoch [8/20], Iter. [4163/4691], Loss: 1.1266, Time/iter[Data/Train/Total]: [0.002s/1.835s/1.837s], Window[Data/Train]: [1.06s/917.55s], Remain: 0:16:10.052995
+==> Iteration 37500 | Interaction Loss: 0.8848
+Epoch [8/20], Iter. [4663/4691], Loss: 1.1449, Time/iter[Data/Train/Total]: [0.002s/1.842s/1.844s], Window[Data/Train]: [1.08s/921.11s], Remain: 0:00:51.642524
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:35<00:00,  1.28it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 29.63
+============================================================
+The mAP is 32.90, rare: 29.43, none-rare: 33.93,
+>>> zero-shot setting(rare_first!!)
+full mAP: 32.90 unseen: 29.63 seen: 33.71
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_32837_07.pt
+==> Iteration 38000 | Interaction Loss: 1.1792
+Epoch [9/20], Iter. [0472/4691], Loss: 1.1163, Time/iter[Data/Train/Total]: [0.004s/1.912s/1.916s], Window[Data/Train]: [2.13s/955.88s], Remain: 2:14:43.686116
+==> Iteration 38500 | Interaction Loss: 0.6943
+Epoch [9/20], Iter. [0972/4691], Loss: 1.1245, Time/iter[Data/Train/Total]: [0.002s/1.867s/1.869s], Window[Data/Train]: [1.02s/933.62s], Remain: 1:55:51.837235
+==> Iteration 39000 | Interaction Loss: 0.8678
+Epoch [9/20], Iter. [1472/4691], Loss: 1.1452, Time/iter[Data/Train/Total]: [0.002s/1.869s/1.871s], Window[Data/Train]: [1.06s/934.43s], Remain: 1:40:22.722795
+==> Iteration 39500 | Interaction Loss: 1.1151
+Epoch [9/20], Iter. [1972/4691], Loss: 1.1230, Time/iter[Data/Train/Total]: [0.002s/1.855s/1.857s], Window[Data/Train]: [1.09s/927.36s], Remain: 1:24:08.924885
+==> Iteration 40000 | Interaction Loss: 1.4037
+Epoch [9/20], Iter. [2472/4691], Loss: 1.1326, Time/iter[Data/Train/Total]: [0.002s/1.845s/1.847s], Window[Data/Train]: [1.03s/922.27s], Remain: 1:08:17.609071
+==> Iteration 40500 | Interaction Loss: 0.8293
+Epoch [9/20], Iter. [2972/4691], Loss: 1.1187, Time/iter[Data/Train/Total]: [0.002s/1.834s/1.836s], Window[Data/Train]: [1.03s/916.80s], Remain: 0:52:35.492414
+==> Iteration 41000 | Interaction Loss: 1.6837
+Epoch [9/20], Iter. [3472/4691], Loss: 1.1280, Time/iter[Data/Train/Total]: [0.002s/1.833s/1.835s], Window[Data/Train]: [1.04s/916.30s], Remain: 0:37:16.472818
+==> Iteration 41500 | Interaction Loss: 1.3993
+Epoch [9/20], Iter. [3972/4691], Loss: 1.1068, Time/iter[Data/Train/Total]: [0.002s/1.819s/1.822s], Window[Data/Train]: [1.03s/909.75s], Remain: 0:21:49.695343
+==> Iteration 42000 | Interaction Loss: 1.3009
+Epoch [9/20], Iter. [4472/4691], Loss: 1.1322, Time/iter[Data/Train/Total]: [0.002s/1.844s/1.847s], Window[Data/Train]: [1.06s/922.21s], Remain: 0:06:44.394781
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:33<00:00,  1.28it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 30.98
+============================================================
+The mAP is 33.33, rare: 30.87, none-rare: 34.06,
+>>> zero-shot setting(rare_first!!)
+full mAP: 33.33 unseen: 30.98 seen: 33.92
+[Checkpoint] New best unseen mAP=30.9788 at epoch 9: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_37528_08.pt
+==> Iteration 42500 | Interaction Loss: 1.9264
+Epoch [10/20], Iter. [0281/4691], Loss: 1.1260, Time/iter[Data/Train/Total]: [0.004s/1.858s/1.862s], Window[Data/Train]: [2.08s/928.86s], Remain: 2:16:50.846148
+==> Iteration 43000 | Interaction Loss: 1.2627
+Epoch [10/20], Iter. [0781/4691], Loss: 1.1135, Time/iter[Data/Train/Total]: [0.002s/1.868s/1.870s], Window[Data/Train]: [1.07s/933.95s], Remain: 2:01:51.870039
+==> Iteration 43500 | Interaction Loss: 0.9630
+Epoch [10/20], Iter. [1281/4691], Loss: 1.1337, Time/iter[Data/Train/Total]: [0.002s/1.860s/1.863s], Window[Data/Train]: [1.04s/930.25s], Remain: 1:45:51.390759
+==> Iteration 44000 | Interaction Loss: 1.5612
+Epoch [10/20], Iter. [1781/4691], Loss: 1.1156, Time/iter[Data/Train/Total]: [0.002s/1.833s/1.835s], Window[Data/Train]: [1.07s/916.51s], Remain: 1:29:00.295445
+==> Iteration 44500 | Interaction Loss: 1.0414
+Epoch [10/20], Iter. [2281/4691], Loss: 1.1224, Time/iter[Data/Train/Total]: [0.002s/1.853s/1.855s], Window[Data/Train]: [1.06s/926.43s], Remain: 1:14:30.504258
+==> Iteration 45000 | Interaction Loss: 0.9770
+Epoch [10/20], Iter. [2781/4691], Loss: 1.1183, Time/iter[Data/Train/Total]: [0.002s/1.867s/1.869s], Window[Data/Train]: [1.08s/933.45s], Remain: 0:59:29.925577
+==> Iteration 45500 | Interaction Loss: 0.9819
+Epoch [10/20], Iter. [3281/4691], Loss: 1.0998, Time/iter[Data/Train/Total]: [0.002s/1.870s/1.873s], Window[Data/Train]: [1.08s/935.19s], Remain: 0:44:00.277668
+==> Iteration 46000 | Interaction Loss: 1.7387
+Epoch [10/20], Iter. [3781/4691], Loss: 1.1202, Time/iter[Data/Train/Total]: [0.002s/1.872s/1.874s], Window[Data/Train]: [1.05s/936.14s], Remain: 0:28:25.697164
+==> Iteration 46500 | Interaction Loss: 0.7366
+Epoch [10/20], Iter. [4281/4691], Loss: 1.1073, Time/iter[Data/Train/Total]: [0.002s/1.874s/1.877s], Window[Data/Train]: [1.11s/937.16s], Remain: 0:12:49.378038
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:33<00:00,  1.28it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 31.43
+============================================================
+Evaluating raw model output: 100%|██████████| 1194/1194 [11:24<00:00,  1.74it/s]
+[SceneGate] ON={'full': 33.70353110077124, 'unseen': 31.429896212281477, 'seen': 34.27193982289367} OFF={} GAP={}
+[Adapter Contribution] OFF={'text_adapter': {'full': 33.6192554333058, 'unseen': 31.38828165933665, 'seen': 34.176998876798095}} CONTRIBUTION={'text_adapter': {'full': 0.08427566746543391, 'unseen': 0.04161455294482863, 'seen': 0.09494094609557635}}
+[SceneGate] diagnostics saved to /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/scene_gate_diagnostics.json and /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/scene_gate_diagnostics.csv
+The mAP is 33.70, rare: 31.46, none-rare: 34.37,
+>>> zero-shot setting(rare_first!!)
+full mAP: 33.70 unseen: 31.43 seen: 34.27
+[Checkpoint] New best unseen mAP=31.4299 at epoch 10: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/best_unseen.pt
+[Checkpoint] Removed old checkpoint: /root/autodl-tmp/Lain/reviewer_revision/11_rfuc_text_rank4_seed66/checkpoints/ckpt_42219_09.pt
+==> Iteration 47000 | Interaction Loss: 0.6688
+Epoch [11/20], Iter. [0090/4691], Loss: 1.1151, Time/iter[Data/Train/Total]: [0.004s/1.879s/1.883s], Window[Data/Train]: [1.84s/939.57s], Remain: 2:24:22.825028
+==> Iteration 47500 | Interaction Loss: 1.1299
+Epoch [11/20], Iter. [0590/4691], Loss: 1.0893, Time/iter[Data/Train/Total]: [0.002s/1.886s/1.888s], Window[Data/Train]: [1.09s/943.16s], Remain: 2:09:04.720778
+==> Iteration 48000 | Interaction Loss: 1.1462
+Epoch [11/20], Iter. [1090/4691], Loss: 1.0817, Time/iter[Data/Train/Total]: [0.002s/1.854s/1.857s], Window[Data/Train]: [1.10s/927.16s], Remain: 1:51:25.324307
+==> Iteration 48500 | Interaction Loss: 0.9388
+Epoch [11/20], Iter. [1590/4691], Loss: 1.0831, Time/iter[Data/Train/Total]: [0.002s/1.829s/1.832s], Window[Data/Train]: [1.08s/914.69s], Remain: 1:34:39.632385
+==> Iteration 49000 | Interaction Loss: 0.8285
+Epoch [11/20], Iter. [2090/4691], Loss: 1.0696, Time/iter[Data/Train/Total]: [0.002s/1.836s/1.838s], Window[Data/Train]: [1.06s/918.10s], Remain: 1:19:41.466521
+==> Iteration 49500 | Interaction Loss: 0.9781
+Epoch [11/20], Iter. [2590/4691], Loss: 1.0760, Time/iter[Data/Train/Total]: [0.002s/1.829s/1.831s], Window[Data/Train]: [1.05s/914.57s], Remain: 1:04:07.462783
+==> Iteration 50000 | Interaction Loss: 0.9631
+Epoch [11/20], Iter. [3090/4691], Loss: 1.0633, Time/iter[Data/Train/Total]: [0.002s/1.820s/1.823s], Window[Data/Train]: [1.08s/910.22s], Remain: 0:48:37.981266
+==> Iteration 50500 | Interaction Loss: 1.0674
+Epoch [11/20], Iter. [3590/4691], Loss: 1.0764, Time/iter[Data/Train/Total]: [0.002s/1.813s/1.815s], Window[Data/Train]: [1.06s/906.67s], Remain: 0:33:18.818535
+==> Iteration 51000 | Interaction Loss: 0.9996
+Epoch [11/20], Iter. [4090/4691], Loss: 1.0775, Time/iter[Data/Train/Total]: [0.002s/1.847s/1.849s], Window[Data/Train]: [1.09s/923.66s], Remain: 0:18:31.545051
+==> Iteration 51500 | Interaction Loss: 0.8983
+Epoch [11/20], Iter. [4590/4691], Loss: 1.0522, Time/iter[Data/Train/Total]: [0.002s/1.857s/1.860s], Window[Data/Train]: [1.06s/928.70s], Remain: 0:03:07.811215
+Evaluating raw model output: 100%|██████████| 1194/1194 [15:28<00:00,  1.29it/s]
+
+==================== 原始模型结果（无校准） ====================
+Unseen mAP: 30.88
+============================================================
+The mAP is 34.11, rare: 31.19, none-rare: 34.98,
+>>> zero-shot setting(rare_first!!)
+full mAP: 34.11 unseen: 30.88 seen: 34.91
+==> Iteration 52000 | Interaction Loss: 0.9860
+Epoch [12/20], Iter. [0399/4691], Loss: 1.0687, Time/iter[Data/Train/Total]: [0.004s/1.872s/1.876s], Window[Data/Train]: [1.93s/936.15s], Remain: 2:14:12.473215
+==> Iteration 52500 | Interaction Loss: 1.0873
+Epoch [12/20], Iter. [0899/4691], Loss: 1.0579, Time/iter[Data/Train/Total]: [0.002s/1.863s/1.865s], Window[Data/Train]: [1.04s/931.66s], Remain: 1:57:53.592733
+==> Iteration 53000 | Interaction Loss: 0.9646
+Epoch [12/20], Iter. [1399/4691], Loss: 1.0763, Time/iter[Data/Train/Total]: [0.002s/1.841s/1.843s], Window[Data/Train]: [1.06s/920.50s], Remain: 1:41:07.572265
+==> Iteration 53500 | Interaction Loss: 1.4283
+Epoch [12/20], Iter. [1899/4691], Loss: 1.0650, Time/iter[Data/Train/Total]: [0.002s/1.876s/1.878s], Window[Data/Train]: [1.08s/938.01s], Remain: 1:27:23.867740
+==> Iteration 54000 | Interaction Loss: 1.4567
+Epoch [12/20], Iter. [2399/4691], Loss: 1.0764, Time/iter[Data/Train/Total]: [0.002s/1.842s/1.844s], Window[Data/Train]: [1.05s/921.05s], Remain: 1:10:26.916459
+==> Iteration 54500 | Interaction Loss: 0.9715
+Epoch [12/20], Iter. [2899/4691], Loss: 1.0563, Time/iter[Data/Train/Total]: [0.002s/1.861s/1.863s], Window[Data/Train]: [1.05s/930.47s], Remain: 0:55:38.592793
