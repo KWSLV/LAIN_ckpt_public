@@ -1,0 +1,13 @@
+level,actual_group,predicted_group,count,matched_row_total,rate_within_matched_row
+hoi_level,seen,seen,22053,22182,0.9941844738977549
+hoi_level,seen,unseen,129,22182,0.005815526102245064
+hoi_level,seen,unmatched,6235,22182,
+hoi_level,unseen,seen,167,4278,0.03903693314633006
+hoi_level,unseen,unseen,4111,4278,0.96096306685367
+hoi_level,unseen,unmatched,710,4278,
+object_level,seen,seen,22053,22182,0.9941844738977549
+object_level,seen,unseen,129,22182,0.005815526102245064
+object_level,seen,unmatched,6235,22182,
+object_level,unseen,seen,167,4278,0.03903693314633006
+object_level,unseen,unseen,4111,4278,0.96096306685367
+object_level,unseen,unmatched,710,4278,

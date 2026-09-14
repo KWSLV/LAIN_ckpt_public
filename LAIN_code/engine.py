@@ -41,6 +41,32 @@ def to_device(data, device):
     return data
 
 
+def unique_object_gt_indices(target):
+    """Return one index per unique GT human-object pair for object analysis.
+
+    HICO stores one annotation row per HOI label, so a multi-label pair may
+    repeat the same human box, object box and object class. Counting every HOI
+    row at object level would over-weight those pairs.
+    """
+    if 'object' not in target:
+        return []
+    seen = set()
+    indices = []
+    for index in range(len(target['object'])):
+        object_id = int(target['object'][index].item())
+        human_box = target['boxes_h'][index].detach().cpu().reshape(-1).tolist()
+        object_box = target['boxes_o'][index].detach().cpu().reshape(-1).tolist()
+        key = (
+            object_id,
+            *(round(float(value), 6) for value in human_box),
+            *(round(float(value), 6) for value in object_box),
+        )
+        if key not in seen:
+            seen.add(key)
+            indices.append(index)
+    return indices
+
+
 class CacheTemplate(defaultdict):
     """A template for VCOCO cached results """
 
@@ -86,6 +112,7 @@ class CustomisedDLE(DistributedLearningEngine):
             self.scaler = amp.GradScaler(enabled=True)
 
         self._last_scene_gate_diagnostics = {}
+        self._last_seen_unseen_confusion = {}
         self._wandb_module_metrics_defined = False
         self._joint_best_unseen = float(
             getattr(args, 'joint_rollback_initial_best_unseen', -1.0)
@@ -1725,11 +1752,33 @@ class CustomisedDLE(DistributedLearningEngine):
         unseen_ids = hico_unseen_index[args.zs_type] if args.zs else []
         seen_ids = set(range(600)) - set(unseen_ids)
         run_error_analysis = bool(
-            getattr(args, 'eval', False)
-            or getattr(args, 'hoi_error_analysis', False)
+            report
+            and (
+                getattr(args, 'seen_unseen_confusion', False)
+                or getattr(args, 'hoi_error_analysis', False)
+            )
+        )
+        confusion_iou = float(
+            getattr(args, 'seen_unseen_confusion_iou', 0.5)
+        )
+        object_analysis_applicable = bool(
+            args.zs and args.zs_type == 'unseen_object'
+        )
+        unseen_object_ids = (
+            {
+                int(dataset.class_corr[hoi_id][1])
+                for hoi_id in unseen_ids
+            }
+            if object_analysis_applicable
+            else None
         )
         analyzer = (
-            HOIErrorAnalyzer(unseen_ids=unseen_ids, seen_ids=seen_ids)
+            HOIErrorAnalyzer(
+                unseen_ids=unseen_ids,
+                seen_ids=seen_ids,
+                unseen_object_ids=unseen_object_ids,
+                iou_threshold=confusion_iou,
+            )
             if run_error_analysis else None
         )
         associate = BoxPairAssociation(min_iou=0.5)
@@ -1758,7 +1807,15 @@ class CustomisedDLE(DistributedLearningEngine):
             if outputs is None or len(outputs) == 0:
                 if analyzer is not None:
                     for target in batch[-1]:
-                        analyzer.update(target['hoi'], None)
+                        analyzer.update_aligned(
+                            target['hoi'], [None] * len(target['hoi'])
+                        )
+                        if object_analysis_applicable:
+                            object_indices = unique_object_gt_indices(target)
+                            analyzer.update_objects_aligned(
+                                [target['object'][idx] for idx in object_indices],
+                                [None] * len(object_indices),
+                            )
                 continue
 
             for output, target in zip(outputs, batch[-1]):
@@ -1775,6 +1832,11 @@ class CustomisedDLE(DistributedLearningEngine):
 
                 labels = torch.zeros_like(scores)
                 matched_top_ids = [None] * len(target['hoi']) if analyzer is not None else None
+                matched_top_object_ids = (
+                    [None] * len(target['hoi'])
+                    if analyzer is not None and object_analysis_applicable
+                    else None
+                )
                 if pairing.numel() > 0 and interactions.numel() > 0:
                     boxes = output['boxes']
                     boxes_h, boxes_o = boxes[pairing].unbind(0)
@@ -1787,10 +1849,16 @@ class CustomisedDLE(DistributedLearningEngine):
                             box_ops.box_iou(gt_bx_o, boxes_o),
                         )
                         for gt_idx in range(len(target['hoi'])):
-                            matched_predictions = torch.nonzero(pair_iou[gt_idx] >= 0.5).squeeze(1)
+                            matched_predictions = torch.nonzero(
+                                pair_iou[gt_idx] >= confusion_iou
+                            ).squeeze(1)
                             if len(matched_predictions):
                                 best_prediction = matched_predictions[scores[matched_predictions].argmax()]
                                 matched_top_ids[gt_idx] = interactions[best_prediction].item()
+                                if matched_top_object_ids is not None:
+                                    matched_top_object_ids[gt_idx] = objects[
+                                        best_prediction
+                                    ].item()
 
                     for hoi_idx in interactions.unique():
                         gt_idx = torch.nonzero(target['hoi'] == hoi_idx).squeeze(1)
@@ -1803,6 +1871,12 @@ class CustomisedDLE(DistributedLearningEngine):
                             )
                 if analyzer is not None:
                     analyzer.update_aligned(target['hoi'], matched_top_ids)
+                    if object_analysis_applicable:
+                        object_indices = unique_object_gt_indices(target)
+                        analyzer.update_objects_aligned(
+                            [target['object'][idx] for idx in object_indices],
+                            [matched_top_object_ids[idx] for idx in object_indices],
+                        )
                 pred_list.append((scores, interactions, labels))
 
         gathered_pred_list = []
@@ -1814,11 +1888,34 @@ class CustomisedDLE(DistributedLearningEngine):
         merged_analyzer = None
         if analyzer is not None:
             analyzer_states = ddp.all_gather(analyzer.state_dict())
-            merged_analyzer = HOIErrorAnalyzer(unseen_ids=unseen_ids, seen_ids=seen_ids)
+            merged_analyzer = HOIErrorAnalyzer(
+                unseen_ids=unseen_ids,
+                seen_ids=seen_ids,
+                unseen_object_ids=unseen_object_ids,
+                iou_threshold=confusion_iou,
+            )
             for state in analyzer_states:
                 partial = HOIErrorAnalyzer(unseen_ids=unseen_ids, seen_ids=seen_ids)
                 partial.load_state_dict(state)
                 merged_analyzer.merge(partial)
+
+            self._last_seen_unseen_confusion = merged_analyzer.summary()
+            if self._rank == 0 and getattr(args, 'seen_unseen_confusion', False):
+                confusion_output = (
+                    getattr(args, 'seen_unseen_confusion_output', '')
+                    or args.output_dir
+                )
+                merged_analyzer.save(
+                    confusion_output,
+                    metadata={
+                        'checkpoint': os.path.abspath(
+                            getattr(args, 'resume', '')
+                        ),
+                        'zs_type': args.zs_type,
+                        'dataset': args.dataset,
+                    },
+                    make_plots=True,
+                )
 
         ap = meter.eval()
         if collect_scene_diagnostics:

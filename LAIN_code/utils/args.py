@@ -179,6 +179,25 @@ def get_args():
     )
     parser.add_argument('--hoi-error-analysis', action='store_true',
                         help='Collect unseen/seen bias and top-interference diagnostics during training evaluation.')
+    parser.add_argument(
+        '--seen-unseen-confusion',
+        action='store_true',
+        help=(
+            'During HICO evaluation, spatially match GT/predicted human-object '
+            'pairs and save Seen/Unseen HOI confusion counts, rates, CSV and plots.'
+        ),
+    )
+    parser.add_argument(
+        '--seen-unseen-confusion-iou',
+        default=0.5,
+        type=float,
+        help='Minimum IoU required for both human and object boxes in confusion analysis.',
+    )
+    parser.add_argument(
+        '--seen-unseen-confusion-output',
+        default='',
+        help='Output directory for confusion JSON/CSV/PNG; defaults to --output-dir.',
+    )
 
     parser.add_argument('--clip_dir_vit', default='/root/Lain/checkpoints/pretrained_clip/ViT-B-16.pt', type=str)
     parser.add_argument('--pretrained', default='', help='Path to a pretrained detector')
