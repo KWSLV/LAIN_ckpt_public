@@ -1,0 +1,42 @@
+{
+  "last_accepted_logical_epoch": 10,
+  "best_unseen": 36.629509247683785,
+  "best_checkpoint": "/root/autodl-tmp/Lain/UO_lain5_object15_dynamic_retry20_seed66/checkpoints/best_unseen.pt",
+  "threshold_reached": false,
+  "current_lrs": {
+    "vit": 6.25e-06,
+    "object": 1.25e-05,
+    "head": 1.5625e-05
+  },
+  "total_rollbacks": 5,
+  "last_accepted_attempt": {
+    "timestamp_utc": "2026-08-22T11:45:06.502662+00:00",
+    "logical_epoch": 10,
+    "attempt": 1,
+    "retry_count": 0,
+    "attempt_index": 15,
+    "accepted": true,
+    "status": "accepted",
+    "full_mAP": 33.76701000234036,
+    "unseen_mAP": 36.59858021464975,
+    "seen_mAP": 33.2006959598785,
+    "historical_best_before": 36.629509247683785,
+    "decline_from_best": 0.030929033034034603,
+    "allowed_decline": 0.15,
+    "threshold_reached_before": false,
+    "threshold_reached_after": false,
+    "one_time_lr_drop_applied": false,
+    "lr_head_used": 1.5625e-05,
+    "lr_vit_used": 6.25e-06,
+    "lr_object_used": 1.25e-05,
+    "lr_head_next": 1.5625e-05,
+    "lr_vit_next": 6.25e-06,
+    "lr_object_next": 1.25e-05,
+    "rollback_count": 0,
+    "rollback_count_total": 5,
+    "rollback_reason": "",
+    "rollback_target_checkpoint": "",
+    "iteration_end": 58425,
+    "object_forward_active": true
+  }
+}
