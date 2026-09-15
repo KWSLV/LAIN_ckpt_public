@@ -57,6 +57,7 @@ def load_state_dict_compatible(
     model,
     state_dict,
     strict_adapter_shapes=False,
+    allow_official_checkpoint_extras=False,
 ):
     model_state = model.state_dict()
     compatible_state = {}
@@ -102,10 +103,27 @@ def load_state_dict_compatible(
             for key in msg.missing_keys
             if any(token in key for token in critical_tokens)
         ]
+        allowed_official_unexpected = {
+            key for key in msg.unexpected_keys
+            if allow_official_checkpoint_extras and (
+                key in {'adapter_union_weight', 'origin_text_embeddings'}
+                or (
+                    'adaptermlp.mhsa_layers' in key
+                    and ('.self_attn.' in key or '.norm1.' in key)
+                )
+            )
+        }
+        if allowed_official_unexpected:
+            print(
+                '[INFO] Official checkpoint compatibility: ignored '
+                f'{len(allowed_official_unexpected)} legacy tensors exactly '
+                'as the public official eval does with strict=False.'
+            )
         critical_unexpected = [
             key
             for key in msg.unexpected_keys
             if any(token in key for token in critical_tokens)
+            and key not in allowed_official_unexpected
         ]
         if critical_skipped or critical_missing or critical_unexpected:
             raise RuntimeError(
@@ -432,6 +450,9 @@ def main(rank, args):
             lain,
             checkpoint['model_state_dict'],
             strict_adapter_shapes=bool(args.eval),
+            allow_official_checkpoint_extras=bool(
+                getattr(args, 'official_checkpoint_compat', False)
+            ),
         )
         resume_training = True
     elif getattr(args, "init_from", "") and os.path.exists(args.init_from):

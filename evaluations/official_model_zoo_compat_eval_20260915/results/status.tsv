@@ -1,0 +1,5 @@
+model	status	started_at	finished_at	checkpoint	sha256	log
+RF	OK	2026-09-15T19:17:29+08:00	2026-09-15T19:32:16+08:00	/root/autodl-tmp/Lain/official_model_zoo/RF.pt	0988af31f807f196a8c3cf773e4a0c0a29c3695c7cfdff572d744c62f588e49f	/root/autodl-tmp/Lain/official_model_zoo_compat_eval_20260915/results/RF/eval.log
+NF	OK	2026-09-15T19:32:16+08:00	2026-09-15T19:47:02+08:00	/root/autodl-tmp/Lain/official_model_zoo/NF.pt	897edf9501bb4653a8ba721d66d23403f28f7eef920dbe7b35402f08f26956c9	/root/autodl-tmp/Lain/official_model_zoo_compat_eval_20260915/results/NF/eval.log
+UO	OK	2026-09-15T19:47:02+08:00	2026-09-15T20:02:47+08:00	/root/autodl-tmp/Lain/official_model_zoo/UO.pt	c4965a81e017e0f89fd1bd0670b3d5615af54d02123b0bcb81456f9227822372	/root/autodl-tmp/Lain/official_model_zoo_compat_eval_20260915/results/UO/eval.log
+UV	OK	2026-09-15T20:02:47+08:00	2026-09-15T20:18:47+08:00	/root/autodl-tmp/Lain/official_model_zoo/UV.pt	7b946296c606142dd41108dfc824a2d3d8928d8beb6a4925700276198f6e4d97	/root/autodl-tmp/Lain/official_model_zoo_compat_eval_20260915/results/UV/eval.log

@@ -1,0 +1,44 @@
+[RF] START zs_type=rare_first checkpoint=/root/autodl-tmp/Lain/official_model_zoo/RF.pt
+Namespace(weight_decay=0.0001, lr_drop=10, disable_lr_scheduler=False, unseen_lr_threshold_schedule=False, unseen_lr_threshold=37.0, unseen_lr_threshold_factor=0.1, clip_max_norm=0.1, backbone='resnet50', dilation=False, amp=True, position_embedding='sine', repr_dim=512, hidden_dim=256, enc_layers=6, dec_layers=6, dim_feedforward=2048, dropout=0.1, nheads=8, num_queries=100, pre_norm=False, aux_loss=True, set_cost_class=1, set_cost_bbox=5, set_cost_giou=2, bbox_loss_coef=5, giou_loss_coef=2, eos_coef=0.1, cache=False, box_score_thresh=0.2, fg_iou_thresh=0.5, min_instances=3, max_instances=15, clip_visual_layers_vit=24, clip_visual_output_dim_vit=768, clip_visual_input_resolution_vit=336, clip_visual_width_vit=1024, clip_visual_patch_size_vit=14, clip_text_transformer_width_vit=768, clip_text_transformer_heads_vit=12, clip_text_transformer_layers_vit=12, clip_text_context_length_vit=77, feat_mask_type=0, repeat_factor_sampling=False, dataset_file='coco', d_detr=False, lr_backbone=2e-05, masks=False, with_box_refine=False, two_stage=False, frozen_weights=None, position_embedding_scale=6.283185307179586, num_feature_levels=4, dec_n_points=4, enc_n_points=4, mask_loss_coef=1, dice_loss_coef=1, cls_loss_coef=2, focal_alpha=0.25, lr_head=0.001, lr_vit=0.001, lr_text_adapter=0.0005, lr_obj_cond_adapter=0.0005, lr_scene_gate=0.001, override_resume_scene_gate_lr=False, zs=True, zs_type='rare_first', dataset='hicodet', partitions=['train2015', 'test2015'], num_classes=117, data_root='./hicodet', hico_image_root='/root/Lain/hico_20160224_det', epochs=20, batch_size=8, test_batch_size=8, num_workers=8, prefetch_factor=4, eval=True, eval_scene_gate_off_only=False, eval_result_json='', hoi_error_analysis=False, seen_unseen_confusion=True, seen_unseen_confusion_iou=0.5, seen_unseen_confusion_output='', clip_dir_vit='/root/Lain/checkpoints/ViT-B-16.pt', pretrained='/root/Lain/checkpoints/detr-r50-hicodet.pth', resume='/root/autodl-tmp/Lain/official_model_zoo/RF.pt', init_from='', output_dir='/root/autodl-tmp/Lain/official_model_zoo_compat_eval_20260915/results/RF', keep_last_checkpoints=0, keep_epoch_checkpoints=[], keep_best_unseen_checkpoint=False, use_hotoken=True, use_prior=True, use_exp=True, alpha=0.5, gamma=0.2, hyper_lambda=2.8, use_insadapter=True, adapter_num_layers=1, adapt_dim=32, adapter_alpha=1.0, adapter_pos='all', adapter_scalar='learnable_scalar', official_checkpoint_compat=True, use_text_adapter=False, lora_rank=2, lora_alpha=8, text_adapter_dim=64, adapter_residual_scale=0.05, adapter_dropout=0.1, train_text_adapter_only=False, reset_text_adapter_on_load=False, text_lr_contribution_schedule=False, text_lr_contribution_threshold_low=0.05, text_lr_contribution_threshold_high=0.1, text_lr_after_low_threshold=5e-05, text_lr_after_high_threshold=1e-05, use_obj_cond_adapter=False, obj_cond_rank=4, train_obj_cond_adapter_only=False, train_object_and_scene_gate_only=False, reset_obj_cond_adapter_on_load=False, use_prompt=True, N_CTX=24, CSC=True, CTX_INIT='', CLASS_TOKEN_POSITION='end', use_scene_gate=False, scene_gate_type='pair', scene_gate_version='v5', scene_gate_hidden_dim=128, scene_gate_rank=16, scene_gate_dropout=0.1, scene_gate_alpha=0.1, scene_gate_activation='tanh', scene_gate_init_std=0.0, scene_gate_disable_centering=False, scene_gate_post_l2_norm=False, scene_gate_start_epoch=1, train_scene_gate_only=False, reset_scene_gate_on_load=False, scene_gate_lr_contribution_schedule=False, scene_gate_lr_contribution_threshold=0.1, scene_gate_lr_after_threshold=1e-05, scene_gate_diagnostics=False, scene_gate_compare_off=False, adapter_contribution_diagnostics=False, contribution_epochs=[], skip_object_adapter_contribution=False, joint_best_rollback_policy=False, joint_rollback_initial_best_unseen=-1.0, joint_rollback_significant_delta=0.03, joint_rollback_small_lr_factor=0.5, joint_rollback_bad_lr_factor=0.2, joint_rollback_patience=2, lain_object_staged_retry_policy=False, staged_object_start_epoch=6, staged_lr_trigger_unseen=37.5, staged_pre_trigger_max_drop=0.15, staged_post_trigger_max_drop=0.05, staged_rollback_lr_factor=0.5, staged_resume_existing_run=False, job_id=1985, vis=False, debug=False, seed=66, device='cuda', fast_cuda=True, port='7894', print_interval=100, world_size=1, use_semantic_adapter=False)
+Config: Use Semantic Adapter: False
+Config: Use Text Adapter: False | dim=64 | lr=0.0005
+Config: Use ObjCond Adapter: False | rank=4 | lr=0.0005
+Config: Adapter Dimension: 32
+datasets/zs_rare_first_train2015_idx.pkl is loaded
+  adapter_union_weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.self_attn.in_proj_weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.self_attn.in_proj_bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.self_attn.out_proj.weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.self_attn.out_proj.bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.norm1.weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers.0.norm1.bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.self_attn.in_proj_weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.self_attn.in_proj_bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.self_attn.out_proj.weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.self_attn.out_proj.bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.norm1.weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers2.0.norm1.bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.self_attn.in_proj_weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.self_attn.in_proj_bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.self_attn.out_proj.weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.self_attn.out_proj.bias
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.norm1.weight
+  clip_head.image_encoder.transformer.resblocks.0.adaptermlp.mhsa_layers3.0.norm1.bias
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.self_attn.in_proj_weight
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.self_attn.in_proj_bias
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.self_attn.out_proj.weight
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.self_attn.out_proj.bias
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.norm1.weight
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers.0.norm1.bias
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.self_attn.in_proj_weight
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.self_attn.in_proj_bias
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.self_attn.out_proj.weight
+  clip_head.image_encoder.transformer.resblocks.1.adaptermlp.mhsa_layers2.0.self_attn.out_proj.bias
+Seen/Unseen spatially matched classification confusion
+Rows=GT, columns=prediction; labels=[Seen, Unseen]
+HOI U->S: 504/635 (79.37% matched); unmatched unseen=201
+HOI S->U: 148/25818 (0.57% matched); unmatched seen=6751
+Unseen mAP: 31.60
+The mAP is 34.48
+>>> zero-shot setting(rare_first!!)
+full mAP: 34.48 unseen: 31.60 seen: 35.20

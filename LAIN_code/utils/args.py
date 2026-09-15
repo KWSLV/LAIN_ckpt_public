@@ -251,6 +251,16 @@ def get_args():
     parser.add_argument('--adapter_alpha', default=1., type=float)
     parser.add_argument('--adapter_pos', type=str, default='all', choices=['all', 'front', 'end', 'random', 'last', '03','47','811'])
     parser.add_argument('--adapter_scalar', default='learnable_scalar', type=str)
+    parser.add_argument(
+        '--official-checkpoint-compat',
+        action='store_true',
+        help=(
+            'Load the four official LAIN model-zoo checkpoints using the '
+            'public official eval semantics: validate every active tensor but '
+            'allow the unused legacy self-attention/cache keys that the '
+            'official main.py loads with strict=False.'
+        ),
+    )
 
     # text-side adapters from the 0712 experiments
     parser.add_argument('--use_text_adapter', action='store_true')

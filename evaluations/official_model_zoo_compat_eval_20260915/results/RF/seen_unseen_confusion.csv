@@ -1,0 +1,7 @@
+level,actual_group,predicted_group,count,matched_row_total,rate_within_matched_row
+hoi_level,seen,seen,25670,25818,0.9942675652645441
+hoi_level,seen,unseen,148,25818,0.0057324347354558835
+hoi_level,seen,unmatched,6751,25818,
+hoi_level,unseen,seen,504,635,0.7937007874015748
+hoi_level,unseen,unseen,131,635,0.2062992125984252
+hoi_level,unseen,unmatched,201,635,
