@@ -1,0 +1,3 @@
+id	run_name	status	started_at	finished_at	checkpoint	sha256	log
+06	06_uo_text_rank8_seed66	OK	2026-09-15T21:08:55+08:00	2026-09-15T21:19:38+08:00	/root/autodl-tmp/Lain/reviewer_revision/06_uo_text_rank8_seed66/checkpoints/ckpt_77900_20.pt	bcecc780735f6acf791d734fd41bbf84e5b82bd4ce933073700058ddff9b41bc	/root/autodl-tmp/Lain/reviewer_0608_local_upload_eval_20260915/06_uo_text_rank8_seed66/eval.log
+08	08_uo_paper_gate_rank64_seed66	OK	2026-09-15T21:19:38+08:00	2026-09-15T21:45:00+08:00	/root/autodl-tmp/Lain/reviewer_revision/08_uo_paper_gate_rank64_seed66/checkpoints/ckpt_77900_20.pt	30c03ae79aa241e4d273861f588d1f6a25408ae7c64d9f11a62a51e5b4d640c7	/root/autodl-tmp/Lain/reviewer_0608_local_upload_eval_20260915/08_uo_paper_gate_rank64_seed66/eval.log

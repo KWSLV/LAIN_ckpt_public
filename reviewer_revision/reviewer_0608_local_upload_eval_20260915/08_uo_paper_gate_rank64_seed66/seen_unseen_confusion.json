@@ -1,0 +1,582 @@
+{
+  "schema_version": 2,
+  "definition": "A prediction is matched to a GT HOI when both human and object IoU are >= 0.5; the highest-scoring matched HOI prediction determines the predicted Seen/Unseen group.",
+  "iou_threshold": 0.5,
+  "hoi_level": {
+    "labels": [
+      "seen",
+      "unseen"
+    ],
+    "matrix_orientation": "rows=ground_truth, columns=prediction",
+    "confusion_matrix_counts": [
+      [
+        22055,
+        130
+      ],
+      [
+        168,
+        4109
+      ]
+    ],
+    "total_seen_gt": 28417,
+    "total_unseen_gt": 4988,
+    "matched_seen_gt": 22185,
+    "matched_unseen_gt": 4277,
+    "unmatched_seen_gt": 6232,
+    "unmatched_unseen_gt": 711,
+    "unknown_prediction_seen_gt": 0,
+    "unknown_prediction_unseen_gt": 0,
+    "seen_to_seen": 22055,
+    "seen_to_unseen": 130,
+    "unseen_to_seen": 168,
+    "unseen_to_unseen": 4109,
+    "rates": {
+      "S2S_matched": 0.994140184809556,
+      "S2U_matched": 0.005859815190443994,
+      "S2U_all": 0.004574726396171306,
+      "seen_miss_rate": 0.2193053453918429,
+      "U2S_matched": 0.03927986906710311,
+      "U2S_all": 0.03368083400160385,
+      "U2U_matched": 0.9607201309328969,
+      "unseen_miss_rate": 0.142542101042502
+    },
+    "top_unseen_to_seen_predictions": [
+      {
+        "predicted_hoi_id": 481,
+        "count": 20
+      },
+      {
+        "predicted_hoi_id": 477,
+        "count": 12
+      },
+      {
+        "predicted_hoi_id": 479,
+        "count": 12
+      },
+      {
+        "predicted_hoi_id": 480,
+        "count": 9
+      },
+      {
+        "predicted_hoi_id": 162,
+        "count": 7
+      },
+      {
+        "predicted_hoi_id": 218,
+        "count": 6
+      },
+      {
+        "predicted_hoi_id": 268,
+        "count": 6
+      },
+      {
+        "predicted_hoi_id": 377,
+        "count": 5
+      },
+      {
+        "predicted_hoi_id": 493,
+        "count": 5
+      },
+      {
+        "predicted_hoi_id": 529,
+        "count": 5
+      },
+      {
+        "predicted_hoi_id": 164,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 169,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 348,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 370,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 518,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 528,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 248,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 442,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 476,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 482,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 48,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 103,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 160,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 177,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 185,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 212,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 266,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 284,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 308,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 360,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 372,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 394,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 483,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 485,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 527,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 38,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 53,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 78,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 80,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 93,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 108,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 145,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 197,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 209,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 235,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 272,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 478,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 492,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 506,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 523,
+        "count": 1
+      }
+    ],
+    "top_seen_to_unseen_predictions": [
+      {
+        "predicted_hoi_id": 559,
+        "count": 16
+      },
+      {
+        "predicted_hoi_id": 338,
+        "count": 11
+      },
+      {
+        "predicted_hoi_id": 224,
+        "count": 9
+      },
+      {
+        "predicted_hoi_id": 314,
+        "count": 9
+      },
+      {
+        "predicted_hoi_id": 454,
+        "count": 9
+      },
+      {
+        "predicted_hoi_id": 115,
+        "count": 8
+      },
+      {
+        "predicted_hoi_id": 472,
+        "count": 8
+      },
+      {
+        "predicted_hoi_id": 294,
+        "count": 7
+      },
+      {
+        "predicted_hoi_id": 471,
+        "count": 5
+      },
+      {
+        "predicted_hoi_id": 456,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 558,
+        "count": 4
+      },
+      {
+        "predicted_hoi_id": 116,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 230,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 323,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 341,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 422,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 424,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 534,
+        "count": 3
+      },
+      {
+        "predicted_hoi_id": 118,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 225,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 226,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 324,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 423,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 431,
+        "count": 2
+      },
+      {
+        "predicted_hoi_id": 111,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 113,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 123,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 319,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 320,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 459,
+        "count": 1
+      },
+      {
+        "predicted_hoi_id": 470,
+        "count": 1
+      }
+    ]
+  },
+  "object_level": {
+    "labels": [
+      "seen",
+      "unseen"
+    ],
+    "matrix_orientation": "rows=ground_truth, columns=prediction",
+    "confusion_matrix_counts": [
+      [
+        22055,
+        130
+      ],
+      [
+        168,
+        4109
+      ]
+    ],
+    "total_seen_gt": 28417,
+    "total_unseen_gt": 4988,
+    "matched_seen_gt": 22185,
+    "matched_unseen_gt": 4277,
+    "unmatched_seen_gt": 6232,
+    "unmatched_unseen_gt": 711,
+    "unknown_prediction_seen_gt": 0,
+    "unknown_prediction_unseen_gt": 0,
+    "seen_to_seen": 22055,
+    "seen_to_unseen": 130,
+    "unseen_to_seen": 168,
+    "unseen_to_unseen": 4109,
+    "rates": {
+      "S2S_matched": 0.994140184809556,
+      "S2U_matched": 0.005859815190443994,
+      "S2U_all": 0.004574726396171306,
+      "seen_miss_rate": 0.2193053453918429,
+      "U2S_matched": 0.03927986906710311,
+      "U2S_all": 0.03368083400160385,
+      "U2U_matched": 0.9607201309328969,
+      "unseen_miss_rate": 0.142542101042502
+    },
+    "applicable": true,
+    "top_unseen_to_seen_predictions": [
+      {
+        "predicted_object_id": 31,
+        "count": 60
+      },
+      {
+        "predicted_object_id": 0,
+        "count": 17
+      },
+      {
+        "predicted_object_id": 55,
+        "count": 9
+      },
+      {
+        "predicted_object_id": 77,
+        "count": 9
+      },
+      {
+        "predicted_object_id": 37,
+        "count": 7
+      },
+      {
+        "predicted_object_id": 32,
+        "count": 6
+      },
+      {
+        "predicted_object_id": 33,
+        "count": 6
+      },
+      {
+        "predicted_object_id": 46,
+        "count": 6
+      },
+      {
+        "predicted_object_id": 43,
+        "count": 5
+      },
+      {
+        "predicted_object_id": 18,
+        "count": 4
+      },
+      {
+        "predicted_object_id": 44,
+        "count": 4
+      },
+      {
+        "predicted_object_id": 78,
+        "count": 4
+      },
+      {
+        "predicted_object_id": 24,
+        "count": 3
+      },
+      {
+        "predicted_object_id": 39,
+        "count": 3
+      },
+      {
+        "predicted_object_id": 48,
+        "count": 3
+      },
+      {
+        "predicted_object_id": 73,
+        "count": 3
+      },
+      {
+        "predicted_object_id": 15,
+        "count": 2
+      },
+      {
+        "predicted_object_id": 19,
+        "count": 2
+      },
+      {
+        "predicted_object_id": 52,
+        "count": 2
+      },
+      {
+        "predicted_object_id": 54,
+        "count": 2
+      },
+      {
+        "predicted_object_id": 64,
+        "count": 2
+      },
+      {
+        "predicted_object_id": 67,
+        "count": 2
+      },
+      {
+        "predicted_object_id": 8,
+        "count": 1
+      },
+      {
+        "predicted_object_id": 17,
+        "count": 1
+      },
+      {
+        "predicted_object_id": 21,
+        "count": 1
+      },
+      {
+        "predicted_object_id": 28,
+        "count": 1
+      },
+      {
+        "predicted_object_id": 57,
+        "count": 1
+      },
+      {
+        "predicted_object_id": 60,
+        "count": 1
+      },
+      {
+        "predicted_object_id": 62,
+        "count": 1
+      }
+    ],
+    "top_seen_to_unseen_predictions": [
+      {
+        "predicted_object_id": 79,
+        "count": 20
+      },
+      {
+        "predicted_object_id": 16,
+        "count": 16
+      },
+      {
+        "predicted_object_id": 20,
+        "count": 16
+      },
+      {
+        "predicted_object_id": 34,
+        "count": 16
+      },
+      {
+        "predicted_object_id": 29,
+        "count": 14
+      },
+      {
+        "predicted_object_id": 30,
+        "count": 14
+      },
+      {
+        "predicted_object_id": 36,
+        "count": 14
+      },
+      {
+        "predicted_object_id": 53,
+        "count": 8
+      },
+      {
+        "predicted_object_id": 74,
+        "count": 7
+      },
+      {
+        "predicted_object_id": 38,
+        "count": 3
+      },
+      {
+        "predicted_object_id": 72,
+        "count": 2
+      }
+    ]
+  },
+  "evaluated_at": "2026-09-15T13:34:28.294327+00:00",
+  "metadata": {
+    "checkpoint": "/root/autodl-tmp/Lain/reviewer_revision/08_uo_paper_gate_rank64_seed66/checkpoints/ckpt_77900_20.pt",
+    "zs_type": "unseen_object",
+    "dataset": "hicodet"
+  }
+}
